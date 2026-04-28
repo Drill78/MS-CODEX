@@ -47,3 +47,6 @@ node_modules
 
 # scraper cache (kept by default for reproducibility — uncomment to ignore raw HTML if repo grows)
 # /data/raw/
+
+# 原图归档（仅本地保留，~239MB，scrape 可重建）
+/data/raw/box-art-original/

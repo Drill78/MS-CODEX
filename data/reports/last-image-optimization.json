@@ -1,0 +1,15 @@
+{
+  "ran_at": "2026-04-28T13:27:04.270Z",
+  "duration_ms": 34630,
+  "processed": 1143,
+  "failed": 0,
+  "failed_list": [],
+  "size_before_mb": 239,
+  "size_after_mb": 56.13,
+  "reduction_percent": 76.5,
+  "avg_size_before_kb": 214.1,
+  "avg_size_after_kb": 50.3,
+  "lqip_total_size_kb": 295.5,
+  "avg_lqip_size_bytes": 265,
+  "kits_json_updated_count": 1143
+}

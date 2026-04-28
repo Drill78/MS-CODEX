@@ -33,8 +33,10 @@ export async function pruneOrphanImages(kits: Kit[]): Promise<PruneResult> {
   let remainingBytes = 0
 
   for (const f of files) {
-    if (!f.endsWith('.jpg')) continue
-    const id = f.slice(0, -'.jpg'.length)
+    let id: string
+    if (f.endsWith('.webp')) id = f.slice(0, -'.webp'.length)
+    else if (f.endsWith('.jpg')) id = f.slice(0, -'.jpg'.length)
+    else continue
     const src = path.join(IMAGE_DIR, f)
     let stat
     try {

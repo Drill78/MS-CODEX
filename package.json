@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "scrape": "tsx scripts/scrape/build.ts",
-    "scrape:refresh": "tsx scripts/scrape/build.ts --refresh"
+    "scrape:refresh": "tsx scripts/scrape/build.ts --refresh",
+    "optimize-images": "tsx scripts/optimize-images.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -34,6 +35,7 @@
     "eslint-config-prettier": "^9.1.0",
     "postcss": "^8.5.0",
     "prettier": "^3.4.0",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4.0.0",
     "tsx": "^4.21.0",
     "typescript": "^5.7.0"

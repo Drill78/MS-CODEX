@@ -40,6 +40,7 @@ export type Kit = {
 
   is_p_bandai?: boolean
   box_art_url?: string
+  box_art_lqip?: string
   source_url: string
 
   tags?: string[]
