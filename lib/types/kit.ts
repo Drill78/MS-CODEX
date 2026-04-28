@@ -43,4 +43,14 @@ export type Kit = {
   source_url: string
 
   tags?: string[]
+
+  // 内部 meta，仅爬虫产生，UI 层可忽略
+  _meta?: {
+    name_zh_missing?: boolean
+    work_unmapped?: boolean
+    manual_review?: boolean
+    source_work_raw?: string
+    source_grade_page?: string
+    variants?: string[]
+  }
 }

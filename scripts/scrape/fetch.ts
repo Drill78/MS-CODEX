@@ -7,7 +7,8 @@ const USER_AGENT =
   'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 MS-CODEX-scraper/0.1 (educational use)'
 const FROM_HEADER = 'ms-codex-scraper@example.com'
 const REQUEST_TIMEOUT_MS = 30_000
-const MIN_INTERVAL_MS = 500
+// 03B：URL 数量从 2 升到 ~25，间隔从 500ms 提到 800ms 再稳一档
+const MIN_INTERVAL_MS = 800
 const MAX_RETRIES = 3
 
 let lastRequestAt = 0

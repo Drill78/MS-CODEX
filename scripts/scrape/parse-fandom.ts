@@ -1,13 +1,15 @@
 import * as cheerio from 'cheerio'
 import type { CheerioAPI } from 'cheerio'
+import type { Grade } from '@/lib/types/kit'
+import { GRADE_SERIES_PREFIX } from './sources'
 import type { FandomKitRecord } from './types'
 
 const FANDOM_BASE = 'https://gundam.fandom.com'
 
-function normalizeSeriesNumber(raw: string): string {
+function normalizeSeriesNumber(raw: string, prefix: string): string {
   const m = raw.match(/(\d+)/)
   if (!m) return raw.replace(/\s+/g, '')
-  return `RG${parseInt(m[1], 10).toString().padStart(2, '0')}`
+  return `${prefix}${parseInt(m[1], 10).toString().padStart(2, '0')}`
 }
 
 function parsePriceJpy(raw: string): number {
@@ -24,6 +26,8 @@ const MONTHS: Record<string, number> = {
   oct: 10, nov: 11, dec: 12,
 }
 
+// Returns ISO-ish "YYYY-MM-DD" string. Day = "00" means day-precision unknown
+// (only month known). Month = "00" means only year known.
 function parseReleaseDate(raw: string): string {
   if (!raw) return ''
   const text = raw.replace(/\s+/g, ' ').trim()
@@ -31,18 +35,26 @@ function parseReleaseDate(raw: string): string {
   let m = text.match(/(\d{4})-(\d{2})-(\d{2})/)
   if (m) return `${m[1]}-${m[2]}-${m[3]}`
 
-  // "2010 July" / "2010 July 23"
-  m = text.match(/(\d{4})\s+([A-Za-z]+)(?:\s+(\d{1,2}))?/)
+  // "2010 July 23" — full date
+  m = text.match(/(\d{4})\s+([A-Za-z]+)\s+(\d{1,2})/)
   if (m) {
     const month = MONTHS[m[2].toLowerCase()]
     if (month) {
-      const day = m[3] ? parseInt(m[3], 10) : 1
-      return `${m[1]}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`
+      return `${m[1]}-${String(month).padStart(2, '0')}-${String(parseInt(m[3], 10)).padStart(2, '0')}`
     }
   }
 
-  // "December 24, 2010"
-  m = text.match(/([A-Za-z]+)\s+(\d{1,2}),?\s+(\d{4})/)
+  // "2010 July" — month only
+  m = text.match(/(\d{4})\s+([A-Za-z]+)$/)
+  if (m) {
+    const month = MONTHS[m[2].toLowerCase()]
+    if (month) {
+      return `${m[1]}-${String(month).padStart(2, '0')}-00`
+    }
+  }
+
+  // "December 24, 2010" — full date
+  m = text.match(/([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})/)
   if (m) {
     const month = MONTHS[m[1].toLowerCase()]
     if (month) {
@@ -50,12 +62,12 @@ function parseReleaseDate(raw: string): string {
     }
   }
 
-  // "December 2010"
+  // "December 2010" — month only (no day, no comma)
   m = text.match(/([A-Za-z]+)\s+(\d{4})/)
   if (m) {
     const month = MONTHS[m[1].toLowerCase()]
     if (month) {
-      return `${m[2]}-${String(month).padStart(2, '0')}-01`
+      return `${m[2]}-${String(month).padStart(2, '0')}-00`
     }
   }
 
@@ -64,8 +76,18 @@ function parseReleaseDate(raw: string): string {
     return `${m[1]}-${String(parseInt(m[2], 10)).padStart(2, '0')}-${String(parseInt(m[3], 10)).padStart(2, '0')}`
   }
 
+  // "2010/12" — year + month
+  m = text.match(/(\d{4})\/(\d{1,2})$/)
+  if (m) {
+    return `${m[1]}-${String(parseInt(m[2], 10)).padStart(2, '0')}-00`
+  }
+
+  // bare year
+  m = text.match(/^(\d{4})$/)
+  if (m) return `${m[1]}-00-00`
+
   m = text.match(/(\d{4})/)
-  if (m) return `${m[1]}-01-01`
+  if (m) return `${m[1]}-00-00`
 
   return ''
 }
@@ -112,12 +134,11 @@ function detectColumnMap($: CheerioAPI, $headerRow: cheerio.Cheerio<any>): Colum
       (text === 'no.' ||
         text === '#' ||
         text === 'no' ||
-        text === 'rg #' ||
-        text.startsWith('rg #') ||
         text.startsWith('no.') ||
-        text === 'rg no.' ||
-        text === 'rg no' ||
-        text === 'kit #')
+        text === 'kit #' ||
+        // grade-agnostic patterns: "RG #", "PGU #", "MG no.", "HGUC No."
+        /^[a-z]{1,5}\s*#$/.test(text) ||
+        /^[a-z]{1,5}\s*no\.?$/.test(text))
     ) {
       map.number = i
       return
@@ -157,13 +178,19 @@ function detectColumnMap($: CheerioAPI, $headerRow: cheerio.Cheerio<any>): Colum
   return map
 }
 
-export function parseFandom(html: string): {
+export function parseFandom(
+  html: string,
+  grade: Grade,
+  opts: { sourceGradePage?: string } = {},
+): {
   records: FandomKitRecord[]
   errors: string[]
 } {
   const $ = cheerio.load(html)
   const records: FandomKitRecord[] = []
   const errors: string[] = []
+  const seriesPrefix = GRADE_SERIES_PREFIX[grade]
+  const validSeriesRegex = new RegExp(`^${seriesPrefix}\\d+$`)
 
   const tables = $('table.wikitable')
 
@@ -181,10 +208,27 @@ export function parseFandom(html: string): {
       pBandai = true
     }
 
-    // section context = closest preceding h2 (e.g., "Regulars and Special Editions")
+    // section context = closest preceding h2 (e.g., "Regulars and Special Editions",
+    // or for PG: "Perfect Grade Unleashed").
+    // Fandom often wraps wikitables inside <div class="wds-tab__content"> (year tabs),
+    // so prevAll('h2') on $table itself is empty. Walk the ancestor chain until
+    // we find an element with a preceding h2 sibling.
     let sectionContext = ''
-    const $h2 = $table.prevAll('h2').first()
-    if ($h2.length) sectionContext = $h2.text().trim()
+    {
+      let $el: typeof $table = $table
+      for (let depth = 0; depth < 8 && $el.length && !$el.is('body'); depth++) {
+        const $h2 = $el.prevAll('h2').first()
+        if ($h2.length) {
+          sectionContext = $h2
+            .text()
+            .replace(/\[\s*edit\s*\]/i, '')
+            .replace(/\s+/g, ' ')
+            .trim()
+          break
+        }
+        $el = $el.parent()
+      }
+    }
 
     const rows = $table.find('tr')
     if (rows.length < 2) return
@@ -207,10 +251,14 @@ export function parseFandom(html: string): {
       if (cells.length === 0) return
 
       try {
-        // number
+        // number — strip embedded images / figures / wrapping anchors before reading
+        // text, otherwise URLs like .../4d/RGGundam-SG.jpg leak in and the digit
+        // regex picks up cache-buster timestamps as fake series numbers.
         const numberCell =
           map.number !== undefined ? cells.eq(map.number) : null
-        const numberText = numberCell ? numberCell.text().trim() : ''
+        const numberText = numberCell
+          ? numberCell.clone().find('img, figure, a, span.mw-editsection').remove().end().text().trim()
+          : ''
 
         // name
         const nameCell = cells.eq(map.name!)
@@ -221,6 +269,16 @@ export function parseFandom(html: string): {
           (linkTitle && !linkTitle.startsWith('File:') ? linkTitle : linkText) ||
           nameCell.text().trim()
         if (!name_en) return
+        // 捕获完整可见文本（含变体后缀如 "Ver.Ka"/"Unleashed"）
+        const cellPlainText = nameCell
+          .clone()
+          .find('img, figure, .mw-editsection')
+          .remove()
+          .end()
+          .text()
+          .replace(/\s+/g, ' ')
+          .trim()
+        const name_full_text = cellPlainText || linkText || name_en
 
         // scale
         const scale =
@@ -287,24 +345,29 @@ export function parseFandom(html: string): {
         // series number
         let series_number = numberText || ''
         if (!series_number) {
-          const m = $tr.text().match(/\bRG[\s-]?(\d{1,3})\b/i)
-          if (m) series_number = `RG${m[1]}`
+          // 兜底：从全行文本里抓 grade-prefixed number ("RG-12" / "MG 100" / "HGUC 234")
+          const fallbackRe = new RegExp(`\\b${seriesPrefix}[A-Z]{0,4}[\\s-]?(\\d{1,3})\\b`, 'i')
+          const m = $tr.text().match(fallbackRe)
+          if (m) series_number = `${seriesPrefix}${m[1]}`
         }
         if (!series_number) return
-        const series_number_normalized = normalizeSeriesNumber(series_number)
-        if (!/^RG\d+$/.test(series_number_normalized)) return
+        const series_number_normalized = normalizeSeriesNumber(series_number, seriesPrefix)
+        if (!validSeriesRegex.test(series_number_normalized)) return
 
         records.push({
           series_number,
           series_number_normalized,
           name_en,
-          scale: scale || '1/144',
+          name_full_text,
+          scale: scale || (grade === 'PG' || grade === 'PG-Unleashed' ? '1/60' : grade === 'MG' || grade === 'MG-VerKa' || grade === 'RE100' ? '1/100' : '1/144'),
           price_jpy,
           release_date,
           box_art_url,
           source_work_raw,
           detail_page_url,
           is_p_bandai: pBandai || undefined,
+          source_grade_page: opts.sourceGradePage,
+          section_heading: sectionContext || undefined,
           raw_html: $.html($tr) ?? '',
         })
       } catch (err) {
@@ -315,13 +378,15 @@ export function parseFandom(html: string): {
     })
   })
 
-  // Deduplicate by series_number_normalized — prefer the entry with the
-  // richest data (price, release date, image, detail page).
+  // Deduplicate by (section, series_number_normalized) — prefer the entry with
+  // the richest data. Including section_heading prevents PG vs PG-Unleashed
+  // (both numbered from 01) from collapsing.
   const byKey = new Map<string, FandomKitRecord>()
   for (const r of records) {
-    const existing = byKey.get(r.series_number_normalized)
+    const key = `${r.section_heading ?? ''}::${r.series_number_normalized}`
+    const existing = byKey.get(key)
     if (!existing) {
-      byKey.set(r.series_number_normalized, r)
+      byKey.set(key, r)
       continue
     }
     const score = (rec: FandomKitRecord) =>
@@ -330,11 +395,11 @@ export function parseFandom(html: string): {
       (rec.box_art_url ? 1 : 0) +
       (rec.detail_page_url ? 1 : 0)
     if (score(r) > score(existing)) {
-      byKey.set(r.series_number_normalized, r)
+      byKey.set(key, r)
     }
   }
 
-  // Return sorted by RG number for deterministic output.
+  // Return sorted by series number for deterministic output.
   const deduped = Array.from(byKey.values()).sort((a, b) => {
     const an = parseInt(a.series_number_normalized.replace(/\D/g, ''), 10)
     const bn = parseInt(b.series_number_normalized.replace(/\D/g, ''), 10)

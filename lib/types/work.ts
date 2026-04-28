@@ -1,4 +1,7 @@
-export type Era = 'UC' | 'FC' | 'AC' | 'AW' | 'CE' | 'AD' | 'PD' | 'AS' | 'RC' | 'Other'
+export type Era =
+  | 'UC' | 'FC' | 'AC' | 'AW' | 'CE' | 'AD' | 'PD' | 'AS' | 'RC'
+  | 'AG' | 'BF' | 'CC'
+  | 'Other'
 
 export type Work = {
   id: string

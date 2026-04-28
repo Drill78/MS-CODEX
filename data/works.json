@@ -124,5 +124,166 @@
     "title_jp": "ガンダム Gのレコンギスタ",
     "era": "RC",
     "year_aired": 2014
+  },
+  {
+    "id": "gundam-0083",
+    "title_zh": "机动战士高达0083 星尘的回忆",
+    "title_jp": "機動戦士ガンダム0083 STARDUST MEMORY",
+    "era": "UC",
+    "year_aired": 1991
+  },
+  {
+    "id": "gundam-08ms",
+    "title_zh": "机动战士高达 第08MS小队",
+    "title_jp": "機動戦士ガンダム 第08MS小隊",
+    "era": "UC",
+    "year_aired": 1996
+  },
+  {
+    "id": "crossbone",
+    "title_zh": "机动战士交叉骨高达",
+    "title_jp": "機動戦士クロスボーン・ガンダム",
+    "era": "UC",
+    "year_aired": 1994
+  },
+  {
+    "id": "cca-bc",
+    "title_zh": "逆袭的夏亚 贝托蒂嘉的子供",
+    "title_jp": "逆襲のシャア ベルトーチカ・チルドレン",
+    "era": "UC",
+    "year_aired": 1988
+  },
+  {
+    "id": "msv",
+    "title_zh": "MSV",
+    "title_jp": "MOBILE SUIT VARIATION",
+    "era": "UC",
+    "year_aired": 1983
+  },
+  {
+    "id": "blue-destiny",
+    "title_zh": "机动战士高达外传 蓝色命运",
+    "title_jp": "機動戦士ガンダム外伝 ブルー・デスティニー",
+    "era": "UC",
+    "year_aired": 1996
+  },
+  {
+    "id": "thunderbolt",
+    "title_zh": "机动战士高达 雷霆宙域战线",
+    "title_jp": "機動戦士ガンダム サンダーボルト",
+    "era": "UC",
+    "year_aired": 2015
+  },
+  {
+    "id": "cucuruz-doan",
+    "title_zh": "机动战士高达 库库鲁斯·杜安之岛",
+    "title_jp": "機動戦士ガンダム ククルス・ドアンの島",
+    "era": "UC",
+    "year_aired": 2022
+  },
+  {
+    "id": "gundam-f91",
+    "title_zh": "机动战士高达F91",
+    "title_jp": "機動戦士ガンダムF91",
+    "era": "UC",
+    "year_aired": 1991
+  },
+  {
+    "id": "v-gundam",
+    "title_zh": "机动战士V高达",
+    "title_jp": "機動戦士Vガンダム",
+    "era": "UC",
+    "year_aired": 1993
+  },
+  {
+    "id": "turn-a",
+    "title_zh": "∀高达",
+    "title_jp": "∀ガンダム",
+    "era": "CC",
+    "year_aired": 1999
+  },
+  {
+    "id": "gundam-w-ew",
+    "title_zh": "新机动战记高达W Endless Waltz",
+    "title_jp": "新機動戦記ガンダムW Endless Waltz",
+    "era": "AC",
+    "year_aired": 1997
+  },
+  {
+    "id": "gundam-w-glory",
+    "title_zh": "新机动战记高达W 败者们的荣光",
+    "title_jp": "新機動戦記ガンダムW 敗者たちの栄光",
+    "era": "AC",
+    "year_aired": 2010
+  },
+  {
+    "id": "seed-astray",
+    "title_zh": "机动战士高达SEED ASTRAY",
+    "title_jp": "機動戦士ガンダムSEED ASTRAY",
+    "era": "CE",
+    "year_aired": 2002
+  },
+  {
+    "id": "seed-msv",
+    "title_zh": "机动战士高达SEED MSV",
+    "title_jp": "機動戦士ガンダムSEED MSV",
+    "era": "CE",
+    "year_aired": 2003
+  },
+  {
+    "id": "gundam-age",
+    "title_zh": "机动战士高达AGE",
+    "title_jp": "機動戦士ガンダムAGE",
+    "era": "AG",
+    "year_aired": 2011
+  },
+  {
+    "id": "ibo-urdr",
+    "title_zh": "机动战士高达 铁血的奥尔芬斯 月钢",
+    "title_jp": "機動戦士ガンダム 鉄血のオルフェンズ 月鋼",
+    "era": "PD",
+    "year_aired": 2022
+  },
+  {
+    "id": "build-fighters",
+    "title_zh": "高达创战者",
+    "title_jp": "ガンダムビルドファイターズ",
+    "era": "BF",
+    "year_aired": 2013
+  },
+  {
+    "id": "build-fighters-try",
+    "title_zh": "高达创战者TRY",
+    "title_jp": "ガンダムビルドファイターズトライ",
+    "era": "BF",
+    "year_aired": 2014
+  },
+  {
+    "id": "build-divers",
+    "title_zh": "高达创战潜者",
+    "title_jp": "ガンダムビルドダイバーズ",
+    "era": "BF",
+    "year_aired": 2018
+  },
+  {
+    "id": "build-divers-rerise",
+    "title_zh": "高达创战潜者Re:RISE",
+    "title_jp": "ガンダムビルドダイバーズRe:RISE",
+    "era": "BF",
+    "year_aired": 2019
+  },
+  {
+    "id": "breaker-battlogue",
+    "title_zh": "高达 破坏者 BATTLOGUE",
+    "title_jp": "ガンダムブレイカー バトローグ",
+    "era": "BF",
+    "year_aired": 2021
+  },
+  {
+    "id": "build-metaverse",
+    "title_zh": "高达创战元宇宙",
+    "title_jp": "ガンダムビルドメタバース",
+    "era": "BF",
+    "year_aired": 2023
   }
 ]

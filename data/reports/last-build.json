@@ -1,56 +1,229 @@
 {
-  "built_at": "2026-04-28T10:26:17.619Z",
-  "duration_ms": 14953,
+  "built_at": "2026-04-28T11:15:44.704Z",
+  "duration_ms": 24770,
   "refresh_mode": false,
-  "source": {
-    "fandom": {
-      "records": 43,
-      "errors": 0
+  "only_grade": null,
+  "grades": {
+    "HG": {
+      "fetched_pages": 5,
+      "fandom_records": 299,
+      "biligame_records": 0,
+      "merged_kits": 299,
+      "images_downloaded": 0,
+      "images_skipped_cached": 295,
+      "images_failed": 4,
+      "sub_grades": {
+        "HG": 299
+      },
+      "errors": [
+        "[fandom HG/hg-ce] Failed to parse Fandom API JSON for High_Grade_Cosmic_Era: Fandom API error for High_Grade_Cosmic_Era: missingtitle The page you specified doesn't exist.",
+        "[fandom HG/hg-aw] Failed to parse Fandom API JSON for High_Grade_After_War: Fandom API error for High_Grade_After_War: missingtitle The page you specified doesn't exist.",
+        "[fandom HG/hg-fc] Failed to parse Fandom API JSON for High_Grade_Future_Century: Fandom API error for High_Grade_Future_Century: missingtitle The page you specified doesn't exist.",
+        "[fandom HG/hg-ad] Failed to parse Fandom API JSON for High_Grade_Anno_Domini: Fandom API error for High_Grade_Anno_Domini: missingtitle The page you specified doesn't exist.",
+        "[fandom HG/hg-ag] Failed to parse Fandom API JSON for High_Grade_Advanced_Generation: Fandom API error for High_Grade_Advanced_Generation: missingtitle The page you specified doesn't exist.",
+        "[fandom HG/hg-twfm] Failed to parse Fandom API JSON for High_Grade_The_Witch_from_Mercury: Fandom API error for High_Grade_The_Witch_from_Mercury: missingtitle The page you specified doesn't exist.",
+        "[fandom HG/hg-bf] Failed to parse Fandom API JSON for High_Grade_Gundam_Build_Fighters: Fandom API error for High_Grade_Gundam_Build_Fighters: missingtitle The page you specified doesn't exist.",
+        "[fandom HG/hg-bd] Failed to parse Fandom API JSON for High_Grade_Gundam_Build_Divers: Fandom API error for High_Grade_Gundam_Build_Divers: missingtitle The page you specified doesn't exist.",
+        "[fandom HG/hg-ge] Failed to parse Fandom API JSON for High_Grade_GunPla_Evolution: Fandom API error for High_Grade_GunPla_Evolution: missingtitle The page you specified doesn't exist.",
+        "[biligame HG/hg] HTTP 567 on https://wiki.biligame.com/gundam/HG%E6%A8%A1%E5%9E%8B",
+        "image fail: hg-m01, hg-xxxg-01sr2, hg-zgmf-2000, hg-gt-9600"
+      ]
     },
-    "biligame": {
-      "records": 43,
-      "errors": 0
+    "RG": {
+      "fetched_pages": 1,
+      "fandom_records": 43,
+      "biligame_records": 43,
+      "merged_kits": 43,
+      "images_downloaded": 0,
+      "images_skipped_cached": 43,
+      "images_failed": 0,
+      "sub_grades": {
+        "RG": 43
+      },
+      "errors": []
     },
-    "fetch_errors": []
+    "MG": {
+      "fetched_pages": 1,
+      "fandom_records": 229,
+      "biligame_records": 0,
+      "merged_kits": 229,
+      "images_downloaded": 0,
+      "images_skipped_cached": 228,
+      "images_failed": 1,
+      "sub_grades": {
+        "MG": 203,
+        "MG-VerKa": 26
+      },
+      "errors": [
+        "image fail: mg-mwf-jg001"
+      ]
+    },
+    "PG": {
+      "fetched_pages": 1,
+      "fandom_records": 21,
+      "biligame_records": 0,
+      "merged_kits": 21,
+      "images_downloaded": 0,
+      "images_skipped_cached": 21,
+      "images_failed": 0,
+      "sub_grades": {
+        "PG": 19,
+        "PG-Unleashed": 2
+      },
+      "errors": []
+    },
+    "EG": {
+      "fetched_pages": 1,
+      "fandom_records": 9,
+      "biligame_records": 0,
+      "merged_kits": 9,
+      "images_downloaded": 0,
+      "images_skipped_cached": 9,
+      "images_failed": 0,
+      "sub_grades": {
+        "EG": 9
+      },
+      "errors": []
+    },
+    "SD": {
+      "fetched_pages": 1,
+      "fandom_records": 0,
+      "biligame_records": 0,
+      "merged_kits": 0,
+      "images_downloaded": 0,
+      "images_skipped_cached": 0,
+      "images_failed": 0,
+      "sub_grades": {},
+      "errors": [
+        "[biligame SD/sd] HTTP 567 on https://wiki.biligame.com/gundam/SD%E6%A8%A1%E5%9E%8B"
+      ]
+    },
+    "SDCS": {
+      "fetched_pages": 1,
+      "fandom_records": 21,
+      "biligame_records": 0,
+      "merged_kits": 21,
+      "images_downloaded": 0,
+      "images_skipped_cached": 21,
+      "images_failed": 0,
+      "sub_grades": {
+        "SDCS": 21
+      },
+      "errors": []
+    },
+    "RE100": {
+      "fetched_pages": 1,
+      "fandom_records": 13,
+      "biligame_records": 0,
+      "merged_kits": 13,
+      "images_downloaded": 0,
+      "images_skipped_cached": 13,
+      "images_failed": 0,
+      "sub_grades": {
+        "RE100": 13
+      },
+      "errors": [
+        "[biligame RE100/re100] HTTP 567 on https://wiki.biligame.com/gundam/RE%E6%A8%A1%E5%9E%8B"
+      ]
+    },
+    "FM": {
+      "fetched_pages": 1,
+      "fandom_records": 4,
+      "biligame_records": 0,
+      "merged_kits": 4,
+      "images_downloaded": 0,
+      "images_skipped_cached": 4,
+      "images_failed": 0,
+      "sub_grades": {
+        "FM": 4
+      },
+      "errors": [
+        "[biligame FM/fm] HTTP 567 on https://wiki.biligame.com/gundam/FM%E6%A8%A1%E5%9E%8B"
+      ]
+    }
   },
-  "merge": {
-    "total_kits": 43,
-    "name_zh_matched": 43,
-    "name_zh_missing": 0,
+  "totals": {
+    "kits": 639,
     "with_name_zh": 43,
-    "unmatched_biligame": 0,
-    "unmatched_biligame_list": []
+    "with_box_art": 634,
+    "with_mapped_work": 535
   },
   "works": {
-    "mapped": 31,
-    "unmapped_count": 10,
+    "mapped": 535,
+    "unmapped_count": 44,
     "unmapped_list": [
-      "Mobile Suit Gundam 0083: Stardust Memory",
-      "New Mobile Report Gundam Wing: Endless Waltz",
-      "Mobile Suit Gundam SEED Astray",
-      "New Mobile Report Gundam Wing Endless Waltz: The Glory of Losers",
-      "Mobile Suit Gundam 00 The Movie -A wakening of the Trailblazer-",
-      "Gundam Build Fighters",
-      "Mobile Suit Variation",
-      "Mobile Suit Gundam Wing Endless Waltz: Glory of the Losers",
-      "Mobile Suit Crossbone Gundam",
-      "Mobile Suit Gundam: Char's Counterattack - Beltorchika's Children"
+      "Advance of Zeta: The Flag of Titans",
+      "Char's Counterattack Mobile Suit Variations",
+      "Dynasty Warriors Gundam 2",
+      "Gundam Evolve",
+      "Gundam F91 Mobile Suit Variations",
+      "Gundam Sentinel",
+      "Harmony of Gundam",
+      "Mobile Suit Crossbone Gundam: Steel 7",
+      "Mobile Suit Gundam (Novel)",
+      "Mobile Suit Gundam 0080: War in the Pocket",
+      "Mobile Suit Gundam 00V: Battlefield Record",
+      "Mobile Suit Gundam Hathaway",
+      "Mobile Suit Gundam Hathaway: The Sorcery of Nymph Circe",
+      "Mobile Suit Gundam IRON-BLOODED ORPHANS",
+      "Mobile Suit Gundam MS IGLOO",
+      "Mobile Suit Gundam MS IGLOO 2: The Gravity Front",
+      "Mobile Suit Gundam SEED C.E. 73: STARGAZER",
+      "Mobile Suit Gundam SEED Destiny Astray B",
+      "Mobile Suit Gundam SEED Eclipse",
+      "Mobile Suit Gundam SEED Frame Astrays",
+      "Mobile Suit Gundam SEED Freedom Astray",
+      "Mobile Suit Gundam SEED VS Astray",
+      "Mobile Suit Gundam Side Story: Space, To the End of a Flash",
+      "Mobile Suit Gundam Twilight Axis",
+      "Mobile Suit Gundam UC: One of Seventy Two",
+      "Mobile Suit Gundam Unicorn (Novel)",
+      "Mobile Suit Gundam Unicorn - Bande Dessinee",
+      "Mobile Suit Gundam Unicorn RE:0096",
+      "Mobile Suit Gundam Wing Endless Waltz",
+      "Mobile Suit Gundam the Witch from Mercury",
+      "Mobile Suit Gundam: Battlefield Record U.C. 0081",
+      "Mobile Suit Gundam: Extreme Vs.",
+      "Mobile Suit Gundam: Gihren's Greed",
+      "Mobile Suit Gundam: Requiem for Vengeance",
+      "Mobile Suit Gundam: The One Year War",
+      "Mobile Suit Gundam: The Origin (Manga)",
+      "Mobile Suit Moon Gundam",
+      "Plamo-Kyoshiro",
+      "Regulars[]",
+      "SD Gundam G Generation",
+      "SD Gundam GX",
+      "SD Gundam: G Generation: Monoeye Gundams",
+      "UC-MSV",
+      "∀ Gundam"
     ]
-  },
-  "images": {
-    "total": 43,
-    "downloaded": 43,
-    "skipped_cached": 0,
-    "failed": 0,
-    "failed_list": [],
-    "with_box_art": 43
   },
   "overrides": {
     "applied": 0,
     "missing_ids": []
   },
-  "errors": {
-    "fandom_parse": [],
-    "biligame_parse": []
-  }
+  "sanity_check": {
+    "passed": true,
+    "errors": [],
+    "warnings": []
+  },
+  "fetch_errors": [
+    {
+      "grade": "HG",
+      "error": "[biligame HG/hg] HTTP 567 on https://wiki.biligame.com/gundam/HG%E6%A8%A1%E5%9E%8B"
+    },
+    {
+      "grade": "SD",
+      "error": "[biligame SD/sd] HTTP 567 on https://wiki.biligame.com/gundam/SD%E6%A8%A1%E5%9E%8B"
+    },
+    {
+      "grade": "RE100",
+      "error": "[biligame RE100/re100] HTTP 567 on https://wiki.biligame.com/gundam/RE%E6%A8%A1%E5%9E%8B"
+    },
+    {
+      "grade": "FM",
+      "error": "[biligame FM/fm] HTTP 567 on https://wiki.biligame.com/gundam/FM%E6%A8%A1%E5%9E%8B"
+    }
+  ],
+  "biligame_unmatched_total": 0
 }

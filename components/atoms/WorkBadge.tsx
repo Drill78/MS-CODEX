@@ -17,6 +17,9 @@ const ERA_COLOR: Record<Era, string> = {
   AS: 'var(--color-text-secondary)',
   RC: 'var(--color-text-secondary)',
   FC: 'var(--color-text-secondary)',
+  AG: 'var(--color-text-secondary)',
+  BF: 'var(--color-text-secondary)',
+  CC: 'var(--color-text-secondary)',
   Other: 'var(--color-text-muted)',
 }
 

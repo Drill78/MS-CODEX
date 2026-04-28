@@ -12,7 +12,7 @@ export type DownloadStats = {
 }
 
 const IMAGE_DIR = path.resolve('public', 'images', 'kits')
-const CONCURRENCY = 3
+const CONCURRENCY = 4
 
 async function fileExists(p: string): Promise<boolean> {
   try {

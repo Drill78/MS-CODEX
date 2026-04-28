@@ -1,7 +1,9 @@
 import type { Era } from '@/lib/types/work'
 
 export const ERAS: Era[] = [
-  'UC', 'FC', 'AC', 'AW', 'CE', 'AD', 'PD', 'AS', 'RC', 'Other',
+  'UC', 'FC', 'AC', 'AW', 'CE', 'AD', 'PD', 'AS', 'RC',
+  'AG', 'BF', 'CC',
+  'Other',
 ]
 
 export const ERA_LABELS: Record<Era, string> = {
@@ -14,5 +16,8 @@ export const ERA_LABELS: Record<Era, string> = {
   PD: 'Post Disaster',
   AS: 'Advanced Generation',
   RC: 'Regild Century',
+  AG: 'Advanced Generation (AGE)',
+  BF: 'Build Fighters',
+  CC: 'Correct Century',
   Other: 'Other',
 }

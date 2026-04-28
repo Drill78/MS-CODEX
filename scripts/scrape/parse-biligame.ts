@@ -1,25 +1,33 @@
 import * as cheerio from 'cheerio'
 import type { CheerioAPI } from 'cheerio'
+import type { Grade } from '@/lib/types/kit'
+import { BILIGAME_NUMBER_REGEX, GRADE_SERIES_PREFIX } from './sources'
 import type { BiligameKitRecord } from './types'
 
-// B 站 wiki 的 RG 模型页面布局：每个 <table class="wikitable"> 里以 6 列重复
+// B 站 wiki 的规格线模型页面布局：每个 <table class="wikitable"> 里以 6 列重复
 // 形式排版（编号 / 模型 / 编号 / 模型 / 编号 / 模型）。每个"模型"格子里
-// 是一个 <a title="RGRX-78-2高达">RGRX-78-2高达</a>，前缀的 "RG" 是规格线
-// 标记，后面紧接 MS 型号（A-Z / 0-9 / 横线 / 罗马数字）和中文名。
+// 是一个 <a title="RGRX-78-2高达">RGRX-78-2高达</a>，前缀的 "RG"/"HG"/"MG" 是
+// 规格线标记，后面紧接 MS 型号（A-Z / 0-9 / 横线 / 罗马数字）和中文名。
 
-const RG_NUMBER_REGEX = /^\s*RG\s*0*(\d{1,3})\s*$/
 const ROMAN_RANGE = 'Ⅰ-ⅿ' // Ⅰ–Ⅿ
 const MS_CODE_TOKEN_REGEX = new RegExp(
   `^([A-Z][A-Z0-9${ROMAN_RANGE}/-]*)`,
 )
 
-function normalizeSeries(num: number): string {
-  return `RG${num.toString().padStart(2, '0')}`
+function normalizeSeries(num: number, prefix: string): string {
+  return `${prefix}${num.toString().padStart(2, '0')}`
 }
 
-function stripLineMarker(raw: string): string {
-  // The link text begins with the literal "RG" line marker. Strip it.
-  return raw.replace(/^RG\s*/, '').trim()
+function buildLineMarkerStripper(grade: Grade): (raw: string) => string {
+  // 多前缀变体的规格（HG/SD）按长度倒序，尽量先吃掉长前缀
+  const prefixes = grade === 'HG'
+    ? ['HGUC','HGCE','HGAC','HGAW','HGFC','HGOO','HGAG','HGIBO','HGTWFM','HGWFM','HGBF','HGBD','HGBM','HGGE','HGRG','HG']
+    : grade === 'SD'
+      ? ['SDCS','SDBB','SDEX','SDGCG','SD','BB']
+      : [GRADE_SERIES_PREFIX[grade]]
+  const sorted = [...prefixes].sort((a, b) => b.length - a.length)
+  const re = new RegExp(`^(?:${sorted.join('|')})\\s*`, 'i')
+  return (raw) => raw.replace(re, '').trim()
 }
 
 function splitMsCodeAndName(rest: string): {
@@ -66,7 +74,10 @@ function readLinkText($: CheerioAPI, $cell: cheerio.Cheerio<any>): string {
   return $cell.text().trim()
 }
 
-export function parseBiligame(html: string): {
+export function parseBiligame(
+  html: string,
+  grade: Grade,
+): {
   records: BiligameKitRecord[]
   errors: string[]
 } {
@@ -74,6 +85,9 @@ export function parseBiligame(html: string): {
   const errors: string[] = []
   const records: BiligameKitRecord[] = []
   const seen = new Set<string>()
+  const numberRegex = BILIGAME_NUMBER_REGEX[grade]
+  const seriesPrefix = GRADE_SERIES_PREFIX[grade]
+  const stripLineMarker = buildLineMarkerStripper(grade)
 
   let $container = $('.mw-parser-output').first()
   if (!$container.length) $container = $('body')
@@ -99,7 +113,7 @@ export function parseBiligame(html: string): {
         try {
           const $cell = $(cellEl)
           const cellText = $cell.text().trim()
-          const m = cellText.match(RG_NUMBER_REGEX)
+          const m = cellText.match(numberRegex)
           if (!m) return
           const num = parseInt(m[1], 10)
           if (Number.isNaN(num)) return
@@ -117,7 +131,7 @@ export function parseBiligame(html: string): {
           const { ms_code, name_zh } = splitMsCodeAndName(stripped)
           if (!name_zh && !ms_code) return
 
-          let series_number_normalized = normalizeSeries(num)
+          let series_number_normalized = normalizeSeries(num, seriesPrefix)
           // If P-Bandai, kit numbers may collide with regular ones; namespace them.
           if (isPBandai) {
             const key = `${series_number_normalized}-pb`
@@ -137,7 +151,7 @@ export function parseBiligame(html: string): {
           })
         } catch (err) {
           errors.push(
-            `[biligame table ${tableIdx} row ${rowIdx} cell ${cellIdx}] ${(err as Error).message}`,
+            `[biligame ${grade} table ${tableIdx} row ${rowIdx} cell ${cellIdx}] ${(err as Error).message}`,
           )
         }
       })
