@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  /* Base — UC blueprint */
+  --color-bg-deep:      #0A0E1A;
+  --color-bg-paper:     #0F1A2E;
+  --color-bg-elevated:  #14213D;
+  --color-grid-line:    rgba(120, 180, 255, 0.06);
+
+  /* Text */
+  --color-text-primary:   #E8F0FF;
+  --color-text-secondary: #7A8AA8;
+  --color-text-muted:     #4A5878;
+
+  /* Y2K 强调色 */
+  --color-accent-magenta: #FF2E88;
+  --color-accent-cyan:    #00E5FF;
+
+  /* UC 仪表色 */
+  --color-uc-amber: #FFB800;
+  --color-uc-red:   #E53935;
+  --color-uc-green: #4CAF50;
+
+  /* Fonts */
+  --font-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
+  --font-sans: 'Geist Sans', 'Inter', system-ui, sans-serif;
+  --font-display: 'VT323', 'Major Mono Display', monospace;
+}
+
+html, body {
+  background: var(--color-bg-deep);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+}
+
+body {
+  min-height: 100dvh;
+  /* 极淡网格底（blueprint 感） */
+  background-image:
+    linear-gradient(var(--color-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* 等宽数字 */
+.tabular-nums { font-variant-numeric: tabular-nums; }
