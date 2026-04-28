@@ -1,0 +1,128 @@
+[
+  {
+    "id": "msg-0079",
+    "title_zh": "机动战士高达",
+    "title_jp": "機動戦士ガンダム",
+    "era": "UC",
+    "year_aired": 1979
+  },
+  {
+    "id": "msg-the-origin",
+    "title_zh": "机动战士高达 THE ORIGIN",
+    "title_jp": "機動戦士ガンダム THE ORIGIN",
+    "era": "UC",
+    "year_aired": 2015
+  },
+  {
+    "id": "msz",
+    "title_zh": "机动战士Z高达",
+    "title_jp": "機動戦士Ζガンダム",
+    "era": "UC",
+    "year_aired": 1985
+  },
+  {
+    "id": "msgzz",
+    "title_zh": "机动战士ZZ高达",
+    "title_jp": "機動戦士ガンダムΖΖ",
+    "era": "UC",
+    "year_aired": 1986
+  },
+  {
+    "id": "cca",
+    "title_zh": "机动战士高达 逆袭的夏亚",
+    "title_jp": "機動戦士ガンダム 逆襲のシャア",
+    "era": "UC",
+    "year_aired": 1988
+  },
+  {
+    "id": "gundam-uc",
+    "title_zh": "机动战士高达UC",
+    "title_jp": "機動戦士ガンダムUC",
+    "era": "UC",
+    "year_aired": 2010
+  },
+  {
+    "id": "hathaway",
+    "title_zh": "机动战士高达 闪光的哈萨维",
+    "title_jp": "機動戦士ガンダム 閃光のハサウェイ",
+    "era": "UC",
+    "year_aired": 2021
+  },
+  {
+    "id": "narrative",
+    "title_zh": "机动战士高达NT",
+    "title_jp": "機動戦士ガンダムNT",
+    "era": "UC",
+    "year_aired": 2018
+  },
+  {
+    "id": "seed",
+    "title_zh": "机动战士高达SEED",
+    "title_jp": "機動戦士ガンダムSEED",
+    "era": "CE",
+    "year_aired": 2002
+  },
+  {
+    "id": "seed-destiny",
+    "title_zh": "机动战士高达SEED DESTINY",
+    "title_jp": "機動戦士ガンダムSEED DESTINY",
+    "era": "CE",
+    "year_aired": 2004
+  },
+  {
+    "id": "seed-freedom",
+    "title_zh": "机动战士高达SEED FREEDOM",
+    "title_jp": "機動戦士ガンダムSEED FREEDOM",
+    "era": "CE",
+    "year_aired": 2024
+  },
+  {
+    "id": "gundam-00",
+    "title_zh": "机动战士高达00",
+    "title_jp": "機動戦士ガンダム00",
+    "era": "AD",
+    "year_aired": 2007
+  },
+  {
+    "id": "gundam-w",
+    "title_zh": "新机动战记高达W",
+    "title_jp": "新機動戦記ガンダムW",
+    "era": "AC",
+    "year_aired": 1995
+  },
+  {
+    "id": "gundam-x",
+    "title_zh": "机动新世纪高达X",
+    "title_jp": "機動新世紀ガンダムX",
+    "era": "AW",
+    "year_aired": 1996
+  },
+  {
+    "id": "g-gundam",
+    "title_zh": "机动武斗传G高达",
+    "title_jp": "機動武闘伝Gガンダム",
+    "era": "FC",
+    "year_aired": 1994
+  },
+  {
+    "id": "ibo",
+    "title_zh": "机动战士高达 铁血的奥尔芬斯",
+    "title_jp": "機動戦士ガンダム 鉄血のオルフェンズ",
+    "era": "PD",
+    "year_aired": 2015
+  },
+  {
+    "id": "witch-from-mercury",
+    "title_zh": "机动战士高达 水星的魔女",
+    "title_jp": "機動戦士ガンダム 水星の魔女",
+    "era": "AS",
+    "year_aired": 2022
+  },
+  {
+    "id": "g-reco",
+    "title_zh": "高达 G之复国运动",
+    "title_jp": "ガンダム Gのレコンギスタ",
+    "era": "RC",
+    "year_aired": 2014
+  }
+]

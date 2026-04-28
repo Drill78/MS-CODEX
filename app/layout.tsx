@@ -34,6 +34,19 @@ export default function RootLayout({
     <html lang="zh-CN">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${vt323.variable} antialiased`}
+        style={
+          {
+            // Re-bind the Tailwind @theme font tokens to the next/font CSS vars
+            // so `font-mono` / `font-sans` / `font-display` actually resolve to
+            // the Geist / VT323 webfonts loaded above (not just system fallbacks).
+            '--font-sans':
+              'var(--font-geist-sans), Inter, system-ui, sans-serif',
+            '--font-mono':
+              'var(--font-geist-mono), "JetBrains Mono", ui-monospace, monospace',
+            '--font-display':
+              'var(--font-vt323), "Major Mono Display", monospace',
+          } as React.CSSProperties
+        }
       >
         <TopNav />
         <main className="min-h-[calc(100dvh-7rem)]">{children}</main>

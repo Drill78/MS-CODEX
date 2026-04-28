@@ -44,3 +44,6 @@ next-env.d.ts
 .vscode
 *.swp
 node_modules
+
+# scraper cache (kept by default for reproducibility — uncomment to ignore raw HTML if repo grows)
+# /data/raw/

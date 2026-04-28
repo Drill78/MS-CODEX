@@ -21,6 +21,12 @@
   --color-uc-red:   #E53935;
   --color-uc-green: #4CAF50;
 
+  /* Grade 专属色 */
+  --color-rg:    #4FC3F7;
+  --color-pg:    #FFD54F;
+  --color-re100: #BA68C8;
+  --color-fm:    #81C784;
+
   /* Fonts */
   --font-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
   --font-sans: 'Geist Sans', 'Inter', system-ui, sans-serif;

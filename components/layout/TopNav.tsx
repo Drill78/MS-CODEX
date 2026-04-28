@@ -55,6 +55,14 @@ export function TopNav() {
               </Link>
             )
           })}
+          {/* TODO: remove before launch — temporary atomic-component gallery */}
+          <Link
+            href="/components-preview"
+            className="relative transition-colors"
+            style={{ color: 'var(--color-accent-magenta)' }}
+          >
+            <span className="navlink-label">PREVIEW</span>
+          </Link>
         </nav>
 
         {/* TODO: 实现导出/导入功能 */}

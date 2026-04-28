@@ -1,0 +1,1325 @@
+[
+  {
+    "id": "rg-rx-78-2",
+    "grade": "RG",
+    "series_number": "01",
+    "name_zh": "高达",
+    "name_jp": "",
+    "name_en": "RX-78-2 Gundam",
+    "ms_code": "RX-78-2",
+    "scale": "1/144",
+    "price_jpy": 2500,
+    "release_date": "2010-07-01",
+    "source_works": [
+      {
+        "id": "msg-0079",
+        "title_zh": "机动战士高达",
+        "title_jp": "機動戦士ガンダム",
+        "era": "UC",
+        "year_aired": 1979
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-rx-78-2.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/RX-78-2_Gundam",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam"
+    }
+  },
+  {
+    "id": "rg-ms-06s",
+    "grade": "RG",
+    "series_number": "02",
+    "name_zh": "夏亚专用扎古",
+    "name_jp": "",
+    "name_en": "MS-06S Zaku II Commander Type",
+    "ms_code": "MS-06S",
+    "scale": "1/144",
+    "price_jpy": 2500,
+    "release_date": "2010-11-01",
+    "source_works": [
+      {
+        "id": "msg-0079",
+        "title_zh": "机动战士高达",
+        "title_jp": "機動戦士ガンダム",
+        "era": "UC",
+        "year_aired": 1979
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-ms-06s.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/MS-06S_Zaku_II_Commander_Type",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam"
+    }
+  },
+  {
+    "id": "rg-gat-x105",
+    "grade": "RG",
+    "series_number": "03",
+    "name_zh": "强袭高达空战装备",
+    "name_jp": "",
+    "name_en": "GAT-X105+AQM/E-X01 Aile Strike Gundam",
+    "ms_code": "GAT-X105",
+    "scale": "1/144",
+    "price_jpy": 2500,
+    "release_date": "2011-04-01",
+    "source_works": [
+      {
+        "id": "seed",
+        "title_zh": "机动战士高达SEED",
+        "title_jp": "機動戦士ガンダムSEED",
+        "era": "CE",
+        "year_aired": 2002
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-gat-x105.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/GAT-X105%2BAQM/E-X01_Aile_Strike_Gundam",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam SEED"
+    }
+  },
+  {
+    "id": "rg-ms-06f",
+    "grade": "RG",
+    "series_number": "04",
+    "name_zh": "量产型扎古II",
+    "name_jp": "",
+    "name_en": "MS-06F Zaku II",
+    "ms_code": "MS-06F",
+    "scale": "1/144",
+    "price_jpy": 2500,
+    "release_date": "2011-07-01",
+    "source_works": [
+      {
+        "id": "msg-0079",
+        "title_zh": "机动战士高达",
+        "title_jp": "機動戦士ガンダム",
+        "era": "UC",
+        "year_aired": 1979
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-ms-06f.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/MS-06F_Zaku_II",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam"
+    }
+  },
+  {
+    "id": "rg-zgmf-x10a",
+    "grade": "RG",
+    "series_number": "05",
+    "name_zh": "自由高达",
+    "name_jp": "",
+    "name_en": "ZGMF-X10A Freedom Gundam",
+    "ms_code": "ZGMF-X10A",
+    "scale": "1/144",
+    "price_jpy": 2500,
+    "release_date": "2011-11-01",
+    "source_works": [
+      {
+        "id": "seed",
+        "title_zh": "机动战士高达SEED",
+        "title_jp": "機動戦士ガンダムSEED",
+        "era": "CE",
+        "year_aired": 2002
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-zgmf-x10a.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/ZGMF-X10A_Freedom_Gundam",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam SEED"
+    }
+  },
+  {
+    "id": "rg-fx-550",
+    "grade": "RG",
+    "series_number": "06",
+    "name_zh": "空中霸王",
+    "name_jp": "",
+    "name_en": "FX-550 Skygrasper",
+    "ms_code": "FX-550",
+    "scale": "1/144",
+    "price_jpy": 2500,
+    "release_date": "2012-02-01",
+    "source_works": [
+      {
+        "id": "seed",
+        "title_zh": "机动战士高达SEED",
+        "title_jp": "機動戦士ガンダムSEED",
+        "era": "CE",
+        "year_aired": 2002
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-fx-550.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/FX-550_Skygrasper",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam SEED"
+    }
+  },
+  {
+    "id": "rg-rx-178mk",
+    "grade": "RG",
+    "series_number": "07",
+    "name_zh": "提坦斯配色",
+    "name_jp": "",
+    "name_en": "RX-178 Gundam Mk-II",
+    "ms_code": "RX-178Mk-Ⅱ",
+    "scale": "1/144",
+    "price_jpy": 2500,
+    "release_date": "2012-04-01",
+    "source_works": [
+      {
+        "id": "msz",
+        "title_zh": "机动战士Z高达",
+        "title_jp": "機動戦士Ζガンダム",
+        "era": "UC",
+        "year_aired": 1985
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-rx-178mk.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/RX-178_Gundam_Mk-II",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Zeta Gundam"
+    }
+  },
+  {
+    "id": "rg-rx-178mk-2",
+    "grade": "RG",
+    "series_number": "08",
+    "name_zh": "奥古配色",
+    "name_jp": "",
+    "name_en": "RX-178 Gundam Mk-II",
+    "ms_code": "RX-178Mk-Ⅱ",
+    "scale": "1/144",
+    "price_jpy": 2500,
+    "release_date": "2012-05-01",
+    "source_works": [
+      {
+        "id": "msz",
+        "title_zh": "机动战士Z高达",
+        "title_jp": "機動戦士Ζガンダム",
+        "era": "UC",
+        "year_aired": 1985
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-rx-178mk-2.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/RX-178_Gundam_Mk-II",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Zeta Gundam"
+    }
+  },
+  {
+    "id": "rg-zgmf-x09a",
+    "grade": "RG",
+    "series_number": "09",
+    "name_zh": "正义高达",
+    "name_jp": "",
+    "name_en": "ZGMF-X09A Justice Gundam",
+    "ms_code": "ZGMF-X09A",
+    "scale": "1/144",
+    "price_jpy": 2500,
+    "release_date": "2012-07-01",
+    "source_works": [
+      {
+        "id": "seed",
+        "title_zh": "机动战士高达SEED",
+        "title_jp": "機動戦士ガンダムSEED",
+        "era": "CE",
+        "year_aired": 2002
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-zgmf-x09a.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/ZGMF-X09A_Justice_Gundam",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam SEED"
+    }
+  },
+  {
+    "id": "rg-msz-006z",
+    "grade": "RG",
+    "series_number": "10",
+    "name_zh": "高达",
+    "name_jp": "",
+    "name_en": "MSZ-006 Zeta Gundam",
+    "ms_code": "MSZ-006Z",
+    "scale": "1/144",
+    "price_jpy": 3000,
+    "release_date": "2012-11-01",
+    "source_works": [
+      {
+        "id": "msz",
+        "title_zh": "机动战士Z高达",
+        "title_jp": "機動戦士Ζガンダム",
+        "era": "UC",
+        "year_aired": 1985
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-msz-006z.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/MSZ-006_Zeta_Gundam",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Zeta Gundam"
+    }
+  },
+  {
+    "id": "rg-zgmf-x42s",
+    "grade": "RG",
+    "series_number": "11",
+    "name_zh": "命运高达",
+    "name_jp": "",
+    "name_en": "ZGMF-X42S Destiny Gundam",
+    "ms_code": "ZGMF-X42S",
+    "scale": "1/144",
+    "price_jpy": 2500,
+    "release_date": "2013-04-01",
+    "source_works": [
+      {
+        "id": "seed-destiny",
+        "title_zh": "机动战士高达SEED DESTINY",
+        "title_jp": "機動戦士ガンダムSEED DESTINY",
+        "era": "CE",
+        "year_aired": 2004
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-zgmf-x42s.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/ZGMF-X42S_Destiny_Gundam",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam SEED Destiny"
+    }
+  },
+  {
+    "id": "rg-rx-78gp01",
+    "grade": "RG",
+    "series_number": "12",
+    "name_zh": "高达",
+    "name_jp": "",
+    "name_en": "RX-78GP01 Gundam \"Zephyranthes\"",
+    "ms_code": "RX-78GP01",
+    "scale": "1/144",
+    "price_jpy": 2500,
+    "release_date": "2013-07-01",
+    "source_works": [],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-rx-78gp01.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/RX-78GP01_Gundam_%22Zephyranthes%22",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": true,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam 0083: Stardust Memory"
+    }
+  },
+  {
+    "id": "rg-rx-78gp01fb",
+    "grade": "RG",
+    "series_number": "13",
+    "name_zh": "高达",
+    "name_jp": "",
+    "name_en": "RX-78GP01-Fb Gundam \"Zephyranthes\" Full Burnern",
+    "ms_code": "RX-78GP01Fb",
+    "scale": "1/144",
+    "price_jpy": 2500,
+    "release_date": "2013-07-01",
+    "source_works": [],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-rx-78gp01fb.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/RX-78GP01-Fb_Gundam_%22Zephyranthes%22_Full_Burnern",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": true,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam 0083: Stardust Memory"
+    }
+  },
+  {
+    "id": "rg-zgmf-x20a",
+    "grade": "RG",
+    "series_number": "14",
+    "name_zh": "强袭自由高达",
+    "name_jp": "",
+    "name_en": "ZGMF-X20A Strike Freedom Gundam",
+    "ms_code": "ZGMF-X20A",
+    "scale": "1/144",
+    "price_jpy": 3000,
+    "release_date": "2013-11-01",
+    "source_works": [
+      {
+        "id": "seed-destiny",
+        "title_zh": "机动战士高达SEED DESTINY",
+        "title_jp": "機動戦士ガンダムSEED DESTINY",
+        "era": "CE",
+        "year_aired": 2004
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-zgmf-x20a.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/ZGMF-X20A_Strike_Freedom_Gundam",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam SEED Destiny"
+    }
+  },
+  {
+    "id": "rg-gn-001",
+    "grade": "RG",
+    "series_number": "15",
+    "name_zh": "能天使高达",
+    "name_jp": "",
+    "name_en": "GN-001 Gundam Exia",
+    "ms_code": "GN-001",
+    "scale": "1/144",
+    "price_jpy": 2500,
+    "release_date": "2014-04-01",
+    "source_works": [
+      {
+        "id": "gundam-00",
+        "title_zh": "机动战士高达00",
+        "title_jp": "機動戦士ガンダム00",
+        "era": "AD",
+        "year_aired": 2007
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-gn-001.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/GN-001_Gundam_Exia",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam 00"
+    }
+  },
+  {
+    "id": "rg-msm-07s",
+    "grade": "RG",
+    "series_number": "16",
+    "name_zh": "夏亚专用魔蟹",
+    "name_jp": "",
+    "name_en": "MSM-07S Z'Gok Commander Type",
+    "ms_code": "MSM-07S",
+    "scale": "1/144",
+    "price_jpy": 2500,
+    "release_date": "2014-07-01",
+    "source_works": [
+      {
+        "id": "msg-0079",
+        "title_zh": "机动战士高达",
+        "title_jp": "機動戦士ガンダム",
+        "era": "UC",
+        "year_aired": 1979
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-msm-07s.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/MSM-07S_Z%27Gok_Commander_Type",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam"
+    }
+  },
+  {
+    "id": "rg-xxxg-00w0",
+    "grade": "RG",
+    "series_number": "17",
+    "name_zh": "飞翼零式高达EW",
+    "name_jp": "",
+    "name_en": "XXXG-00W0 Wing Gundam Zero EW",
+    "ms_code": "XXXG-00W0",
+    "scale": "1/144",
+    "price_jpy": 2500,
+    "release_date": "2014-12-01",
+    "source_works": [],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-xxxg-00w0.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/XXXG-00W0_Wing_Gundam_Zero_EW",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": true,
+      "manual_review": true,
+      "source_work_raw": "New Mobile Report Gundam Wing: Endless Waltz"
+    }
+  },
+  {
+    "id": "rg-gn-0000-gnr-01000",
+    "grade": "RG",
+    "series_number": "18",
+    "name_zh": "强化组模",
+    "name_jp": "",
+    "name_en": "GN-0000+GNR-010 00 Raiser",
+    "ms_code": "GN-0000+GNR-01000",
+    "scale": "1/144",
+    "price_jpy": 3000,
+    "release_date": "2015-04-01",
+    "source_works": [
+      {
+        "id": "gundam-00",
+        "title_zh": "机动战士高达00",
+        "title_jp": "機動戦士ガンダム00",
+        "era": "AD",
+        "year_aired": 2007
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-gn-0000-gnr-01000.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/GN-0000%2BGNR-010_00_Raiser",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam 00"
+    }
+  },
+  {
+    "id": "rg-mbf-p02",
+    "grade": "RG",
+    "series_number": "19",
+    "name_zh": "异端高达红色机",
+    "name_jp": "",
+    "name_en": "MBF-P02 Gundam Astray Red Frame",
+    "ms_code": "MBF-P02",
+    "scale": "1/144",
+    "price_jpy": 2500,
+    "release_date": "2015-08-01",
+    "source_works": [],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-mbf-p02.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/MBF-P02_Gundam_Astray_Red_Frame",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": true,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam SEED Astray"
+    }
+  },
+  {
+    "id": "rg-xxxg-01w",
+    "grade": "RG",
+    "series_number": "20",
+    "name_zh": "飞翼高达EW",
+    "name_jp": "",
+    "name_en": "XXXG-01W Wing Gundam EW",
+    "ms_code": "XXXG-01W",
+    "scale": "1/144",
+    "price_jpy": 2500,
+    "release_date": "2016-01-01",
+    "source_works": [],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-xxxg-01w.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/XXXG-01W_Wing_Gundam_EW",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": true,
+      "manual_review": true,
+      "source_work_raw": "New Mobile Report Gundam Wing Endless Waltz: The Glory of Losers"
+    }
+  },
+  {
+    "id": "rg-gnt-000000",
+    "grade": "RG",
+    "series_number": "21",
+    "name_zh": "高达量子型",
+    "name_jp": "",
+    "name_en": "GNT-0000 00 Qan［T］",
+    "ms_code": "GNT-000000",
+    "scale": "1/144",
+    "price_jpy": 2500,
+    "release_date": "2016-05-01",
+    "source_works": [],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-gnt-000000.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/GNT-0000_00_Qan%EF%BC%BBT%EF%BC%BD",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": true,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam 00 The Movie -A wakening of the Trailblazer-"
+    }
+  },
+  {
+    "id": "rg-msn-06s",
+    "grade": "RG",
+    "series_number": "22",
+    "name_zh": "新安洲",
+    "name_jp": "",
+    "name_en": "MSN-06S Sinanju",
+    "ms_code": "MSN-06S",
+    "scale": "1/144",
+    "price_jpy": 3800,
+    "release_date": "2016-08-01",
+    "source_works": [
+      {
+        "id": "gundam-uc",
+        "title_zh": "机动战士高达UC",
+        "title_jp": "機動戦士ガンダムUC",
+        "era": "UC",
+        "year_aired": 2010
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-msn-06s.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/MSN-06S_Sinanju",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam Unicorn"
+    }
+  },
+  {
+    "id": "rg-gat-x105b-fp",
+    "grade": "RG",
+    "series_number": "23",
+    "name_zh": "全装备创制强袭高达",
+    "name_jp": "",
+    "name_en": "GAT-X105B/FP Build Strike Gundam Full Package",
+    "ms_code": "GAT-X105B／FP",
+    "scale": "1/144",
+    "price_jpy": 2500,
+    "release_date": "2016-12-01",
+    "source_works": [],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-gat-x105b-fp.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/GAT-X105B/FP_Build_Strike_Gundam_Full_Package",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": true,
+      "manual_review": true,
+      "source_work_raw": "Gundam Build Fighters"
+    }
+  },
+  {
+    "id": "rg-mbf-p01-re2",
+    "grade": "RG",
+    "series_number": "24",
+    "name_zh": "异端高达金色机“天”蜜纳",
+    "name_jp": "",
+    "name_en": "MBF-P01-Re2AMATU Gundam Astray Gold Frame Amatsu Mina",
+    "ms_code": "MBF-P01-Re2",
+    "scale": "1/144",
+    "price_jpy": 3000,
+    "release_date": "2017-03-01",
+    "source_works": [],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-mbf-p01-re2.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/MBF-P01-Re2AMATU_Gundam_Astray_Gold_Frame_Amatsu_Mina",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": true,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam SEED Astray"
+    }
+  },
+  {
+    "id": "rg-rx-0",
+    "grade": "RG",
+    "series_number": "25",
+    "name_zh": "独角兽高达",
+    "name_jp": "",
+    "name_en": "RX-0 Unicorn Gundam",
+    "ms_code": "RX-0",
+    "scale": "1/144",
+    "price_jpy": 3800,
+    "release_date": "2017-08-01",
+    "source_works": [
+      {
+        "id": "gundam-uc",
+        "title_zh": "机动战士高达UC",
+        "title_jp": "機動戦士ガンダムUC",
+        "era": "UC",
+        "year_aired": 2010
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-rx-0.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/RX-0_Unicorn_Gundam",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam Unicorn"
+    }
+  },
+  {
+    "id": "rg-ms-06r-2",
+    "grade": "RG",
+    "series_number": "26",
+    "name_zh": "强尼·莱汀专用高机动型扎古Ⅱ",
+    "name_jp": "",
+    "name_en": "MS-06R-2 Zaku II High Mobility Type",
+    "ms_code": "MS-06R-2",
+    "scale": "1/144",
+    "price_jpy": 3000,
+    "release_date": "2017-11-01",
+    "source_works": [],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-ms-06r-2.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/MS-06R-2_Zaku_II_High_Mobility_Type",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": true,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Variation"
+    }
+  },
+  {
+    "id": "rg-rx-0-n",
+    "grade": "RG",
+    "series_number": "27",
+    "name_zh": "独角兽高达2号机·报丧女妖·命运女神",
+    "name_jp": "",
+    "name_en": "RX-0［N］ Unicorn Gundam 02 Banshee Norn",
+    "ms_code": "RX-0［N］",
+    "scale": "1/144",
+    "price_jpy": 4000,
+    "release_date": "2018-02-01",
+    "source_works": [
+      {
+        "id": "gundam-uc",
+        "title_zh": "机动战士高达UC",
+        "title_jp": "機動戦士ガンダムUC",
+        "era": "UC",
+        "year_aired": 2010
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-rx-0-n.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/RX-0%EF%BC%BBN%EF%BC%BD_Unicorn_Gundam_02_Banshee_Norn",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam Unicorn"
+    }
+  },
+  {
+    "id": "rg-oz-00ms",
+    "grade": "RG",
+    "series_number": "28",
+    "name_zh": "多鲁基斯EW",
+    "name_jp": "",
+    "name_en": "OZ-00MS Tallgeese",
+    "ms_code": "OZ-00MS",
+    "scale": "1/144",
+    "price_jpy": 2500,
+    "release_date": "2018-04-01",
+    "source_works": [],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-oz-00ms.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/OZ-00MS_Tallgeese",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": true,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam Wing Endless Waltz: Glory of the Losers"
+    }
+  },
+  {
+    "id": "rg-msn-04",
+    "grade": "RG",
+    "series_number": "29",
+    "name_zh": "沙扎比",
+    "name_jp": "",
+    "name_en": "MSN-04 Sazabi",
+    "ms_code": "MSN-04",
+    "scale": "1/144",
+    "price_jpy": 4500,
+    "release_date": "2018-08-01",
+    "source_works": [
+      {
+        "id": "cca",
+        "title_zh": "机动战士高达 逆袭的夏亚",
+        "title_jp": "機動戦士ガンダム 逆襲のシャア",
+        "era": "UC",
+        "year_aired": 1988
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-msn-04.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/MSN-04_Sazabi",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam: Char's Counterattack"
+    }
+  },
+  {
+    "id": "rg-rx-0-2",
+    "grade": "RG",
+    "series_number": "30",
+    "name_zh": "全装甲独角兽高达",
+    "name_jp": "",
+    "name_en": "RX-0 Full Armor Unicorn Gundam",
+    "ms_code": "RX-0",
+    "scale": "1/144",
+    "price_jpy": 5400,
+    "release_date": "2018-12-01",
+    "source_works": [
+      {
+        "id": "gundam-uc",
+        "title_zh": "机动战士高达UC",
+        "title_jp": "機動戦士ガンダムUC",
+        "era": "UC",
+        "year_aired": 2010
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-rx-0-2.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/RX-0_Full_Armor_Unicorn_Gundam",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam Unicorn"
+    }
+  },
+  {
+    "id": "rg-xm-x1",
+    "grade": "RG",
+    "series_number": "31",
+    "name_zh": "海盗高达X1",
+    "name_jp": "",
+    "name_en": "XM-X1 Crossbone Gundam X-1",
+    "ms_code": "XM-X1",
+    "scale": "1/144",
+    "price_jpy": 2500,
+    "release_date": "2019-05-01",
+    "source_works": [],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-xm-x1.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/XM-X1_Crossbone_Gundam_X-1",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": true,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Crossbone Gundam"
+    }
+  },
+  {
+    "id": "rg-rx-93",
+    "grade": "RG",
+    "series_number": "32",
+    "name_zh": "高达",
+    "name_jp": "",
+    "name_en": "RX-93 ν Gundam",
+    "ms_code": "RX-93ν",
+    "scale": "1/144",
+    "price_jpy": 4200,
+    "release_date": "2019-08-01",
+    "source_works": [
+      {
+        "id": "cca",
+        "title_zh": "机动战士高达 逆袭的夏亚",
+        "title_jp": "機動戦士ガンダム 逆襲のシャア",
+        "era": "UC",
+        "year_aired": 1988
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-rx-93.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/RX-93_%CE%BD_Gundam",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam: Char's Counterattack"
+    }
+  },
+  {
+    "id": "rg-zgmf-x56s",
+    "grade": "RG",
+    "series_number": "33",
+    "name_zh": "强攻型脉冲高达",
+    "name_jp": "",
+    "name_en": "ZGMF-X56S/α Force Impulse Gundam",
+    "ms_code": "ZGMF-X56S／α",
+    "scale": "1/144",
+    "price_jpy": 3000,
+    "release_date": "2020-04-01",
+    "source_works": [
+      {
+        "id": "seed-destiny",
+        "title_zh": "机动战士高达SEED DESTINY",
+        "title_jp": "機動戦士ガンダムSEED DESTINY",
+        "era": "CE",
+        "year_aired": 2004
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-zgmf-x56s.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/ZGMF-X56S/%CE%B1_Force_Impulse_Gundam",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam SEED Destiny"
+    }
+  },
+  {
+    "id": "rg-msn-02",
+    "grade": "RG",
+    "series_number": "34",
+    "name_zh": "吉翁号",
+    "name_jp": "",
+    "name_en": "MSN-02 Zeong",
+    "ms_code": "MSN-02",
+    "scale": "1/144",
+    "price_jpy": 5500,
+    "release_date": "2021-01-01",
+    "source_works": [
+      {
+        "id": "msg-0079",
+        "title_zh": "机动战士高达",
+        "title_jp": "機動戦士ガンダム",
+        "era": "UC",
+        "year_aired": 1979
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-msn-02.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/MSN-02_Zeong",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam"
+    }
+  },
+  {
+    "id": "rg-xxxg-01w-2",
+    "grade": "RG",
+    "series_number": "35",
+    "name_zh": "飞翼高达",
+    "name_jp": "",
+    "name_en": "XXXG-01W Wing Gundam",
+    "ms_code": "XXXG-01W",
+    "scale": "1/144",
+    "price_jpy": 3200,
+    "release_date": "2021-06-01",
+    "source_works": [
+      {
+        "id": "gundam-w",
+        "title_zh": "新机动战记高达W",
+        "title_jp": "新機動戦記ガンダムW",
+        "era": "AC",
+        "year_aired": 1995
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-xxxg-01w-2.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/XXXG-01W_Wing_Gundam",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam Wing"
+    }
+  },
+  {
+    "id": "rg-rx-93-2hi",
+    "grade": "RG",
+    "series_number": "36",
+    "name_zh": "高达",
+    "name_jp": "",
+    "name_en": "RX-93-ν2 Hi-ν Gundam",
+    "ms_code": "RX-93-ν2Hi-ν",
+    "scale": "1/144",
+    "price_jpy": 4500,
+    "release_date": "2021-09-01",
+    "source_works": [],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-rx-93-2hi.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/RX-93-%CE%BD2_Hi-%CE%BD_Gundam",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": true,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam: Char's Counterattack - Beltorchika's Children"
+    }
+  },
+  {
+    "id": "rg-gf13-017nj",
+    "grade": "RG",
+    "series_number": "37",
+    "name_zh": "神高达",
+    "name_jp": "",
+    "name_en": "GF13-017NJII God Gundam",
+    "ms_code": "GF13-017NJⅡ",
+    "scale": "1/144",
+    "price_jpy": 3500,
+    "release_date": "2022-08-01",
+    "source_works": [
+      {
+        "id": "g-gundam",
+        "title_zh": "机动武斗传G高达",
+        "title_jp": "機動武闘伝Gガンダム",
+        "era": "FC",
+        "year_aired": 1994
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-gf13-017nj.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/GF13-017NJII_God_Gundam",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Fighter G Gundam"
+    }
+  },
+  {
+    "id": "rg-oz-13ms",
+    "grade": "RG",
+    "series_number": "38",
+    "name_zh": "艾比安高达",
+    "name_jp": "",
+    "name_en": "OZ-13MS Gundam Epyon",
+    "ms_code": "OZ-13MS",
+    "scale": "1/144",
+    "price_jpy": 4200,
+    "release_date": "2023-09-01",
+    "source_works": [
+      {
+        "id": "gundam-w",
+        "title_zh": "新机动战记高达W",
+        "title_jp": "新機動戦記ガンダムW",
+        "era": "AC",
+        "year_aired": 1995
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-oz-13ms.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/OZ-13MS_Gundam_Epyon",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam Wing"
+    }
+  },
+  {
+    "id": "rg-zgmf-56e2",
+    "grade": "RG",
+    "series_number": "39",
+    "name_zh": "强攻型脉冲高达SpecⅡ",
+    "name_jp": "",
+    "name_en": "ZGMF-56E2/α Force Impulse Gundam Spec II",
+    "ms_code": "ZGMF-56E2／α",
+    "scale": "1/144",
+    "price_jpy": 3100,
+    "release_date": "2024-02-01",
+    "source_works": [
+      {
+        "id": "seed-freedom",
+        "title_zh": "机动战士高达SEED FREEDOM",
+        "title_jp": "機動戦士ガンダムSEED FREEDOM",
+        "era": "CE",
+        "year_aired": 2024
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-zgmf-56e2.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/ZGMF-56E2/%CE%B1_Force_Impulse_Gundam_Spec_II",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam SEED Freedom"
+    }
+  },
+  {
+    "id": "rg-rx-78-2-2",
+    "grade": "RG",
+    "series_number": "40",
+    "name_zh": "高达Ver.2.0",
+    "name_jp": "",
+    "name_en": "RX-78-2 Gundam",
+    "ms_code": "RX-78-2",
+    "scale": "1/144",
+    "price_jpy": 3500,
+    "release_date": "2024-08-01",
+    "source_works": [
+      {
+        "id": "msg-0079",
+        "title_zh": "机动战士高达",
+        "title_jp": "機動戦士ガンダム",
+        "era": "UC",
+        "year_aired": 1979
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-rx-78-2-2.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/RX-78-2_Gundam",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam"
+    }
+  },
+  {
+    "id": "rg-orb-01",
+    "grade": "RG",
+    "series_number": "41",
+    "name_zh": "拂晓高达（大鹫装备）",
+    "name_jp": "",
+    "name_en": "ORB-01 Akatsuki Gundam",
+    "ms_code": "ORB-01",
+    "scale": "1/144",
+    "price_jpy": 8000,
+    "release_date": "2024-12-01",
+    "source_works": [
+      {
+        "id": "seed-destiny",
+        "title_zh": "机动战士高达SEED DESTINY",
+        "title_jp": "機動戦士ガンダムSEED DESTINY",
+        "era": "CE",
+        "year_aired": 2004
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-orb-01.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/ORB-01_Akatsuki_Gundam",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam SEED Destiny"
+    }
+  },
+  {
+    "id": "rg-gf13-017nj-2",
+    "grade": "RG",
+    "series_number": "42",
+    "name_zh": "闪光高达",
+    "name_jp": "",
+    "name_en": "GF13-017NJ Shining Gundam",
+    "ms_code": "GF13-017NJ",
+    "scale": "1/144",
+    "price_jpy": 3500,
+    "release_date": "2025-06-01",
+    "source_works": [
+      {
+        "id": "g-gundam",
+        "title_zh": "机动武斗传G高达",
+        "title_jp": "機動武闘伝Gガンダム",
+        "era": "FC",
+        "year_aired": 1994
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-gf13-017nj-2.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/GF13-017NJ_Shining_Gundam",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Fighter G Gundam"
+    }
+  },
+  {
+    "id": "rg-xxxg-00w0-2",
+    "grade": "RG",
+    "series_number": "43",
+    "name_zh": "飞翼零式高达",
+    "name_jp": "",
+    "name_en": "XXXG-00W0 Wing Gundam Zero",
+    "ms_code": "XXXG-00W0",
+    "scale": "1/144",
+    "price_jpy": 4200,
+    "release_date": "2025-09-01",
+    "source_works": [
+      {
+        "id": "gundam-w",
+        "title_zh": "新机动战记高达W",
+        "title_jp": "新機動戦記ガンダムW",
+        "era": "AC",
+        "year_aired": 1995
+      }
+    ],
+    "difficulty_build": 4,
+    "difficulty_paint": 2,
+    "color_separation": "good",
+    "decals": "water-slide",
+    "box_art_url": "/images/kits/rg-xxxg-00w0-2.jpg",
+    "source_url": "https://gundam.fandom.com/wiki/XXXG-00W0_Wing_Gundam_Zero",
+    "_meta": {
+      "name_zh_missing": false,
+      "work_unmapped": false,
+      "manual_review": true,
+      "source_work_raw": "Mobile Suit Gundam Wing"
+    }
+  }
+]

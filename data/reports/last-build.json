@@ -1,0 +1,56 @@
+{
+  "built_at": "2026-04-28T10:26:17.619Z",
+  "duration_ms": 14953,
+  "refresh_mode": false,
+  "source": {
+    "fandom": {
+      "records": 43,
+      "errors": 0
+    },
+    "biligame": {
+      "records": 43,
+      "errors": 0
+    },
+    "fetch_errors": []
+  },
+  "merge": {
+    "total_kits": 43,
+    "name_zh_matched": 43,
+    "name_zh_missing": 0,
+    "with_name_zh": 43,
+    "unmatched_biligame": 0,
+    "unmatched_biligame_list": []
+  },
+  "works": {
+    "mapped": 31,
+    "unmapped_count": 10,
+    "unmapped_list": [
+      "Mobile Suit Gundam 0083: Stardust Memory",
+      "New Mobile Report Gundam Wing: Endless Waltz",
+      "Mobile Suit Gundam SEED Astray",
+      "New Mobile Report Gundam Wing Endless Waltz: The Glory of Losers",
+      "Mobile Suit Gundam 00 The Movie -A wakening of the Trailblazer-",
+      "Gundam Build Fighters",
+      "Mobile Suit Variation",
+      "Mobile Suit Gundam Wing Endless Waltz: Glory of the Losers",
+      "Mobile Suit Crossbone Gundam",
+      "Mobile Suit Gundam: Char's Counterattack - Beltorchika's Children"
+    ]
+  },
+  "images": {
+    "total": 43,
+    "downloaded": 43,
+    "skipped_cached": 0,
+    "failed": 0,
+    "failed_list": [],
+    "with_box_art": 43
+  },
+  "overrides": {
+    "applied": 0,
+    "missing_ids": []
+  },
+  "errors": {
+    "fandom_parse": [],
+    "biligame_parse": []
+  }
+}
