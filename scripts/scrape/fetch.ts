@@ -4,7 +4,7 @@ import path from 'node:path'
 // Fandom and most CDNs reject obviously-bot UAs with 403. Use a realistic
 // browser UA but identify ourselves clearly via the From header.
 const USER_AGENT =
-  'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 MS-CODEX-scraper/0.1 (educational use)'
+  'MS-CODEX/0.3 (Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 KHTML/Gecko) Chrome/124 Safari/537.36 educational-scraper +https://github.com/placeholder'
 const FROM_HEADER = 'ms-codex-scraper@example.com'
 const REQUEST_TIMEOUT_MS = 30_000
 // 03B：URL 数量从 2 升到 ~25，间隔从 500ms 提到 800ms 再稳一档
@@ -94,6 +94,23 @@ export async function cachedFetch(
   await ensureDir(cachePath)
   await fs.writeFile(cachePath, text, 'utf-8')
   return text
+}
+
+// Same as cachedFetch but parses JSON. Returns parsed value, or null if the
+// HTTP layer failed *and* there's no cache (the caller decides what null means).
+// On JSON parse error, throws (likely a real bug or HTML interstitial).
+export async function cachedFetchJson<T = unknown>(
+  url: string,
+  cachePath: string,
+): Promise<T | null> {
+  let body: string
+  try {
+    body = await cachedFetch(url, cachePath)
+  } catch {
+    return null
+  }
+  if (!body.trim()) return null
+  return JSON.parse(body) as T
 }
 
 export async function cachedFetchBinary(

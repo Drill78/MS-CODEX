@@ -285,5 +285,223 @@
     "title_jp": "ガンダムビルドメタバース",
     "era": "BF",
     "year_aired": 2023
+  },
+  {
+    "id": "gundam-0080",
+    "title_zh": "机动战士高达0080 口袋里的战争",
+    "title_jp": "機動戦士ガンダム0080 ポケットの中の戦争",
+    "era": "UC",
+    "year_aired": 1989
+  },
+  {
+    "id": "uc-msv",
+    "title_zh": "UC MSV",
+    "title_jp": "UC MSV",
+    "era": "UC"
+  },
+  {
+    "id": "cca-msv",
+    "title_zh": "逆袭的夏亚 MSV",
+    "title_jp": "逆襲のシャア MSV",
+    "era": "UC",
+    "year_aired": 1988
+  },
+  {
+    "id": "f91-msv",
+    "title_zh": "F91 MSV",
+    "title_jp": "F91 MSV",
+    "era": "UC"
+  },
+  {
+    "id": "crossbone-steel-7",
+    "title_zh": "交叉骨高达 钢铁的7人",
+    "title_jp": "クロスボーン・ガンダム 鋼鉄の7人",
+    "era": "UC"
+  },
+  {
+    "id": "sentinel",
+    "title_zh": "高达前哨战",
+    "title_jp": "ガンダム・センチネル",
+    "era": "UC",
+    "year_aired": 1987
+  },
+  {
+    "id": "aoz",
+    "title_zh": "Advance of Z 提坦斯之旗",
+    "title_jp": "A.O.Z タイタンズの旗のもとに",
+    "era": "UC"
+  },
+  {
+    "id": "harmony-of-gundam",
+    "title_zh": "Harmony of Gundam",
+    "title_jp": "Harmony of Gundam",
+    "era": "UC"
+  },
+  {
+    "id": "moon-gundam",
+    "title_zh": "机动战士月球高达",
+    "title_jp": "機動戦士ムーンガンダム",
+    "era": "UC"
+  },
+  {
+    "id": "twilight-axis",
+    "title_zh": "机动战士高达 暮光的阿克西斯",
+    "title_jp": "機動戦士ガンダム Twilight AXIS",
+    "era": "UC",
+    "year_aired": 2017
+  },
+  {
+    "id": "side-story-end-of-flash",
+    "title_zh": "机动战士高达外传 宇宙、闪光的彼方",
+    "title_jp": "機動戦士ガンダム外伝 宇宙、閃光の果てに",
+    "era": "UC"
+  },
+  {
+    "id": "gundam-uc-1of72",
+    "title_zh": "机动战士高达UC 七十二分之一",
+    "title_jp": "機動戦士ガンダムUC 七二分の一",
+    "era": "UC"
+  },
+  {
+    "id": "gundam-uc-novel",
+    "title_zh": "机动战士高达UC 小说",
+    "title_jp": "機動戦士ガンダムUC 小説",
+    "era": "UC"
+  },
+  {
+    "id": "gundam-uc-bd",
+    "title_zh": "机动战士高达UC Bande Dessinee",
+    "title_jp": "機動戦士ガンダムUC バンデシネ",
+    "era": "UC"
+  },
+  {
+    "id": "battlefield-0081",
+    "title_zh": "机动战士高达 战场之绊 U.C.0081",
+    "title_jp": "機動戦士ガンダム 戦場の絆 U.C.0081",
+    "era": "UC"
+  },
+  {
+    "id": "msg-novel",
+    "title_zh": "机动战士高达 小说",
+    "title_jp": "機動戦士ガンダム 小説",
+    "era": "UC"
+  },
+  {
+    "id": "00v",
+    "title_zh": "机动战士高达00V 战场记录",
+    "title_jp": "機動戦士ガンダム00V 戦場の記録",
+    "era": "AD"
+  },
+  {
+    "id": "ms-igloo",
+    "title_zh": "机动战士高达 MS IGLOO",
+    "title_jp": "機動戦士ガンダム MS IGLOO",
+    "era": "UC",
+    "year_aired": 2004
+  },
+  {
+    "id": "ms-igloo-2",
+    "title_zh": "机动战士高达 MS IGLOO 2 重力战线",
+    "title_jp": "機動戦士ガンダム MS IGLOO 2 重力戦線",
+    "era": "UC",
+    "year_aired": 2008
+  },
+  {
+    "id": "seed-destiny-astray-b",
+    "title_zh": "SEED DESTINY ASTRAY B",
+    "title_jp": "SEED DESTINY ASTRAY B",
+    "era": "CE"
+  },
+  {
+    "id": "seed-eclipse",
+    "title_zh": "SEED ECLIPSE",
+    "title_jp": "SEED ECLIPSE",
+    "era": "CE"
+  },
+  {
+    "id": "seed-frame-astrays",
+    "title_zh": "SEED FRAME ASTRAYS",
+    "title_jp": "SEED FRAME ASTRAYS",
+    "era": "CE"
+  },
+  {
+    "id": "seed-vs-astray",
+    "title_zh": "SEED VS ASTRAY",
+    "title_jp": "SEED VS ASTRAY",
+    "era": "CE"
+  },
+  {
+    "id": "seed-freedom-astray",
+    "title_zh": "SEED FREEDOM ASTRAY",
+    "title_jp": "SEED FREEDOM ASTRAY",
+    "era": "CE"
+  },
+  {
+    "id": "seed-stargazer",
+    "title_zh": "SEED C.E.73 STARGAZER",
+    "title_jp": "SEED C.E.73 STARGAZER",
+    "era": "CE",
+    "year_aired": 2006
+  },
+  {
+    "id": "plamo-kyoshiro",
+    "title_zh": "塑料模型狂四郎",
+    "title_jp": "プラモ狂四郎",
+    "era": "Other"
+  },
+  {
+    "id": "sd-g-generation",
+    "title_zh": "SD高达 G 世纪",
+    "title_jp": "SDガンダム G ジェネレーション",
+    "era": "Other"
+  },
+  {
+    "id": "sd-gundam-gx",
+    "title_zh": "SD高达GX",
+    "title_jp": "SDガンダムGX",
+    "era": "Other"
+  },
+  {
+    "id": "sd-g-gen-monoeye",
+    "title_zh": "G世纪 单眼高达",
+    "title_jp": "Gジェネ モノアイガンダムズ",
+    "era": "Other"
+  },
+  {
+    "id": "gihrens-greed",
+    "title_zh": "机动战士高达 基连的野望",
+    "title_jp": "機動戦士ガンダム ギレンの野望",
+    "era": "UC"
+  },
+  {
+    "id": "extreme-vs",
+    "title_zh": "机动战士高达 EXTREME VS",
+    "title_jp": "機動戦士ガンダム EXTREME VS",
+    "era": "Other"
+  },
+  {
+    "id": "requiem-for-vengeance",
+    "title_zh": "机动战士高达 复仇安魂曲",
+    "title_jp": "機動戦士ガンダム 復讐のレクイエム",
+    "era": "UC",
+    "year_aired": 2024
+  },
+  {
+    "id": "oyw-game",
+    "title_zh": "机动战士高达 一年战争",
+    "title_jp": "機動戦士ガンダム 一年戦争",
+    "era": "UC"
+  },
+  {
+    "id": "dynasty-warriors-gundam-2",
+    "title_zh": "高达无双2",
+    "title_jp": "ガンダム無双2",
+    "era": "Other"
+  },
+  {
+    "id": "gundam-evolve",
+    "title_zh": "GUNDAM EVOLVE",
+    "title_jp": "GUNDAM EVOLVE",
+    "era": "Other"
   }
 ]

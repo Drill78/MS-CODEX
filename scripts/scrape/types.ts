@@ -7,6 +7,7 @@ export type FandomKitRecord = {
   name_jp?: string
   scale: string
   price_jpy: number
+  price_uncertain?: boolean
   release_date: string
   box_art_url?: string
   source_work_raw?: string

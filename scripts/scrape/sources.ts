@@ -2,115 +2,97 @@ import type { Grade } from '@/lib/types/kit'
 
 // ─────────────────────────────────────────────────────────────────
 // Fandom — 多个 URL 表示该 grade 在 fandom 上分散在多个子页面
+// 同一 sub-line 也允许多个 URL 候选，按顺序 try，第一个非空的就用
 // ─────────────────────────────────────────────────────────────────
 
 export type FandomSource = {
-  url: string                // 最终落到 ?action=parse 的页面 URL
-  pageTitle: string          // MediaWiki page title (用于 API)
-  cacheSlug: string          // 缓存文件名 slug（无 .html 后缀）
+  pageTitleCandidates: string[]   // MediaWiki page title 的候选列表
+  cacheSlug: string               // 缓存文件名 slug
+  // 给报告用：第一个候选的 wiki URL（fetch 时实际用的可能是后续候选）
+  defaultUrl: string
 }
 
-function fandom(pageTitle: string, cacheSlug: string): FandomSource {
+function fandom(cacheSlug: string, ...pageTitles: string[]): FandomSource {
   return {
-    url: `https://gundam.fandom.com/wiki/${pageTitle}`,
-    pageTitle,
+    pageTitleCandidates: pageTitles,
     cacheSlug,
+    defaultUrl: `https://gundam.fandom.com/wiki/${pageTitles[0]}`,
   }
 }
 
+// HG: Fandom 命名混乱不一致，每条 sub-line 给所有可能候选
+// 注：HGUC 用全名 — "HGUC" 短名是个 redirect stub (1.1KB)。
+//     BF / BD 用无 "Gundam_" 版（核实可访问，~85-200KB）；BM 用带 "Gundam_" 版。
 const HG_FANDOM_SUBS: FandomSource[] = [
-  fandom('High_Grade_Universal_Century', 'hg-uc'),
-  fandom('High_Grade_Cosmic_Era', 'hg-ce'),
-  fandom('High_Grade_After_Colony', 'hg-ac'),
-  fandom('High_Grade_After_War', 'hg-aw'),
-  fandom('High_Grade_Future_Century', 'hg-fc'),
-  fandom('High_Grade_Anno_Domini', 'hg-ad'),
-  fandom('High_Grade_Advanced_Generation', 'hg-ag'),
-  fandom('High_Grade_Reconguista_in_G', 'hg-rg'),
-  fandom('High_Grade_Iron-Blooded_Orphans', 'hg-ibo'),
-  fandom('High_Grade_The_Witch_from_Mercury', 'hg-twfm'),
-  fandom('High_Grade_Gundam_Build_Fighters', 'hg-bf'),
-  fandom('High_Grade_Gundam_Build_Divers', 'hg-bd'),
-  fandom('High_Grade_Gundam_Build_Metaverse', 'hg-bm'),
-  fandom('High_Grade_GunPla_Evolution', 'hg-ge'),
+  fandom('hg-uc',   'High_Grade_Universal_Century'),
+  fandom('hg-ce',   'High_Grade_Cosmic_Era',        'HGCE',  '1/144_HG_Gundam_SEED'),
+  fandom('hg-ac',   'High_Grade_After_Colony',      'HGAC',  '1/144_HG_Gundam_Wing'),
+  fandom('hg-aw',   'High_Grade_After_War',         'HGAW'),
+  fandom('hg-fc',   'High_Grade_Future_Century',    'HGFC',  '1/144_HG_G_Gundam'),
+  fandom('hg-00',   'High_Grade_00',                'HG00',  '1/144_HG_Gundam_00'),
+  fandom('hg-age',  'High_Grade_AGE',               'HGAGE'),
+  fandom('hg-rc',   'High_Grade_Reconguista_in_G',  'HGRC'),
+  fandom('hg-ibo',  'High_Grade_Iron-Blooded_Orphans', 'HGIBO'),
+  fandom('hg-twfm', 'High_Grade_The_Witch_from_Mercury', 'HGTWFM', 'HG_The_Witch_from_Mercury'),
+  fandom('hg-bf',   'High_Grade_Build_Fighters', 'High_Grade_Gundam_Build_Fighters', 'HGBF'),
+  fandom('hg-bd',   'High_Grade_Build_Divers',   'High_Grade_Gundam_Build_Divers',   'HGBD'),
+  fandom('hg-bm',   'High_Grade_Gundam_Build_Metaverse', 'High_Grade_Build_Metaverse', 'HGBM'),
+  fandom('hg-ge',   'High_Grade_Gunpla_Evolution', 'High_Grade_GunPla_Evolution', 'HGGE'),
 ]
 
 export const FANDOM_SOURCES: Record<Grade, FandomSource[]> = {
   HG: HG_FANDOM_SUBS,
-  RG: [fandom('Real_Grade', 'rg')],
-  MG: [fandom('Master_Grade', 'mg')],
+  RG: [fandom('rg', 'Real_Grade')],
+  MG: [fandom('mg', 'Master_Grade')],
   'MG-VerKa': [],   // 通过 MG 解析时识别 'Ver. Ka' 标记，不单独爬
-  PG: [fandom('Perfect_Grade', 'pg')],
+  PG: [fandom('pg', 'Perfect_Grade')],
   'PG-Unleashed': [], // 通过 PG 识别
-  EG: [fandom('Entry_Grade', 'eg')],
-  SD: [fandom('SD_Gundam', 'sd')],
-  SDCS: [fandom('SD_Gundam_Cross_Silhouette', 'sdcs')],
-  RE100: [fandom('Reborn-One_Hundred', 're100')],
-  FM: [fandom('Full_Mechanics', 'fm')],
+  EG: [fandom('eg', 'Entry_Grade')],
+  SD: [fandom('sd', 'SD_Gundam_BB_Senshi', 'Super_Deformed_Gundam', 'SDBB', 'SD_Gundam')],
+  SDCS: [fandom('sdcs', 'SD_Gundam_Cross_Silhouette')],
+  RE100: [fandom('re100', 'Reborn-One_Hundred')],
+  FM: [fandom('fm', 'Full_Mechanics')],
 }
 
 // ─────────────────────────────────────────────────────────────────
-// 哔哩哔哩 wiki — 一条规格线一个汇总页（部分 grade 无独立页 → null）
+// 哔哩哔哩 wiki — 改用 MediaWiki API 抓 wikitext。
+// 每个 grade 给多个候选页面名，按顺序 try。
 // ─────────────────────────────────────────────────────────────────
 
 export type BiligameSource = {
-  url: string
+  pageNameCandidates: string[]
   cacheSlug: string
-}
-
-function bili(pageName: string, cacheSlug: string): BiligameSource {
-  return {
-    url: encodeURI(`https://wiki.biligame.com/gundam/${pageName}`),
-    cacheSlug,
-  }
+  // biligame 模板里使用的 series 前缀（"RG"/"MG"/"PG"/"H"/"EG"）。
+  // 这个前缀短/长不同决定 series-number 解析正则
+  seriesPrefix: string
+  // 该 grade 的 biligame series → 我们自己的 GRADE_SERIES_PREFIX 的转换
+  // 例如 biligame "H01" → 我们存为 "HG001"。null 表示直接用 biligame prefix。
+  outputPrefix: string
 }
 
 export const BILIGAME_SOURCES: Partial<Record<Grade, BiligameSource>> = {
-  HG: bili('HG模型', 'hg'),
-  RG: bili('RG模型', 'rg'),
-  MG: bili('MG模型', 'mg'),
-  PG: bili('PG模型', 'pg'),
-  EG: bili('EG模型', 'eg'),
-  SD: bili('SD模型', 'sd'),
-  RE100: bili('RE模型', 're100'),
-  FM: bili('FM模型', 'fm'),
+  HG: {
+    pageNameCandidates: ['HGUC模型', 'HG模型'],
+    cacheSlug: 'hg',
+    seriesPrefix: 'H',
+    outputPrefix: 'HG',
+  },
+  RG: { pageNameCandidates: ['RG模型'], cacheSlug: 'rg', seriesPrefix: 'RG', outputPrefix: 'RG' },
+  MG: { pageNameCandidates: ['MG模型'], cacheSlug: 'mg', seriesPrefix: 'MG', outputPrefix: 'MG' },
+  PG: { pageNameCandidates: ['PG模型'], cacheSlug: 'pg', seriesPrefix: 'PG', outputPrefix: 'PG' },
+  EG: { pageNameCandidates: ['EG模型', 'EG'], cacheSlug: 'eg', seriesPrefix: 'EG', outputPrefix: 'EG' },
+  // SD / SDCS / RE / FM 都试过，biligame 没汇总页（缺数据，靠 wikipedia fallback）
+  SD: { pageNameCandidates: ['SD模型', 'BB战士', 'SDBB模型', 'SD高达'], cacheSlug: 'sd', seriesPrefix: 'SD', outputPrefix: 'SD' },
+  SDCS: { pageNameCandidates: ['SDCS模型', 'SDCS'], cacheSlug: 'sdcs', seriesPrefix: 'SDCS', outputPrefix: 'SDCS' },
+  RE100: { pageNameCandidates: ['RE模型', 'RE/100模型', 'RE/100'], cacheSlug: 're100', seriesPrefix: 'RE', outputPrefix: 'RE' },
+  FM: { pageNameCandidates: ['FM模型', 'FM'], cacheSlug: 'fm', seriesPrefix: 'FM', outputPrefix: 'FM' },
 }
 
 // ─────────────────────────────────────────────────────────────────
-// 序号前缀 — 给 parse-biligame 过滤用
-// 对于一条 grade，B站列表里有效的"NN"前缀正则，例如：
-//   RG  → /^\s*RG\s*0*(\d{1,3})\s*$/
-//   HG  → /^\s*(?:HG|HGUC|HGCE|HGAC|HGAW|HGFC|HGOO|HGAG|HGIBO|HGTWFM|HGBF|HGBD|HGBM|HGGE|HGRG)\s*0*(\d{1,3})\s*$/
+// 序号前缀 — 给 parse-biligame（旧 HTML 路径）和 fandom 校验用
 // ─────────────────────────────────────────────────────────────────
 
-const HG_BILIGAME_PREFIXES = [
-  'HGUC', 'HGCE', 'HGAC', 'HGAW', 'HGFC', 'HGOO', 'HGAG', 'HGIBO',
-  'HGTWFM', 'HGWFM', 'HGBF', 'HGBD', 'HGBM', 'HGGE', 'HGRG', 'HG',
-]
-const SD_BILIGAME_PREFIXES = ['SDCS', 'SDBB', 'SDEX', 'SDGCG', 'SD', 'BB']
-
-function buildPrefixRegex(prefixes: string[]): RegExp {
-  // 按长度倒序避免短前缀（"HG"）抢占长前缀（"HGUC"）
-  const sorted = [...prefixes].sort((a, b) => b.length - a.length)
-  const alt = sorted.map((p) => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')
-  return new RegExp(`^\\s*(?:${alt})\\s*0*(\\d{1,3})\\s*$`, 'i')
-}
-
-export const BILIGAME_NUMBER_REGEX: Record<Grade, RegExp> = {
-  HG: buildPrefixRegex(HG_BILIGAME_PREFIXES),
-  RG: buildPrefixRegex(['RG']),
-  MG: buildPrefixRegex(['MG']),
-  'MG-VerKa': buildPrefixRegex(['MG']),
-  PG: buildPrefixRegex(['PG']),
-  'PG-Unleashed': buildPrefixRegex(['PG']),
-  EG: buildPrefixRegex(['EG']),
-  SD: buildPrefixRegex(SD_BILIGAME_PREFIXES),
-  SDCS: buildPrefixRegex(['SDCS']),
-  RE100: buildPrefixRegex(['RE']),
-  FM: buildPrefixRegex(['FM']),
-}
-
-// 用于 parse-fandom 校验 / 归一化序号，例：HG → "HG"，SDCS → "SDCS"
+// 用于 parse-fandom 校验 / 归一化序号
 export const GRADE_SERIES_PREFIX: Record<Grade, string> = {
   HG: 'HG',
   RG: 'RG',
@@ -127,12 +109,12 @@ export const GRADE_SERIES_PREFIX: Record<Grade, string> = {
 
 // 从 grade 反推 fandom / biligame 缓存路径
 export function fandomCachePath(slug: string): string {
-  // path.resolve 在调用方做，这里只给文件名
   return `${slug}.html`
 }
 export function fandomApiCachePath(slug: string): string {
   return `${slug}.api.json`
 }
 export function biligameCachePath(slug: string): string {
-  return `${slug}.html`
+  // 改用 .json（MediaWiki API 返回 JSON，含 wikitext）
+  return `${slug}.json`
 }

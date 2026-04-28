@@ -5,6 +5,7 @@ import {
   DECALS_DEFAULTS,
   DIFFICULTY_DEFAULTS,
 } from './defaults'
+import { lookupNameZhFromWikipediaZh } from './fetch-wikipedia-zh'
 import type {
   BiligameKitRecord,
   FandomKitRecord,
@@ -60,14 +61,10 @@ function slugify(s: string): string {
     .replace(/^-+|-+$/g, '')
 }
 
-// 决定一条 fandom 记录在 (parent grade) 上下文里的"实际 grade"
-// 规则：
-//   parent=MG + name 含 "Ver. Ka" → 'MG-VerKa'（不论是否同时含 MGEX）
-//   parent=PG + name 含 "Unleashed" → 'PG-Unleashed'
-//   parent=SDCS / 其他 → 不变
-// 注意：fandom 表里的 <a title> 会剥掉 "Ver.Ka" 等变体后缀，所以用
-// name_full_text（可见单元格文本）做检测，比 name_en 可靠。
-function resolveEffectiveGrade(parentGrade: Grade, ...names: (string | undefined)[]): Grade {
+function resolveEffectiveGrade(
+  parentGrade: Grade,
+  ...names: (string | undefined)[]
+): Grade {
   const blob = names.filter(Boolean).join(' ')
   if (parentGrade === 'MG' && /ver\.?\s*ka/i.test(blob)) return 'MG-VerKa'
   if (parentGrade === 'PG' && /unleashed/i.test(blob)) return 'PG-Unleashed'
@@ -86,30 +83,53 @@ function generateKitId(
   return `${grade.toLowerCase()}-${codePart}${variantHint}`
 }
 
-export function mergeKits(
+function normalizeMsCode(c: string | undefined): string | undefined {
+  if (!c) return undefined
+  return c.toUpperCase().replace(/[\s/]+/g, '-').replace(/-+/g, '-').replace(/^-+|-+$/g, '')
+}
+
+export type MergeOpts = {
+  enableWikipediaFallback: boolean
+}
+
+export async function mergeKits(
   fandomRecords: FandomKitRecord[],
   biligameRecords: BiligameKitRecord[],
   parentGrade: Grade,
   fandomSourceUrlFallback: string,
-): MergeResult {
-  const biligameMap = new Map<string, BiligameKitRecord>()
+  opts: MergeOpts = { enableWikipediaFallback: true },
+): Promise<MergeResult & { name_zh_from_biligame: number; name_zh_from_wikipedia: number }> {
+  // 主匹配（series_number_normalized）
+  const biligameByNumber = new Map<string, BiligameKitRecord>()
+  // 副匹配（ms_code，专门给 HG 用）—— biligame 里 ms_code 可能为空，只索引有的
+  const biligameByMsCode = new Map<string, BiligameKitRecord>()
   for (const b of biligameRecords) {
-    biligameMap.set(b.series_number_normalized, b)
+    biligameByNumber.set(b.series_number_normalized, b)
+    const code = normalizeMsCode(b.ms_code)
+    if (code) biligameByMsCode.set(code, b)
   }
 
   const usedIds = new Set<string>()
   const kits: KitWithMeta[] = []
   const unmappedWorks = new Set<string>()
-  let nameZhMatched = 0
-  let nameZhMissing = 0
+  let nameZhFromBiligame = 0
+  let nameZhFromWikipedia = 0
 
+  // First pass — fandom + biligame merge
   for (const fandom of fandomRecords) {
-    const bili = biligameMap.get(fandom.series_number_normalized)
-    const name_zh = bili?.name_zh || fandom.name_en
-    const name_zh_missing = !bili?.name_zh
-    if (name_zh_missing) nameZhMissing++
-    else nameZhMatched++
+    let bili = biligameByNumber.get(fandom.series_number_normalized)
+    // HG: biligame's HGUC 编号（"H##"）跟 fandom HGUC/HGCE 等的内部 series_number 对不上，
+    // 改用 ms_code 二次匹配补救
+    if (!bili && parentGrade === 'HG') {
+      const fandomCode = normalizeMsCode(
+        extractMsCodeFromName(fandom.name_en),
+      )
+      if (fandomCode) {
+        bili = biligameByMsCode.get(fandomCode)
+      }
+    }
 
+    const name_zh_from_bili = bili?.name_zh
     const ms_code = bili?.ms_code ?? extractMsCodeFromName(fandom.name_en)
 
     const work: Work | undefined = lookupWork(fandom.source_work_raw)
@@ -135,11 +155,15 @@ export function mergeKits(
     }
     usedIds.add(id)
 
+    let name_zh = name_zh_from_bili || ''
+    let name_zh_source: 'biligame' | 'wikipedia-zh' | 'fallback-en' | undefined
+    if (name_zh) name_zh_source = 'biligame'
+
     const kit: Kit = {
       id,
       grade: effectiveGrade,
       series_number: fandom.series_number,
-      name_zh,
+      name_zh, // may be filled by wiki fallback below; placeholder for now
       name_jp: fandom.name_jp ?? '',
       name_en: fandom.name_en,
       ms_code,
@@ -155,17 +179,57 @@ export function mergeKits(
       box_art_url: undefined,
       source_url: fandom.detail_page_url ?? fandomSourceUrlFallback,
       _meta: {
-        name_zh_missing,
+        name_zh_missing: !name_zh,
+        name_zh_source,
         work_unmapped: !work,
         manual_review: true,
         source_work_raw: fandom.source_work_raw,
         source_grade_page: fandom.source_grade_page,
         variants: variantTags.length ? variantTags : undefined,
+        price_uncertain: fandom.price_uncertain ? true : undefined,
       },
     }
+    if (name_zh) nameZhFromBiligame++
 
     kits.push(kit)
   }
+
+  // Second pass — wikipedia-zh fallback for missing name_zh
+  if (opts.enableWikipediaFallback) {
+    for (const kit of kits) {
+      if (kit.name_zh) continue
+      const code = kit.ms_code
+      if (!code) continue
+      try {
+        const title = await lookupNameZhFromWikipediaZh(code)
+        if (title) {
+          kit.name_zh = title
+          if (kit._meta) {
+            kit._meta.name_zh_missing = false
+            kit._meta.name_zh_source = 'wikipedia-zh'
+          }
+          nameZhFromWikipedia++
+        }
+      } catch {
+        /* ignore — kit stays missing */
+      }
+    }
+  }
+
+  // Final pass — fall back to name_en for any still-missing
+  let nameZhStillMissing = 0
+  for (const kit of kits) {
+    if (!kit.name_zh) {
+      kit.name_zh = kit.name_en ?? ''
+      if (kit._meta) {
+        kit._meta.name_zh_missing = true
+        kit._meta.name_zh_source = 'fallback-en'
+      }
+      nameZhStillMissing++
+    }
+  }
+  // "matched" = has non-fallback Chinese name (biligame or wikipedia)
+  const nameZhMatched = nameZhFromBiligame + nameZhFromWikipedia
 
   const fandomKeys = new Set(
     fandomRecords.map((r) => r.series_number_normalized),
@@ -179,7 +243,9 @@ export function mergeKits(
     unmatched_biligame,
     unmapped_works: Array.from(unmappedWorks),
     name_zh_matched: nameZhMatched,
-    name_zh_missing: nameZhMissing,
+    name_zh_missing: nameZhStillMissing,
+    name_zh_from_biligame: nameZhFromBiligame,
+    name_zh_from_wikipedia: nameZhFromWikipedia,
   }
 }
 

@@ -325,6 +325,213 @@ export const WORKS_SEED: Record<string, Work> = {
     era: 'BF',
     year_aired: 2023,
   },
+
+  // ── 03C 追加 (44 条) ──────────────────────────────────────────────
+  'Mobile Suit Gundam 0080: War in the Pocket': {
+    id: 'gundam-0080',
+    title_zh: '机动战士高达0080 口袋里的战争',
+    title_jp: '機動戦士ガンダム0080 ポケットの中の戦争',
+    era: 'UC',
+    year_aired: 1989,
+  },
+  'Mobile Suit Gundam Hathaway': {
+    id: 'hathaway',
+    title_zh: '机动战士高达 闪光的哈萨维',
+    title_jp: '機動戦士ガンダム 閃光のハサウェイ',
+    era: 'UC',
+    year_aired: 2021,
+  },
+  'Mobile Suit Gundam Hathaway: The Sorcery of Nymph Circe': {
+    id: 'hathaway',
+    title_zh: '机动战士高达 闪光的哈萨维',
+    title_jp: '機動戦士ガンダム 閃光のハサウェイ',
+    era: 'UC',
+    year_aired: 2021,
+  },
+  'Mobile Suit Gundam Unicorn RE:0096': {
+    id: 'gundam-uc',
+    title_zh: '机动战士高达UC',
+    title_jp: '機動戦士ガンダムUC',
+    era: 'UC',
+    year_aired: 2010,
+  },
+  'Mobile Suit Gundam: The Origin (Manga)': {
+    id: 'msg-the-origin',
+    title_zh: '机动战士高达 THE ORIGIN',
+    title_jp: '機動戦士ガンダム THE ORIGIN',
+    era: 'UC',
+    year_aired: 2015,
+  },
+  '∀ Gundam': {
+    id: 'turn-a',
+    title_zh: '∀高达',
+    title_jp: '∀ガンダム',
+    era: 'CC',
+    year_aired: 1999,
+  },
+  'Mobile Suit Gundam IRON-BLOODED ORPHANS': {
+    id: 'ibo',
+    title_zh: '机动战士高达 铁血的奥尔芬斯',
+    title_jp: '機動戦士ガンダム 鉄血のオルフェンズ',
+    era: 'PD',
+    year_aired: 2015,
+  },
+  'Mobile Suit Gundam the Witch from Mercury': {
+    id: 'witch-from-mercury',
+    title_zh: '机动战士高达 水星的魔女',
+    title_jp: '機動戦士ガンダム 水星の魔女',
+    era: 'AS',
+    year_aired: 2022,
+  },
+  'Mobile Suit Gundam Wing Endless Waltz': {
+    id: 'gundam-w-ew',
+    title_zh: '新机动战记高达W Endless Waltz',
+    title_jp: '新機動戦記ガンダムW Endless Waltz',
+    era: 'AC',
+    year_aired: 1997,
+  },
+
+  // MSV / 衍生
+  'UC-MSV': {
+    id: 'uc-msv', title_zh: 'UC MSV', title_jp: 'UC MSV', era: 'UC',
+  },
+  "Char's Counterattack Mobile Suit Variations": {
+    id: 'cca-msv', title_zh: '逆袭的夏亚 MSV', title_jp: '逆襲のシャア MSV',
+    era: 'UC', year_aired: 1988,
+  },
+  'Gundam F91 Mobile Suit Variations': {
+    id: 'f91-msv', title_zh: 'F91 MSV', title_jp: 'F91 MSV', era: 'UC',
+  },
+  'Mobile Suit Crossbone Gundam: Steel 7': {
+    id: 'crossbone-steel-7', title_zh: '交叉骨高达 钢铁的7人',
+    title_jp: 'クロスボーン・ガンダム 鋼鉄の7人', era: 'UC',
+  },
+  'Gundam Sentinel': {
+    id: 'sentinel', title_zh: '高达前哨战', title_jp: 'ガンダム・センチネル',
+    era: 'UC', year_aired: 1987,
+  },
+  'Advance of Zeta: The Flag of Titans': {
+    id: 'aoz', title_zh: 'Advance of Z 提坦斯之旗',
+    title_jp: 'A.O.Z タイタンズの旗のもとに', era: 'UC',
+  },
+  'Harmony of Gundam': {
+    id: 'harmony-of-gundam', title_zh: 'Harmony of Gundam',
+    title_jp: 'Harmony of Gundam', era: 'UC',
+  },
+  'Mobile Suit Moon Gundam': {
+    id: 'moon-gundam', title_zh: '机动战士月球高达',
+    title_jp: '機動戦士ムーンガンダム', era: 'UC',
+  },
+  'Mobile Suit Gundam Twilight Axis': {
+    id: 'twilight-axis', title_zh: '机动战士高达 暮光的阿克西斯',
+    title_jp: '機動戦士ガンダム Twilight AXIS', era: 'UC', year_aired: 2017,
+  },
+
+  // 短篇 / 外传 / 小说
+  'Mobile Suit Gundam Side Story: Space, To the End of a Flash': {
+    id: 'side-story-end-of-flash', title_zh: '机动战士高达外传 宇宙、闪光的彼方',
+    title_jp: '機動戦士ガンダム外伝 宇宙、閃光の果てに', era: 'UC',
+  },
+  'Mobile Suit Gundam UC: One of Seventy Two': {
+    id: 'gundam-uc-1of72', title_zh: '机动战士高达UC 七十二分之一',
+    title_jp: '機動戦士ガンダムUC 七二分の一', era: 'UC',
+  },
+  'Mobile Suit Gundam Unicorn (Novel)': {
+    id: 'gundam-uc-novel', title_zh: '机动战士高达UC 小说',
+    title_jp: '機動戦士ガンダムUC 小説', era: 'UC',
+  },
+  'Mobile Suit Gundam Unicorn - Bande Dessinee': {
+    id: 'gundam-uc-bd', title_zh: '机动战士高达UC Bande Dessinee',
+    title_jp: '機動戦士ガンダムUC バンデシネ', era: 'UC',
+  },
+  'Mobile Suit Gundam: Battlefield Record U.C. 0081': {
+    id: 'battlefield-0081', title_zh: '机动战士高达 战场之绊 U.C.0081',
+    title_jp: '機動戦士ガンダム 戦場の絆 U.C.0081', era: 'UC',
+  },
+  'Mobile Suit Gundam (Novel)': {
+    id: 'msg-novel', title_zh: '机动战士高达 小说',
+    title_jp: '機動戦士ガンダム 小説', era: 'UC',
+  },
+  'Mobile Suit Gundam 00V: Battlefield Record': {
+    id: '00v', title_zh: '机动战士高达00V 战场记录',
+    title_jp: '機動戦士ガンダム00V 戦場の記録', era: 'AD',
+  },
+  'Mobile Suit Gundam MS IGLOO': {
+    id: 'ms-igloo', title_zh: '机动战士高达 MS IGLOO',
+    title_jp: '機動戦士ガンダム MS IGLOO', era: 'UC', year_aired: 2004,
+  },
+  'Mobile Suit Gundam MS IGLOO 2: The Gravity Front': {
+    id: 'ms-igloo-2', title_zh: '机动战士高达 MS IGLOO 2 重力战线',
+    title_jp: '機動戦士ガンダム MS IGLOO 2 重力戦線', era: 'UC', year_aired: 2008,
+  },
+
+  // SEED 衍生
+  'Mobile Suit Gundam SEED Destiny Astray B': {
+    id: 'seed-destiny-astray-b', title_zh: 'SEED DESTINY ASTRAY B',
+    title_jp: 'SEED DESTINY ASTRAY B', era: 'CE',
+  },
+  'Mobile Suit Gundam SEED Eclipse': {
+    id: 'seed-eclipse', title_zh: 'SEED ECLIPSE',
+    title_jp: 'SEED ECLIPSE', era: 'CE',
+  },
+  'Mobile Suit Gundam SEED Frame Astrays': {
+    id: 'seed-frame-astrays', title_zh: 'SEED FRAME ASTRAYS',
+    title_jp: 'SEED FRAME ASTRAYS', era: 'CE',
+  },
+  'Mobile Suit Gundam SEED VS Astray': {
+    id: 'seed-vs-astray', title_zh: 'SEED VS ASTRAY',
+    title_jp: 'SEED VS ASTRAY', era: 'CE',
+  },
+  'Mobile Suit Gundam SEED Freedom Astray': {
+    id: 'seed-freedom-astray', title_zh: 'SEED FREEDOM ASTRAY',
+    title_jp: 'SEED FREEDOM ASTRAY', era: 'CE',
+  },
+  'Mobile Suit Gundam SEED C.E. 73: STARGAZER': {
+    id: 'seed-stargazer', title_zh: 'SEED C.E.73 STARGAZER',
+    title_jp: 'SEED C.E.73 STARGAZER', era: 'CE', year_aired: 2006,
+  },
+
+  // 游戏 / 番外
+  'Plamo-Kyoshiro': {
+    id: 'plamo-kyoshiro', title_zh: '塑料模型狂四郎',
+    title_jp: 'プラモ狂四郎', era: 'Other',
+  },
+  'SD Gundam G Generation': {
+    id: 'sd-g-generation', title_zh: 'SD高达 G 世纪',
+    title_jp: 'SDガンダム G ジェネレーション', era: 'Other',
+  },
+  'SD Gundam GX': {
+    id: 'sd-gundam-gx', title_zh: 'SD高达GX',
+    title_jp: 'SDガンダムGX', era: 'Other',
+  },
+  'SD Gundam: G Generation: Monoeye Gundams': {
+    id: 'sd-g-gen-monoeye', title_zh: 'G世纪 单眼高达',
+    title_jp: 'Gジェネ モノアイガンダムズ', era: 'Other',
+  },
+  "Mobile Suit Gundam: Gihren's Greed": {
+    id: 'gihrens-greed', title_zh: '机动战士高达 基连的野望',
+    title_jp: '機動戦士ガンダム ギレンの野望', era: 'UC',
+  },
+  'Mobile Suit Gundam: Extreme Vs.': {
+    id: 'extreme-vs', title_zh: '机动战士高达 EXTREME VS',
+    title_jp: '機動戦士ガンダム EXTREME VS', era: 'Other',
+  },
+  'Mobile Suit Gundam: Requiem for Vengeance': {
+    id: 'requiem-for-vengeance', title_zh: '机动战士高达 复仇安魂曲',
+    title_jp: '機動戦士ガンダム 復讐のレクイエム', era: 'UC', year_aired: 2024,
+  },
+  'Mobile Suit Gundam: The One Year War': {
+    id: 'oyw-game', title_zh: '机动战士高达 一年战争',
+    title_jp: '機動戦士ガンダム 一年戦争', era: 'UC',
+  },
+  'Dynasty Warriors Gundam 2': {
+    id: 'dynasty-warriors-gundam-2', title_zh: '高达无双2',
+    title_jp: 'ガンダム無双2', era: 'Other',
+  },
+  'Gundam Evolve': {
+    id: 'gundam-evolve', title_zh: 'GUNDAM EVOLVE',
+    title_jp: 'GUNDAM EVOLVE', era: 'Other',
+  },
 }
 
 export function lookupWork(rawSeries: string | undefined): Work | undefined {

@@ -1,38 +1,37 @@
 {
-  "built_at": "2026-04-28T11:15:44.704Z",
-  "duration_ms": 24770,
+  "built_at": "2026-04-28T12:50:21.428Z",
+  "duration_ms": 282040,
   "refresh_mode": false,
   "only_grade": null,
   "grades": {
     "HG": {
-      "fetched_pages": 5,
-      "fandom_records": 299,
-      "biligame_records": 0,
-      "merged_kits": 299,
-      "images_downloaded": 0,
-      "images_skipped_cached": 295,
+      "fetched_pages": 7,
+      "fandom_records": 396,
+      "biligame_records": 174,
+      "merged_kits": 396,
+      "images_downloaded": 311,
+      "images_skipped_cached": 81,
       "images_failed": 4,
       "sub_grades": {
-        "HG": 299
+        "HG": 396
       },
+      "name_zh_from_biligame": 108,
+      "name_zh_from_wikipedia": 42,
       "errors": [
-        "[fandom HG/hg-ce] Failed to parse Fandom API JSON for High_Grade_Cosmic_Era: Fandom API error for High_Grade_Cosmic_Era: missingtitle The page you specified doesn't exist.",
-        "[fandom HG/hg-aw] Failed to parse Fandom API JSON for High_Grade_After_War: Fandom API error for High_Grade_After_War: missingtitle The page you specified doesn't exist.",
-        "[fandom HG/hg-fc] Failed to parse Fandom API JSON for High_Grade_Future_Century: Fandom API error for High_Grade_Future_Century: missingtitle The page you specified doesn't exist.",
-        "[fandom HG/hg-ad] Failed to parse Fandom API JSON for High_Grade_Anno_Domini: Fandom API error for High_Grade_Anno_Domini: missingtitle The page you specified doesn't exist.",
-        "[fandom HG/hg-ag] Failed to parse Fandom API JSON for High_Grade_Advanced_Generation: Fandom API error for High_Grade_Advanced_Generation: missingtitle The page you specified doesn't exist.",
-        "[fandom HG/hg-twfm] Failed to parse Fandom API JSON for High_Grade_The_Witch_from_Mercury: Fandom API error for High_Grade_The_Witch_from_Mercury: missingtitle The page you specified doesn't exist.",
-        "[fandom HG/hg-bf] Failed to parse Fandom API JSON for High_Grade_Gundam_Build_Fighters: Fandom API error for High_Grade_Gundam_Build_Fighters: missingtitle The page you specified doesn't exist.",
-        "[fandom HG/hg-bd] Failed to parse Fandom API JSON for High_Grade_Gundam_Build_Divers: Fandom API error for High_Grade_Gundam_Build_Divers: missingtitle The page you specified doesn't exist.",
-        "[fandom HG/hg-ge] Failed to parse Fandom API JSON for High_Grade_GunPla_Evolution: Fandom API error for High_Grade_GunPla_Evolution: missingtitle The page you specified doesn't exist.",
-        "[biligame HG/hg] HTTP 567 on https://wiki.biligame.com/gundam/HG%E6%A8%A1%E5%9E%8B",
+        "[fandom HG/hg-ce] all candidates failed for hg-ce: API error missingtitle for High_Grade_Cosmic_Era; API error missingtitle for HGCE; API error missingtitle for 1/144_HG_Gundam_SEED",
+        "[fandom HG/hg-aw] all candidates failed for hg-aw: API error missingtitle for High_Grade_After_War; API error missingtitle for HGAW",
+        "[fandom HG/hg-fc] all candidates failed for hg-fc: API error missingtitle for High_Grade_Future_Century; API error missingtitle for HGFC; API error missingtitle for 1/144_HG_G_Gundam",
+        "[fandom HG/hg-00] all candidates failed for hg-00: API error missingtitle for High_Grade_00; API error missingtitle for HG00; API error missingtitle for 1/144_HG_Gundam_00",
+        "[fandom HG/hg-age] all candidates failed for hg-age: API error missingtitle for High_Grade_AGE; API error missingtitle for HGAGE",
+        "[fandom HG/hg-twfm] all candidates failed for hg-twfm: API error missingtitle for High_Grade_The_Witch_from_Mercury; API error missingtitle for HGTWFM; API error missingtitle for HG_The_Witch_from_Mercury",
+        "[fandom HG/hg-ge] all candidates failed for hg-ge: API error missingtitle for High_Grade_Gunpla_Evolution; API error missingtitle for High_Grade_GunPla_Evolution; API error missingtitle for HGGE",
         "image fail: hg-m01, hg-xxxg-01sr2, hg-zgmf-2000, hg-gt-9600"
       ]
     },
     "RG": {
       "fetched_pages": 1,
       "fandom_records": 43,
-      "biligame_records": 43,
+      "biligame_records": 0,
       "merged_kits": 43,
       "images_downloaded": 0,
       "images_skipped_cached": 43,
@@ -40,12 +39,14 @@
       "sub_grades": {
         "RG": 43
       },
+      "name_zh_from_biligame": 0,
+      "name_zh_from_wikipedia": 20,
       "errors": []
     },
     "MG": {
       "fetched_pages": 1,
       "fandom_records": 229,
-      "biligame_records": 0,
+      "biligame_records": 178,
       "merged_kits": 229,
       "images_downloaded": 0,
       "images_skipped_cached": 228,
@@ -54,6 +55,8 @@
         "MG": 203,
         "MG-VerKa": 26
       },
+      "name_zh_from_biligame": 176,
+      "name_zh_from_wikipedia": 17,
       "errors": [
         "image fail: mg-mwf-jg001"
       ]
@@ -61,7 +64,7 @@
     "PG": {
       "fetched_pages": 1,
       "fandom_records": 21,
-      "biligame_records": 0,
+      "biligame_records": 15,
       "merged_kits": 21,
       "images_downloaded": 0,
       "images_skipped_cached": 21,
@@ -70,6 +73,8 @@
         "PG": 19,
         "PG-Unleashed": 2
       },
+      "name_zh_from_biligame": 15,
+      "name_zh_from_wikipedia": 5,
       "errors": []
     },
     "EG": {
@@ -83,19 +88,25 @@
       "sub_grades": {
         "EG": 9
       },
+      "name_zh_from_biligame": 0,
+      "name_zh_from_wikipedia": 8,
       "errors": []
     },
     "SD": {
       "fetched_pages": 1,
-      "fandom_records": 0,
+      "fandom_records": 412,
       "biligame_records": 0,
-      "merged_kits": 0,
+      "merged_kits": 412,
       "images_downloaded": 0,
-      "images_skipped_cached": 0,
+      "images_skipped_cached": 412,
       "images_failed": 0,
-      "sub_grades": {},
+      "sub_grades": {
+        "SD": 412
+      },
+      "name_zh_from_biligame": 0,
+      "name_zh_from_wikipedia": 60,
       "errors": [
-        "[biligame SD/sd] HTTP 567 on https://wiki.biligame.com/gundam/SD%E6%A8%A1%E5%9E%8B"
+        "[biligame SD/sd] API missingtitle for SD模型; API missingtitle for BB战士; API missingtitle for SDBB模型; API missingtitle for SD高达"
       ]
     },
     "SDCS": {
@@ -109,7 +120,11 @@
       "sub_grades": {
         "SDCS": 21
       },
-      "errors": []
+      "name_zh_from_biligame": 0,
+      "name_zh_from_wikipedia": 9,
+      "errors": [
+        "[biligame SDCS/sdcs] API missingtitle for SDCS模型; API missingtitle for SDCS"
+      ]
     },
     "RE100": {
       "fetched_pages": 1,
@@ -122,8 +137,10 @@
       "sub_grades": {
         "RE100": 13
       },
+      "name_zh_from_biligame": 0,
+      "name_zh_from_wikipedia": 2,
       "errors": [
-        "[biligame RE100/re100] HTTP 567 on https://wiki.biligame.com/gundam/RE%E6%A8%A1%E5%9E%8B"
+        "[biligame RE100/re100] API missingtitle for RE模型; API missingtitle for RE/100模型; API missingtitle for RE/100"
       ]
     },
     "FM": {
@@ -137,65 +154,79 @@
       "sub_grades": {
         "FM": 4
       },
+      "name_zh_from_biligame": 0,
+      "name_zh_from_wikipedia": 0,
       "errors": [
-        "[biligame FM/fm] HTTP 567 on https://wiki.biligame.com/gundam/FM%E6%A8%A1%E5%9E%8B"
+        "[biligame FM/fm] API missingtitle for FM模型; API missingtitle for FM"
       ]
     }
   },
   "totals": {
-    "kits": 639,
-    "with_name_zh": 43,
-    "with_box_art": 634,
-    "with_mapped_work": 535
+    "kits": 1148,
+    "with_name_zh": 462,
+    "with_box_art": 1143,
+    "with_mapped_work": 813,
+    "with_price": 1143
+  },
+  "name_zh_resolution": {
+    "from_biligame": 299,
+    "from_wikipedia_zh": 163,
+    "still_missing": 686
   },
   "works": {
-    "mapped": 535,
-    "unmapped_count": 44,
+    "mapped": 813,
+    "unmapped_count": 50,
     "unmapped_list": [
-      "Advance of Zeta: The Flag of Titans",
-      "Char's Counterattack Mobile Suit Variations",
-      "Dynasty Warriors Gundam 2",
-      "Gundam Evolve",
-      "Gundam F91 Mobile Suit Variations",
-      "Gundam Sentinel",
-      "Harmony of Gundam",
-      "Mobile Suit Crossbone Gundam: Steel 7",
-      "Mobile Suit Gundam (Novel)",
-      "Mobile Suit Gundam 0080: War in the Pocket",
-      "Mobile Suit Gundam 00V: Battlefield Record",
-      "Mobile Suit Gundam Hathaway",
-      "Mobile Suit Gundam Hathaway: The Sorcery of Nymph Circe",
-      "Mobile Suit Gundam IRON-BLOODED ORPHANS",
-      "Mobile Suit Gundam MS IGLOO",
-      "Mobile Suit Gundam MS IGLOO 2: The Gravity Front",
-      "Mobile Suit Gundam SEED C.E. 73: STARGAZER",
-      "Mobile Suit Gundam SEED Destiny Astray B",
-      "Mobile Suit Gundam SEED Eclipse",
-      "Mobile Suit Gundam SEED Frame Astrays",
-      "Mobile Suit Gundam SEED Freedom Astray",
-      "Mobile Suit Gundam SEED VS Astray",
-      "Mobile Suit Gundam Side Story: Space, To the End of a Flash",
-      "Mobile Suit Gundam Twilight Axis",
-      "Mobile Suit Gundam UC: One of Seventy Two",
-      "Mobile Suit Gundam Unicorn (Novel)",
-      "Mobile Suit Gundam Unicorn - Bande Dessinee",
-      "Mobile Suit Gundam Unicorn RE:0096",
-      "Mobile Suit Gundam Wing Endless Waltz",
-      "Mobile Suit Gundam the Witch from Mercury",
-      "Mobile Suit Gundam: Battlefield Record U.C. 0081",
-      "Mobile Suit Gundam: Extreme Vs.",
-      "Mobile Suit Gundam: Gihren's Greed",
-      "Mobile Suit Gundam: Requiem for Vengeance",
-      "Mobile Suit Gundam: The One Year War",
-      "Mobile Suit Gundam: The Origin (Manga)",
-      "Mobile Suit Moon Gundam",
-      "Plamo-Kyoshiro",
-      "Regulars[]",
-      "SD Gundam G Generation",
-      "SD Gundam GX",
-      "SD Gundam: G Generation: Monoeye Gundams",
-      "UC-MSV",
-      "∀ Gundam"
+      "BB Senshi Sangokuden",
+      "BB Senshi Snibal Game",
+      "Cho SD Sengokuden Tōha Daishogun",
+      "G-Vehicle SD Daisenkan-hen",
+      "Gundam Build Divers Break",
+      "Gundam Build Fighters Amazing",
+      "Gundam Build Fighters Amazing Ready",
+      "Gundam Build Fighters Amazing Try",
+      "Gundam Build Fighters Honoo Try",
+      "Gundam Build Fighters Try Island Wars",
+      "Gundam Build Fighters: Battlogue",
+      "Gundam Build Fighters: GM's Counterattack",
+      "Gunlander Mafū no Seiken",
+      "Hobby Hobby Imaging Builders",
+      "Mobile Suit Gundam F90",
+      "Musha Retsuden Bukabuka-hen",
+      "Musha Senki Hikari no Hengen-hen",
+      "New Testament SD Gundam Gaiden: Saddrac Knight Saga",
+      "SD Command Chronicles",
+      "SD Gundam Eiyusen",
+      "SD Gundam Gaiden",
+      "SD Gundam Gaiden: Kikōshin Densetsu",
+      "SD Gundam Gaiden: Knights of the Round Table",
+      "SD Gundam Gaiden: Sieg Zeon Hen",
+      "SD Gundam Musha Bancho Fuunroku",
+      "SD Gundam Musha Generation",
+      "SD Gundam Musha Maruden",
+      "SD Gundam Musha Maruden 2",
+      "SD Gundam Musha Maruden 3",
+      "SD Gundam Sangokuden Brave Battle Warriors",
+      "SD Sangokuden",
+      "SD Sengokuden",
+      "SD Sengokuden Bushin Kourin Hen",
+      "SD Sengokuden Fūrinkazan-hen",
+      "SD Sengokuden Musha Shichinin Shuu Hen",
+      "SD Sengokuden Ten to Chi To",
+      "SD Sengokuden Ten to Chi to",
+      "SD Sengokuden Tenka Tōitsu-hen",
+      "Sangokuden Legend BB",
+      "Shin SD Gundam Gaiden: Knight Gundam Monogatari",
+      "Shin SD Gundam Gaiden: Knight Gundam Story",
+      "Shin SD Sangokuden",
+      "Shin SD Sangokuden Bujin Kira Hagane",
+      "Shin SD Sangokuden Chō Kidō Daishōgun",
+      "Shin SD Sengokuden Chijō Saikyō-hen",
+      "Shin SD Sengokuden Chou Kidou Daishogun",
+      "Shin SD Sengokuden Densetsu no Daishogun-hen",
+      "Shin SD Sengokuden Shichinin no Chōshogun",
+      "Shin SD Sengokuden Tensei Shichinin Shū",
+      "Superior Defender Gundam Force"
     ]
   },
   "overrides": {
@@ -207,23 +238,57 @@
     "errors": [],
     "warnings": []
   },
+  "orphan_images_pruned": {
+    "count": 2,
+    "size_mb": 0.29,
+    "remaining_count": 1143,
+    "remaining_size_mb": 239
+  },
   "fetch_errors": [
     {
       "grade": "HG",
-      "error": "[biligame HG/hg] HTTP 567 on https://wiki.biligame.com/gundam/HG%E6%A8%A1%E5%9E%8B"
+      "error": "[fandom HG/hg-ce] all candidates failed for hg-ce: API error missingtitle for High_Grade_Cosmic_Era; API error missingtitle for HGCE; API error missingtitle for 1/144_HG_Gundam_SEED"
+    },
+    {
+      "grade": "HG",
+      "error": "[fandom HG/hg-aw] all candidates failed for hg-aw: API error missingtitle for High_Grade_After_War; API error missingtitle for HGAW"
+    },
+    {
+      "grade": "HG",
+      "error": "[fandom HG/hg-fc] all candidates failed for hg-fc: API error missingtitle for High_Grade_Future_Century; API error missingtitle for HGFC; API error missingtitle for 1/144_HG_G_Gundam"
+    },
+    {
+      "grade": "HG",
+      "error": "[fandom HG/hg-00] all candidates failed for hg-00: API error missingtitle for High_Grade_00; API error missingtitle for HG00; API error missingtitle for 1/144_HG_Gundam_00"
+    },
+    {
+      "grade": "HG",
+      "error": "[fandom HG/hg-age] all candidates failed for hg-age: API error missingtitle for High_Grade_AGE; API error missingtitle for HGAGE"
+    },
+    {
+      "grade": "HG",
+      "error": "[fandom HG/hg-twfm] all candidates failed for hg-twfm: API error missingtitle for High_Grade_The_Witch_from_Mercury; API error missingtitle for HGTWFM; API error missingtitle for HG_The_Witch_from_Mercury"
+    },
+    {
+      "grade": "HG",
+      "error": "[fandom HG/hg-ge] all candidates failed for hg-ge: API error missingtitle for High_Grade_Gunpla_Evolution; API error missingtitle for High_Grade_GunPla_Evolution; API error missingtitle for HGGE"
     },
     {
       "grade": "SD",
-      "error": "[biligame SD/sd] HTTP 567 on https://wiki.biligame.com/gundam/SD%E6%A8%A1%E5%9E%8B"
+      "error": "[biligame SD/sd] API missingtitle for SD模型; API missingtitle for BB战士; API missingtitle for SDBB模型; API missingtitle for SD高达"
+    },
+    {
+      "grade": "SDCS",
+      "error": "[biligame SDCS/sdcs] API missingtitle for SDCS模型; API missingtitle for SDCS"
     },
     {
       "grade": "RE100",
-      "error": "[biligame RE100/re100] HTTP 567 on https://wiki.biligame.com/gundam/RE%E6%A8%A1%E5%9E%8B"
+      "error": "[biligame RE100/re100] API missingtitle for RE模型; API missingtitle for RE/100模型; API missingtitle for RE/100"
     },
     {
       "grade": "FM",
-      "error": "[biligame FM/fm] HTTP 567 on https://wiki.biligame.com/gundam/FM%E6%A8%A1%E5%9E%8B"
+      "error": "[biligame FM/fm] API missingtitle for FM模型; API missingtitle for FM"
     }
   ],
-  "biligame_unmatched_total": 0
+  "biligame_unmatched_total": 70
 }

@@ -10,6 +10,7 @@ import { fetchFandomGrade } from './fetch-fandom'
 import { getOriginalImageUrls, mergeKits } from './merge-data'
 import { parseBiligame } from './parse-biligame'
 import { parseFandom } from './parse-fandom'
+import { pruneOrphanImages } from './prune-orphans'
 import { sanityCheck } from './sanity-check'
 import { FANDOM_SOURCES } from './sources'
 import type { FandomKitRecord } from './types'
@@ -29,6 +30,8 @@ type GradeStat = {
   images_skipped_cached: number
   images_failed: number
   sub_grades: Record<string, number>
+  name_zh_from_biligame: number
+  name_zh_from_wikipedia: number
   errors: string[]
 }
 
@@ -42,6 +45,8 @@ function emptyGradeStat(): GradeStat {
     images_skipped_cached: 0,
     images_failed: 0,
     sub_grades: {},
+    name_zh_from_biligame: 0,
+    name_zh_from_wikipedia: 0,
     errors: [],
   }
 }
@@ -49,6 +54,7 @@ function emptyGradeStat(): GradeStat {
 async function ensureDirs(): Promise<void> {
   await fs.mkdir(path.resolve('data', 'raw', 'fandom'), { recursive: true })
   await fs.mkdir(path.resolve('data', 'raw', 'biligame'), { recursive: true })
+  await fs.mkdir(path.resolve('data', 'raw', 'wikipedia-zh'), { recursive: true })
   await fs.mkdir(path.resolve('data', 'reports'), { recursive: true })
   await fs.mkdir(path.resolve('public', 'images', 'kits'), { recursive: true })
 }
@@ -104,9 +110,7 @@ async function processGrade(
     }
   }
 
-  // 同 grade 多页可能产出同 series_number_normalized 的重复。
-  // 用 (source_grade_page + section_heading + series_number_normalized) 做唯一键，
-  // 否则会吞掉：(a) 不同 fandom 子页同序号 / (b) 同页不同 H2 section 同序号（PG vs PG Unleashed）
+  // 同 grade 多页 / 多 section 用 (page + section + series_number) 三元组去重
   const dedup = new Map<string, FandomKitRecord>()
   for (const r of allFandomRecords) {
     const k = `${r.source_grade_page ?? ''}::${r.section_heading ?? ''}::${r.series_number_normalized}`
@@ -114,8 +118,7 @@ async function processGrade(
   }
   const fandomRecords = Array.from(dedup.values())
 
-  // 补回真正的全局序号（同一 grade 跨子线 / 跨 section 时保证不撞 id）：
-  // 对相同 normalized 出现 >1 次的，往后缀加 -<sub-slug>，sub-slug 取 fandom 子页 slug + section
+  // 同 normalized 出现 >1 次的，往后缀加 -<sub-slug>
   const counts = new Map<string, number>()
   for (const r of fandomRecords) {
     counts.set(r.series_number_normalized, (counts.get(r.series_number_normalized) ?? 0) + 1)
@@ -132,7 +135,7 @@ async function processGrade(
     }
   }
 
-  // ── Fetch + parse Biligame（单页）
+  // ── Fetch + parse Biligame（用 wikitext API）
   const biligameFetch = await fetchBiligameGrade(grade)
   if (biligameFetch.error) stat.errors.push(biligameFetch.error)
   let biligameParse: { records: ReturnType<typeof parseBiligame>['records']; errors: string[] } = {
@@ -141,7 +144,7 @@ async function processGrade(
   }
   if (biligameFetch.result) {
     try {
-      biligameParse = parseBiligame(biligameFetch.result.html, grade)
+      biligameParse = parseBiligame(biligameFetch.result.wikitext, grade)
       stat.biligame_records = biligameParse.records.length
       stat.errors.push(...biligameParse.errors)
     } catch (err) {
@@ -149,17 +152,19 @@ async function processGrade(
     }
   }
 
-  // ── Merge
-  const fallbackUrl = FANDOM_SOURCES[grade][0]?.url ?? 'https://gundam.fandom.com'
-  const merged = mergeKits(
+  // ── Merge（async — 含 wikipedia 兜底）
+  const fallbackUrl = FANDOM_SOURCES[grade][0]?.defaultUrl ?? 'https://gundam.fandom.com'
+  const merged = await mergeKits(
     fandomRecords,
     biligameParse.records,
     grade,
     fallbackUrl,
+    { enableWikipediaFallback: true },
   )
   stat.merged_kits = merged.kits.length
+  stat.name_zh_from_biligame = merged.name_zh_from_biligame
+  stat.name_zh_from_wikipedia = merged.name_zh_from_wikipedia
 
-  // 统计 sub-grade
   for (const k of merged.kits) {
     stat.sub_grades[k.grade] = (stat.sub_grades[k.grade] ?? 0) + 1
   }
@@ -207,7 +212,6 @@ async function main() {
   for (const grade of targetGrades) {
     const fandomCount = FANDOM_SOURCES[grade].length
     if (fandomCount === 0) {
-      // sub-grade 不独立爬，跳过；统计也不记
       console.log(`[scrape] skip ${grade} (sub-grade — derived from parent)`)
       continue
     }
@@ -220,6 +224,7 @@ async function main() {
       totalUnmatchedBiligame += r.unmatchedBiligame
       console.log(
         `[scrape] ${grade} → ${r.stat.merged_kits} kits, ` +
+          `name_zh +${r.stat.name_zh_from_biligame}b/+${r.stat.name_zh_from_wikipedia}w, ` +
           `images +${r.stat.images_downloaded}/cache ${r.stat.images_skipped_cached}/fail ${r.stat.images_failed}, ` +
           `errors ${r.stat.errors.length}`,
       )
@@ -231,18 +236,15 @@ async function main() {
     }
   }
 
-  // ── apply overrides on the FULL list once
   const overrideStats = await applyOverrides(allKits)
   if (overrideStats.applied > 0) {
     console.log(`[scrape] applied ${overrideStats.applied} manual overrides`)
   }
 
-  // ── persist works.json (always full set, dedup by id)
   const works: Work[] = Array.from(
     new Map(Object.values(WORKS_SEED).map((w) => [w.id, w] as const)).values(),
   )
 
-  // ── persist kits.json: when running --grade=xxx, MERGE into existing file rather than overwriting
   let mergedAll: Kit[] = allKits
   if (onlyGrade) {
     try {
@@ -258,6 +260,14 @@ async function main() {
   await fs.writeFile(KITS_PATH, JSON.stringify(mergedAll, null, 2), 'utf-8')
   await fs.writeFile(WORKS_PATH, JSON.stringify(works, null, 2), 'utf-8')
 
+  // ── Prune orphan box-art images（默认开启，把不再属于 kits.json 的图移到 raw/orphan-images/）
+  const pruneStats = await pruneOrphanImages(mergedAll)
+  if (pruneStats.pruned_count) {
+    console.log(
+      `[scrape] pruned ${pruneStats.pruned_count} orphan images (${(pruneStats.pruned_size_bytes / 1024 / 1024).toFixed(2)} MB) → data/raw/orphan-images/`,
+    )
+  }
+
   // ── sanity check
   const sanity = sanityCheck(mergedAll, works)
 
@@ -266,7 +276,13 @@ async function main() {
     with_name_zh: mergedAll.filter((k) => !k._meta?.name_zh_missing).length,
     with_box_art: mergedAll.filter((k) => !!k.box_art_url).length,
     with_mapped_work: mergedAll.filter((k) => (k.source_works ?? []).length > 0).length,
+    with_price: mergedAll.filter((k) => k.price_jpy > 0 && !k._meta?.price_uncertain).length,
   }
+
+  // name_zh resolution rollup
+  const nameZhFromBiligame = mergedAll.filter((k) => k._meta?.name_zh_source === 'biligame').length
+  const nameZhFromWikipedia = mergedAll.filter((k) => k._meta?.name_zh_source === 'wikipedia-zh').length
+  const nameZhStillMissing = mergedAll.filter((k) => k._meta?.name_zh_source === 'fallback-en').length
 
   const duration_ms = Date.now() - t0
 
@@ -277,6 +293,11 @@ async function main() {
     only_grade: onlyGrade ?? null,
     grades: perGrade,
     totals,
+    name_zh_resolution: {
+      from_biligame: nameZhFromBiligame,
+      from_wikipedia_zh: nameZhFromWikipedia,
+      still_missing: nameZhStillMissing,
+    },
     works: {
       mapped: totals.with_mapped_work,
       unmapped_count: allUnmappedWorks.size,
@@ -287,14 +308,20 @@ async function main() {
       missing_ids: overrideStats.missing_ids,
     },
     sanity_check: sanity,
+    orphan_images_pruned: {
+      count: pruneStats.pruned_count,
+      size_mb: +(pruneStats.pruned_size_bytes / 1024 / 1024).toFixed(2),
+      remaining_count: pruneStats.remaining_count,
+      remaining_size_mb: +(pruneStats.remaining_size_bytes / 1024 / 1024).toFixed(2),
+    },
     fetch_errors: Object.entries(perGrade)
       .flatMap(([g, s]) => s.errors.map((e) => ({ grade: g, error: e })))
-      .filter((e) => /fetch|HTTP|network|timeout|ECONN/i.test(e.error)),
+      .filter((e) => /fetch|HTTP|network|timeout|ECONN|missingtitle/i.test(e.error)),
     biligame_unmatched_total: totalUnmatchedBiligame,
   }
 
   await fs.writeFile(REPORT_PATH, JSON.stringify(report, null, 2), 'utf-8')
-  console.log(`[scrape] done in ${duration_ms}ms — kits=${totals.kits} — report: ${REPORT_PATH}`)
+  console.log(`[scrape] done in ${duration_ms}ms — kits=${totals.kits} — name_zh ${nameZhFromBiligame}b/${nameZhFromWikipedia}w/${nameZhStillMissing}miss — report: ${REPORT_PATH}`)
 
   if (!sanity.passed) {
     console.error(`[scrape] sanity check FAILED with ${sanity.errors.length} error(s):`)

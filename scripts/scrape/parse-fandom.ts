@@ -12,11 +12,21 @@ function normalizeSeriesNumber(raw: string, prefix: string): string {
   return `${prefix}${parseInt(m[1], 10).toString().padStart(2, '0')}`
 }
 
-function parsePriceJpy(raw: string): number {
-  if (!raw) return 0
+function parsePriceJpy(raw: string): { jpy: number; uncertain: boolean } {
+  if (!raw) return { jpy: 0, uncertain: true }
   const cleaned = raw.replace(/[,\s]/g, '')
+  // 非 JPY 标识（RMB / USD / EUR / N/A）→ 视为不确定
+  if (/^N\/A$/i.test(cleaned)) return { jpy: 0, uncertain: true }
+  if (/(RMB|USD|EUR|GBP|HKD|TWD|KRW|￦|＄)/i.test(cleaned)) {
+    return { jpy: 0, uncertain: true }
+  }
   const m = cleaned.match(/(\d+)/)
-  return m ? parseInt(m[1], 10) : 0
+  if (!m) return { jpy: 0, uncertain: true }
+  const v = parseInt(m[1], 10)
+  // 万代 kit 价格大概率在 [200, 200000] 之间。极端低值（< 100）大概率是
+  // 误识（cache buster 数字 / 无关数字）→ 标 uncertain
+  if (v < 100) return { jpy: v, uncertain: true }
+  return { jpy: v, uncertain: false }
 }
 
 const MONTHS: Record<string, number> = {
@@ -90,6 +100,23 @@ function parseReleaseDate(raw: string): string {
   if (m) return `${m[1]}-00-00`
 
   return ''
+}
+
+// 过滤掉 "Regulars[]" / "Exclusives" / "P-Bandai" 等明显是章节标题的 work raw
+function isValidSourceWork(raw: string | undefined): raw is string {
+  if (!raw) return false
+  const trimmed = raw
+    .trim()
+    .replace(/\[\s*edit\s*\]/gi, '')
+    .replace(/\[\s*\]/g, '')
+    .replace(/[*]+/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+  if (trimmed.length < 4) return false
+  if (/^(Regulars?|Exclusives?|P-?Bandai|Premium\s*Bandai|Other|Misc|Special|Limited)$/i.test(trimmed)) {
+    return false
+  }
+  return true
 }
 
 function cleanFandomImageUrl(url: string | undefined): string | undefined {
@@ -287,7 +314,11 @@ export function parseFandom(
         // price
         const priceText =
           map.price !== undefined ? cells.eq(map.price).text() : ''
-        const price_jpy = parsePriceJpy(priceText)
+        const priceParsed = map.price !== undefined
+          ? parsePriceJpy(priceText)
+          : { jpy: 0, uncertain: true } // no price column → uncertain
+        const price_jpy = priceParsed.jpy
+        const price_uncertain = priceParsed.uncertain
 
         // release date
         const dateText =
@@ -303,8 +334,13 @@ export function parseFandom(
             ($sLink.attr('title') || $sLink.text() || $sCell.text()).trim() ||
             undefined
         }
-        if (!source_work_raw && sectionContext) {
+        // fall back to section heading only if it's a real work title, not a
+        // generic table-grouping header like "Regulars[]" / "Exclusives"
+        if (!isValidSourceWork(source_work_raw) && isValidSourceWork(sectionContext)) {
           source_work_raw = sectionContext
+        }
+        if (!isValidSourceWork(source_work_raw)) {
+          source_work_raw = undefined
         }
 
         // image — Fandom puts the box art in the same cell as the RG number.
@@ -361,6 +397,7 @@ export function parseFandom(
           name_full_text,
           scale: scale || (grade === 'PG' || grade === 'PG-Unleashed' ? '1/60' : grade === 'MG' || grade === 'MG-VerKa' || grade === 'RE100' ? '1/100' : '1/144'),
           price_jpy,
+          price_uncertain,
           release_date,
           box_art_url,
           source_work_raw,
