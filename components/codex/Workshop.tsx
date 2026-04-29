@@ -169,18 +169,21 @@ function WorkbenchZone({ tools }: { tools: ToolSubcategory[] }) {
         }}
       />
 
-      {/* Gundam silhouette anchor */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 flex items-center justify-center"
-      >
+      {/* Gundam silhouette anchor — upper half, leaving lower workbench for tools */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
         <Image
           src="/icons/rx-78-2-head.svg"
           alt="RX-78-2"
           width={120}
           height={144}
-          className="h-[50%] w-auto opacity-25"
-          style={{ color: 'var(--color-accent-cyan)' }}
+          className="absolute h-[55%] w-auto opacity-30"
+          style={{
+            left: '50%',
+            top: '38%',
+            transform: 'translate(-50%, -50%)',
+            color: 'var(--color-accent-cyan)',
+            filter: 'brightness(1.5)',
+          }}
         />
       </div>
 
@@ -264,26 +267,37 @@ function ToolMarker({ tool }: { tool: ToolSubcategory }) {
     <Link
       href={`/toolbox/${tool.id}`}
       title={tool.name_zh}
-      className="group absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1 transition-transform hover:scale-110"
+      className="group absolute"
       style={{
         left: `${tool.workshop_position.x}%`,
         top: `${tool.workshop_position.y}%`,
+        width: '120px',
+        height: '110px',
+        transform: 'translate(-50%, -50%)',
       }}
     >
-      <ToolIcon id={tool.icon} lit={lit} size={72} />
+      {/* Fixed bounding box — visible only on hover for collision debugging */}
       <span
-        className={cn(
-          'max-w-[120px] truncate whitespace-nowrap font-mono text-sm transition-colors',
-          lit
-            ? 'text-[var(--color-text-primary)]'
-            : 'text-[var(--color-text-muted)] group-hover:text-[var(--color-text-secondary)]',
-        )}
-        style={{
-          textShadow:
-            '0 0 4px var(--color-bg-paper), 0 0 4px var(--color-bg-paper), 0 0 4px var(--color-bg-paper)',
-        }}
-      >
-        {tool.name_zh}
+        aria-hidden
+        className="absolute inset-0 border border-transparent transition-colors group-hover:border-[var(--color-accent-cyan)]/30"
+      />
+
+      <span className="relative flex h-full w-full flex-col items-center justify-center gap-1 px-1 transition-transform group-hover:scale-105">
+        <ToolIcon id={tool.icon} lit={lit} size={72} />
+        <span
+          className={cn(
+            'max-w-full truncate text-center font-mono text-sm transition-colors',
+            lit
+              ? 'text-[var(--color-text-primary)]'
+              : 'text-[var(--color-text-muted)] group-hover:text-[var(--color-text-secondary)]',
+          )}
+          style={{
+            textShadow:
+              '0 0 4px var(--color-bg-paper), 0 0 4px var(--color-bg-paper), 0 0 4px var(--color-bg-paper)',
+          }}
+        >
+          {tool.name_zh}
+        </span>
       </span>
     </Link>
   )

@@ -241,8 +241,8 @@
       ],
       "workshop_zone": "workbench",
       "workshop_position": {
-        "x": 38,
-        "y": 85
+        "x": 50,
+        "y": 88
       },
       "icon": "file",
       "popular_products": []
@@ -265,8 +265,8 @@
       ],
       "workshop_zone": "workbench",
       "workshop_position": {
-        "x": 62,
-        "y": 85
+        "x": 75,
+        "y": 88
       },
       "icon": "polishing",
       "popular_products": []
@@ -300,8 +300,8 @@
       ],
       "workshop_zone": "workbench",
       "workshop_position": {
-        "x": 12,
-        "y": 45
+        "x": 62,
+        "y": 14
       },
       "icon": "paintbrush",
       "popular_products": []
@@ -714,8 +714,8 @@
       ],
       "workshop_zone": "workbench",
       "workshop_position": {
-        "x": 50,
-        "y": 15
+        "x": 38,
+        "y": 14
       },
       "icon": "clip-stick",
       "popular_products": []
@@ -741,8 +741,8 @@
       ],
       "workshop_zone": "workbench",
       "workshop_position": {
-        "x": 88,
-        "y": 45
+        "x": 12,
+        "y": 55
       },
       "icon": "palette",
       "popular_products": []
@@ -764,8 +764,8 @@
       ],
       "workshop_zone": "workbench",
       "workshop_position": {
-        "x": 82,
-        "y": 85
+        "x": 88,
+        "y": 55
       },
       "icon": "disc",
       "popular_products": []
@@ -858,8 +858,8 @@
       ],
       "workshop_zone": "workbench",
       "workshop_position": {
-        "x": 20,
-        "y": 15
+        "x": 18,
+        "y": 14
       },
       "icon": "square",
       "popular_products": []
@@ -915,8 +915,8 @@
       ],
       "workshop_zone": "workbench",
       "workshop_position": {
-        "x": 80,
-        "y": 15
+        "x": 82,
+        "y": 14
       },
       "icon": "lamp",
       "popular_products": []
@@ -968,8 +968,8 @@
       ],
       "workshop_zone": "workbench",
       "workshop_position": {
-        "x": 18,
-        "y": 85
+        "x": 25,
+        "y": 88
       },
       "icon": "wind",
       "popular_products": []
