@@ -1,4 +1,4 @@
-import { getAllKits } from '@/lib/data'
+import { getAllKits, getFeaturedKits } from '@/lib/data'
 import { HangarBrowser } from '@/components/hangar/HangarBrowser'
 
 export const metadata = {
@@ -7,6 +7,9 @@ export const metadata = {
 }
 
 export default async function HangarPage() {
-  const kits = await getAllKits()
-  return <HangarBrowser kits={kits} />
+  const [kits, featured] = await Promise.all([
+    getAllKits(),
+    getFeaturedKits(),
+  ])
+  return <HangarBrowser allKits={kits} featuredItems={featured} />
 }

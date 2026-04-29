@@ -53,7 +53,9 @@ export default async function RootLayout({
       >
         <NuqsAdapter>
           <TopNav kitTotal={kits.length} />
-          <main className="min-h-[calc(100dvh-7rem)]">{children}</main>
+          <main className="min-h-[calc(100dvh-7rem)] overflow-x-hidden">
+            {children}
+          </main>
           <Footer />
         </NuqsAdapter>
       </body>

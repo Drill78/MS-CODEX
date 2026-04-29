@@ -1,1 +1,26 @@
-{}
+{
+  "mg-gn-001": {
+    "name_zh": "能天使高达",
+    "name_en": "GN-001 Gundam Exia"
+  },
+  "mg-rx-78-2-3": {
+    "name_zh": "RX-78-2 高达 Ver.3.0",
+    "name_en": "RX-78-2 Gundam Ver.3.0"
+  },
+  "mg-verka-msn-04-ver-ka": {
+    "name_zh": "沙扎比 Ver.Ka",
+    "name_en": "MSN-04 Sazabi Ver.Ka"
+  },
+  "mg-verka-rx-93-ver-ka": {
+    "name_zh": "ν 高达 Ver.Ka",
+    "name_en": "RX-93 ν Gundam Ver.Ka"
+  },
+  "mg-f91": {
+    "name_zh": "F91 高达",
+    "name_en": "F91 Gundam F91"
+  },
+  "hg-rx-78": {
+    "name_zh": "RX-78-2 元祖高达 GTO",
+    "name_en": "RX-78-2 Gundam (Gundam The Origin Ver.)"
+  }
+}

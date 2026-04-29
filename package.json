@@ -11,7 +11,8 @@
     "format": "prettier --write .",
     "scrape": "tsx scripts/scrape/build.ts",
     "scrape:refresh": "tsx scripts/scrape/build.ts --refresh",
-    "optimize-images": "tsx scripts/optimize-images.ts"
+    "optimize-images": "tsx scripts/optimize-images.ts",
+    "build-featured": "tsx scripts/build-featured.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",

@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "kit_id": "eg-rx-78-2",
+      "reason": "新手首选",
+      "category": "beginner"
+    },
+    {
+      "kit_id": "hg-rx-78",
+      "reason": "HG 入门标杆",
+      "category": "beginner"
+    },
+    {
+      "kit_id": "hg-asw-g-08a",
+      "reason": "铁血主角",
+      "category": "beginner"
+    },
+    {
+      "kit_id": "rg-rx-78-2",
+      "reason": "RG 入坑",
+      "category": "classic"
+    },
+    {
+      "kit_id": "rg-msn-04",
+      "reason": "18 年最佳",
+      "category": "masterpiece"
+    },
+    {
+      "kit_id": "rg-rx-93",
+      "reason": "19 年最佳",
+      "category": "masterpiece"
+    },
+    {
+      "kit_id": "rg-msn-06s",
+      "reason": "UC 经典",
+      "category": "classic"
+    },
+    {
+      "kit_id": "rg-rx-0",
+      "reason": "可爆甲变形",
+      "category": "classic"
+    },
+    {
+      "kit_id": "rg-msz-006",
+      "reason": "可变形经典",
+      "category": "classic"
+    },
+    {
+      "kit_id": "rg-zgmf-x10a",
+      "reason": "SEED 主角",
+      "category": "classic"
+    },
+    {
+      "kit_id": "rg-zgmf-x20a",
+      "reason": "SEED 升级版",
+      "category": "classic"
+    },
+    {
+      "kit_id": "mg-rx-78-2-3",
+      "reason": "MG 标杆",
+      "category": "masterpiece"
+    },
+    {
+      "kit_id": "mg-rx-78-ver-2-0",
+      "reason": "平价 MG 元祖",
+      "category": "classic"
+    },
+    {
+      "kit_id": "mg-verka-msn-04-ver-ka",
+      "reason": "MG 巅峰",
+      "category": "masterpiece"
+    },
+    {
+      "kit_id": "mg-verka-rx-93-ver-ka",
+      "reason": "与卡沙 CP",
+      "category": "masterpiece"
+    },
+    {
+      "kit_id": "mg-verka-xxxg-00w0-ver-ka",
+      "reason": "Wing 经典",
+      "category": "masterpiece"
+    },
+    {
+      "kit_id": "mg-ms-06s-ver-2-0",
+      "reason": "经典扎古",
+      "category": "classic"
+    },
+    {
+      "kit_id": "mg-asw-g-08",
+      "reason": "铁血 MG",
+      "category": "classic"
+    },
+    {
+      "kit_id": "mg-gn-001",
+      "reason": "00 主角",
+      "category": "classic"
+    },
+    {
+      "kit_id": "mg-f91",
+      "reason": "2024 新作良品",
+      "category": "newcomer"
+    },
+    {
+      "kit_id": "mg-verka-rx-0unicorn-ver-ka",
+      "reason": "卡版独角兽",
+      "category": "masterpiece"
+    },
+    {
+      "kit_id": "pg-unleashed-rx-78-2-unleashed",
+      "reason": "PG-U 元祖",
+      "category": "endgame"
+    },
+    {
+      "kit_id": "re100-msn-04ii",
+      "reason": "RE/100 代表",
+      "category": "masterpiece"
+    }
+  ]
+}

@@ -1,7 +1,6 @@
 'use client'
 
-import { useMemo } from 'react'
-import { useRouter } from 'next/navigation'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { parseAsArrayOf, parseAsString, useQueryStates } from 'nuqs'
 import {
   BlueprintFrame,
@@ -11,11 +10,32 @@ import {
 } from '@/components/atoms'
 import { GRADE_LABELS } from '@/lib/constants/grades'
 import { ERA_LABELS } from '@/lib/constants/works'
-import { GRADE_DISPLAY_ORDER } from '@/lib/utils/kit'
+import { GRADE_DISPLAY_ORDER, kitSortKey } from '@/lib/utils/kit'
 import { useUserStore, useHydrated } from '@/lib/store/user-state'
 import type { Kit } from '@/lib/types/kit'
 import type { Era } from '@/lib/types/work'
 import type { KitStatus } from '@/lib/types/user-state'
+import type { FeaturedItem } from '@/lib/data'
+import { HeroRail } from './HeroRail'
+
+type SortKey =
+  | 'series'
+  | 'release-asc'
+  | 'release-desc'
+  | 'price-asc'
+  | 'price-desc'
+
+const SORT_LABELS: Record<SortKey, string> = {
+  series: '默认 / 序号',
+  'release-desc': '发售日 ↓ 新',
+  'release-asc': '发售日 ↑ 旧',
+  'price-asc': '价格 ↑ 低',
+  'price-desc': '价格 ↓ 高',
+}
+
+const SORT_KEYS = Object.keys(SORT_LABELS) as SortKey[]
+
+const PAGE_SIZE = 100
 
 type Filters = {
   grade: string[]
@@ -24,6 +44,7 @@ type Filters = {
   status: string[]
   search: string
   showPBandai: string
+  sort: string
 }
 
 const FILTER_PARSERS = {
@@ -33,6 +54,7 @@ const FILTER_PARSERS = {
   status: parseAsArrayOf(parseAsString).withDefault([]),
   search: parseAsString.withDefault(''),
   showPBandai: parseAsString.withDefault('hide'),
+  sort: parseAsString.withDefault('series'),
 }
 
 const STATUS_OPTIONS: Array<{ value: KitStatus; label: string }> = [
@@ -43,8 +65,13 @@ const STATUS_OPTIONS: Array<{ value: KitStatus; label: string }> = [
   { value: 'painted', label: '已涂装' },
 ]
 
-export function HangarBrowser({ kits }: { kits: Kit[] }) {
-  const router = useRouter()
+export function HangarBrowser({
+  allKits,
+  featuredItems,
+}: {
+  allKits: Kit[]
+  featuredItems: FeaturedItem[]
+}) {
   const hydrated = useHydrated()
   const userKits = useUserStore((s) => s.kits)
 
@@ -53,13 +80,53 @@ export function HangarBrowser({ kits }: { kits: Kit[] }) {
     history: 'replace',
   })
 
-  const filtered = useMemo(() => {
-    return applyFilters(kits, filters as Filters, hydrated ? userKits : {})
-  }, [kits, filters, userKits, hydrated])
+  const sortKey = (
+    SORT_KEYS.includes(filters.sort as SortKey) ? filters.sort : 'series'
+  ) as SortKey
+
+  const filteredKits = useMemo(() => {
+    const filtered = applyFilters(
+      allKits,
+      filters as Filters,
+      hydrated ? userKits : {},
+    )
+    return sortKits(filtered, sortKey)
+  }, [allKits, filters, userKits, hydrated, sortKey])
 
   const filterGroups = useMemo<FilterGroup[]>(() => {
-    return buildFilterGroups(kits, filters as Filters)
-  }, [kits, filters])
+    return buildFilterGroups(allKits, filters as Filters)
+  }, [allKits, filters])
+
+  const kitsById = useMemo(() => {
+    const m = new Map<string, Kit>()
+    for (const k of allKits) m.set(k.id, k)
+    return m
+  }, [allKits])
+
+  // Infinite scroll
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
+  const sentinelRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE)
+  }, [filters])
+
+  useEffect(() => {
+    const sentinel = sentinelRef.current
+    if (!sentinel) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setVisibleCount((c) => Math.min(c + PAGE_SIZE, filteredKits.length))
+        }
+      },
+      { rootMargin: '400px' },
+    )
+    observer.observe(sentinel)
+    return () => observer.disconnect()
+  }, [filteredKits.length])
+
+  const visibleKits = filteredKits.slice(0, visibleCount)
 
   const handleFilterChange = (groupId: string, selected: string[]) => {
     setFilters({ [groupId]: selected.length ? selected : null })
@@ -73,12 +140,20 @@ export function HangarBrowser({ kits }: { kits: Kit[] }) {
       status: null,
       search: null,
       showPBandai: null,
+      sort: null,
     })
 
   const showPBandai = filters.showPBandai === 'show'
 
+  const showHero =
+    !filters.search &&
+    filters.grade.length === 0 &&
+    filters.era.length === 0 &&
+    filters.work.length === 0 &&
+    filters.status.length === 0
+
   return (
-    <div className="container mx-auto px-6 py-10">
+    <div className="container mx-auto min-w-0 max-w-full px-6 py-10">
       <header className="mb-8 flex items-end justify-between">
         <div>
           <h1
@@ -93,14 +168,14 @@ export function HangarBrowser({ kits }: { kits: Kit[] }) {
         </div>
         <div className="font-mono tabular-nums text-sm text-[var(--color-text-secondary)]">
           <span className="text-[var(--color-accent-cyan)]">
-            {filtered.length}
+            {filteredKits.length}
           </span>
           <span className="mx-1">/</span>
-          <span>{kits.length}</span>
+          <span>{allKits.length}</span>
         </div>
       </header>
 
-      <div className="grid gap-6 lg:grid-cols-[240px_1fr]">
+      <div className="grid gap-6 lg:grid-cols-[240px_minmax(0,1fr)]">
         <aside className="space-y-4">
           <input
             type="search"
@@ -152,7 +227,41 @@ export function HangarBrowser({ kits }: { kits: Kit[] }) {
         </aside>
 
         <section>
-          {filtered.length === 0 ? (
+          {showHero && (
+            <HeroRail items={featuredItems} kitsById={kitsById} />
+          )}
+
+          <div className="mb-4 flex items-center justify-between">
+            <p className="font-mono text-xs uppercase tracking-widest text-[var(--color-text-muted)]">
+              全部机体 · {filteredKits.length} / {allKits.length}
+            </p>
+            <label className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--color-text-muted)]">
+              <span>排序</span>
+              <select
+                value={sortKey}
+                onChange={(e) =>
+                  setFilters({
+                    sort: e.target.value === 'series' ? null : e.target.value,
+                  })
+                }
+                className="border bg-transparent px-2 py-1 font-mono text-xs uppercase tracking-widest focus:outline-none"
+                style={{
+                  borderColor:
+                    'color-mix(in srgb, var(--color-text-muted) 30%, transparent)',
+                  color: 'var(--color-text-primary)',
+                  background: 'var(--color-bg-deep)',
+                }}
+              >
+                {SORT_KEYS.map((k) => (
+                  <option key={k} value={k}>
+                    {SORT_LABELS[k]}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+
+          {filteredKits.length === 0 ? (
             <BlueprintFrame className="p-10">
               <div className="flex flex-col items-center justify-center gap-4 py-10 text-center">
                 <p className="font-mono text-sm uppercase tracking-widest text-[var(--color-text-muted)]">
@@ -172,19 +281,35 @@ export function HangarBrowser({ kits }: { kits: Kit[] }) {
               </div>
             </BlueprintFrame>
           ) : (
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-              {filtered.map((kit) => {
-                const owned = hydrated ? userKits[kit.id] : undefined
-                return (
-                  <KitCard
-                    key={kit.id}
-                    kit={kit}
-                    status={owned?.status ?? 'untracked'}
-                    onClick={() => router.push(`/hangar/${kit.id}`)}
-                  />
-                )
-              })}
-            </div>
+            <>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {visibleKits.map((kit) => {
+                  const owned = hydrated ? userKits[kit.id] : undefined
+                  return (
+                    <KitCard
+                      key={kit.id}
+                      kit={kit}
+                      status={owned?.status ?? 'untracked'}
+                    />
+                  )
+                })}
+              </div>
+              {visibleCount < filteredKits.length && (
+                <div
+                  ref={sentinelRef}
+                  className="col-span-full flex items-center justify-center py-12"
+                >
+                  <p className="font-mono text-xs uppercase tracking-wider text-[var(--color-text-muted)]">
+                    LOADING MORE // {visibleCount} / {filteredKits.length}
+                  </p>
+                </div>
+              )}
+              {visibleCount >= filteredKits.length && filteredKits.length > 0 && (
+                <div className="py-8 text-center font-mono text-xs uppercase tracking-wider text-[var(--color-text-muted)]">
+                  {`// END OF DATABASE · ${filteredKits.length} units`}
+                </div>
+              )}
+            </>
           )}
         </section>
       </div>
@@ -227,6 +352,33 @@ function applyFilters(
     }
     return true
   })
+}
+
+function sortKits(kits: Kit[], sortKey: SortKey): Kit[] {
+  const sorted = [...kits]
+  switch (sortKey) {
+    case 'series':
+      return sorted.sort((a, b) => {
+        const ga = GRADE_DISPLAY_ORDER.indexOf(a.grade)
+        const gb = GRADE_DISPLAY_ORDER.indexOf(b.grade)
+        if (ga !== gb) return ga - gb
+        return kitSortKey(a) - kitSortKey(b)
+      })
+    case 'release-desc':
+      return sorted.sort((a, b) =>
+        (b.release_date ?? '').localeCompare(a.release_date ?? ''),
+      )
+    case 'release-asc':
+      return sorted.sort((a, b) =>
+        (a.release_date ?? '').localeCompare(b.release_date ?? ''),
+      )
+    case 'price-asc':
+      return sorted.sort(
+        (a, b) => (a.price_jpy || 99999999) - (b.price_jpy || 99999999),
+      )
+    case 'price-desc':
+      return sorted.sort((a, b) => (b.price_jpy || 0) - (a.price_jpy || 0))
+  }
 }
 
 function buildFilterGroups(kits: Kit[], filters: Filters): FilterGroup[] {

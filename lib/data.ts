@@ -6,8 +6,15 @@ import path from 'node:path'
 import type { Kit } from '@/lib/types/kit'
 import type { Work } from '@/lib/types/work'
 
+export type FeaturedItem = {
+  kit_id: string
+  reason: string
+  category: string
+}
+
 let kitsCache: Kit[] | null = null
 let worksCache: Work[] | null = null
+let featuredCache: FeaturedItem[] | null = null
 
 export async function getAllKits(): Promise<Kit[]> {
   if (kitsCache) return kitsCache
@@ -33,4 +40,13 @@ export async function getAllWorks(): Promise<Work[]> {
 export async function getKitsByGrade(grade: string): Promise<Kit[]> {
   const all = await getAllKits()
   return all.filter((k) => k.grade === grade)
+}
+
+export async function getFeaturedKits(): Promise<FeaturedItem[]> {
+  if (featuredCache) return featuredCache
+  const filePath = path.join(process.cwd(), 'data', 'featured-kits.json')
+  const raw = await fs.readFile(filePath, 'utf-8')
+  const parsed = JSON.parse(raw) as { version: number; items: FeaturedItem[] }
+  featuredCache = parsed.items
+  return featuredCache
 }
