@@ -12,11 +12,13 @@
     "scrape": "tsx scripts/scrape/build.ts",
     "scrape:refresh": "tsx scripts/scrape/build.ts --refresh",
     "optimize-images": "tsx scripts/optimize-images.ts",
-    "build-featured": "tsx scripts/build-featured.ts"
+    "build-featured": "tsx scripts/build-featured.ts",
+    "build-tool-subcategories": "tsx scripts/build-tool-subcategories.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",
     "framer-motion": "^11.15.0",
+    "lucide-react": "^1.14.0",
     "next": "^15.1.6",
     "nuqs": "^2.2.3",
     "react": "^19.0.0",

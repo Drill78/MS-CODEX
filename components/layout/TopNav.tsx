@@ -7,23 +7,33 @@ import { useHydrated, useUserStore } from '@/lib/store/user-state'
 type NavLink = {
   href: string
   label: string
-  badge?: 'kit-total' | 'my-count'
+  badge?: 'kit-total' | 'my-count' | 'tool-count'
 }
 
 const NAV_LINKS: NavLink[] = [
-  { href: '/toolbox', label: 'TOOLBOX' },
+  { href: '/toolbox', label: 'TOOLBOX', badge: 'tool-count' },
   { href: '/hangar', label: 'HANGAR', badge: 'kit-total' },
   { href: '/codex', label: 'CODEX', badge: 'my-count' },
   { href: '/loadouts', label: 'LOADOUTS' },
   { href: '/about', label: 'ABOUT' },
 ]
 
-export function TopNav({ kitTotal }: { kitTotal?: number }) {
+export function TopNav({
+  kitTotal,
+  toolTotal,
+}: {
+  kitTotal?: number
+  toolTotal?: number
+}) {
   const pathname = usePathname()
   const hydrated = useHydrated()
   const userKits = useUserStore((s) => s.kits)
+  const userTools = useUserStore((s) => s.tools)
   const myCount = hydrated
     ? Object.values(userKits).filter((v) => v.status !== 'wishlist').length
+    : 0
+  const ownedTools = hydrated
+    ? Object.values(userTools).filter((v) => v.owned).length
     : 0
 
   return (
@@ -59,7 +69,11 @@ export function TopNav({ kitTotal }: { kitTotal?: number }) {
                   ? hydrated
                     ? myCount
                     : null
-                  : null
+                  : link.badge === 'tool-count'
+                    ? hydrated
+                      ? `${ownedTools}/${toolTotal ?? 0}`
+                      : null
+                    : null
 
             return (
               <Link
@@ -78,7 +92,11 @@ export function TopNav({ kitTotal }: { kitTotal?: number }) {
                     className="font-mono text-[10px] tabular-nums"
                     style={{ color: 'var(--color-text-muted)' }}
                   >
-                    {link.badge === 'my-count' ? `我:${badgeValue}` : badgeValue}
+                    {link.badge === 'my-count'
+                      ? `我:${badgeValue}`
+                      : link.badge === 'tool-count'
+                        ? `${badgeValue}`
+                        : badgeValue}
                   </span>
                 )}
               </Link>

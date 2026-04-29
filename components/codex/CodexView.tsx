@@ -12,6 +12,8 @@ import { GRADE_DISPLAY_ORDER, groupKitsByGrade } from '@/lib/utils/kit'
 import { useHydrated, useUserStore } from '@/lib/store/user-state'
 import type { Kit, Grade } from '@/lib/types/kit'
 import type { KitStatus } from '@/lib/types/user-state'
+import type { ToolSubcategory } from '@/lib/types/tool-subcategory'
+import { Workshop } from './Workshop'
 
 const STATUS_GROUPS: Array<{
   status: KitStatus
@@ -53,7 +55,13 @@ const STATUS_GROUPS: Array<{
 
 const FULL_PAGE_SIZE = 200
 
-export function CodexView({ allKits }: { allKits: Kit[] }) {
+export function CodexView({
+  allKits,
+  toolSubcategories,
+}: {
+  allKits: Kit[]
+  toolSubcategories: ToolSubcategory[]
+}) {
   const hydrated = useHydrated()
   const userKits = useUserStore((s) => s.kits)
   const [showFullCodex, setShowFullCodex] = useState(false)
@@ -102,14 +110,7 @@ export function CodexView({ allKits }: { allKits: Kit[] }) {
         </p>
       </header>
 
-      <BlueprintFrame variant="cyan" className="p-6">
-        <h2 className="font-mono text-sm uppercase tracking-widest text-[var(--color-text-secondary)]">
-          {'// 工具墙'}
-        </h2>
-        <p className="mt-3 text-sm text-[var(--color-text-secondary)]">
-          工具数据库即将上线 —— 你拥有的工具会在这里以拼装情景墙的形式展开。
-        </p>
-      </BlueprintFrame>
+      <Workshop subcategories={toolSubcategories} />
 
       {/* 我的标注 */}
       <section className="mt-12">

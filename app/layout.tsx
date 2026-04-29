@@ -3,7 +3,7 @@ import { Geist, Geist_Mono, VT323 } from 'next/font/google'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import { TopNav } from '@/components/layout/TopNav'
 import { Footer } from '@/components/layout/Footer'
-import { getAllKits } from '@/lib/data'
+import { getAllKits, getAllToolSubcategories } from '@/lib/data'
 import './globals.css'
 
 const geistSans = Geist({
@@ -32,7 +32,10 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const kits = await getAllKits()
+  const [kits, tools] = await Promise.all([
+    getAllKits(),
+    getAllToolSubcategories(),
+  ])
   return (
     <html lang="zh-CN">
       <body
@@ -52,7 +55,7 @@ export default async function RootLayout({
         }
       >
         <NuqsAdapter>
-          <TopNav kitTotal={kits.length} />
+          <TopNav kitTotal={kits.length} toolTotal={tools.length} />
           <main className="min-h-[calc(100dvh-7rem)] overflow-x-hidden">
             {children}
           </main>

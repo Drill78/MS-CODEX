@@ -5,6 +5,7 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import type { Kit } from '@/lib/types/kit'
 import type { Work } from '@/lib/types/work'
+import type { ToolSubcategory } from '@/lib/types/tool-subcategory'
 
 export type FeaturedItem = {
   kit_id: string
@@ -15,6 +16,7 @@ export type FeaturedItem = {
 let kitsCache: Kit[] | null = null
 let worksCache: Work[] | null = null
 let featuredCache: FeaturedItem[] | null = null
+let toolSubcategoriesCache: ToolSubcategory[] | null = null
 
 export async function getAllKits(): Promise<Kit[]> {
   if (kitsCache) return kitsCache
@@ -49,4 +51,23 @@ export async function getFeaturedKits(): Promise<FeaturedItem[]> {
   const parsed = JSON.parse(raw) as { version: number; items: FeaturedItem[] }
   featuredCache = parsed.items
   return featuredCache
+}
+
+export async function getAllToolSubcategories(): Promise<ToolSubcategory[]> {
+  if (toolSubcategoriesCache) return toolSubcategoriesCache
+  const filePath = path.join(process.cwd(), 'data', 'tool-subcategories.json')
+  const raw = await fs.readFile(filePath, 'utf-8')
+  const parsed = JSON.parse(raw) as {
+    version: number
+    items: ToolSubcategory[]
+  }
+  toolSubcategoriesCache = parsed.items
+  return toolSubcategoriesCache
+}
+
+export async function getToolSubcategoryById(
+  id: string,
+): Promise<ToolSubcategory | undefined> {
+  const all = await getAllToolSubcategories()
+  return all.find((t) => t.id === id)
 }

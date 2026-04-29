@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200" fill="currentColor" aria-hidden="true">
+  <!-- 简化 RX-78-2 直立剪影：头 + V 字天线 + 躯干 + 双臂 + 双腿 -->
+  <!-- 头部 + V 字天线 -->
+  <path d="M40 8 L42 18 L40 18 Z" />
+  <path d="M60 8 L58 18 L60 18 Z" />
+  <rect x="38" y="14" width="24" height="14" rx="2" />
+  <!-- 颈部 -->
+  <rect x="44" y="28" width="12" height="4" />
+  <!-- 躯干 -->
+  <path d="M30 32 L70 32 L72 64 L66 70 L34 70 L28 64 Z" />
+  <!-- 腰部 -->
+  <rect x="36" y="70" width="28" height="8" />
+  <!-- 双肩 -->
+  <path d="M22 36 L30 32 L30 50 L22 56 Z" />
+  <path d="M78 36 L70 32 L70 50 L78 56 Z" />
+  <!-- 双臂上段 -->
+  <path d="M22 56 L26 92 L18 92 L14 58 Z" />
+  <path d="M78 56 L74 92 L82 92 L86 58 Z" />
+  <!-- 双臂手部 -->
+  <rect x="14" y="92" width="12" height="14" rx="1" />
+  <rect x="74" y="92" width="12" height="14" rx="1" />
+  <!-- 双腿 大腿 -->
+  <path d="M36 78 L34 120 L46 120 L46 78 Z" />
+  <path d="M64 78 L66 120 L54 120 L54 78 Z" />
+  <!-- 膝关节 -->
+  <rect x="34" y="120" width="14" height="6" />
+  <rect x="52" y="120" width="14" height="6" />
+  <!-- 小腿 -->
+  <path d="M34 126 L32 170 L46 170 L46 126 Z" />
+  <path d="M66 126 L68 170 L54 170 L54 126 Z" />
+  <!-- 脚 -->
+  <path d="M28 170 L48 170 L48 184 L26 186 Z" />
+  <path d="M72 170 L52 170 L52 184 L74 186 Z" />
+  <!-- 胸口核心圆 -->
+  <circle cx="50" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="1" />
+</svg>
