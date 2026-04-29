@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "count": 32,
+  "count": 35,
   "items": [
     {
       "id": "single-blade-nipper",
@@ -32,8 +32,8 @@
       ],
       "workshop_zone": "pegboard",
       "workshop_position": {
-        "x": 12,
-        "y": 25
+        "x": 62,
+        "y": 20
       },
       "icon": "nipper-single",
       "popular_products": []
@@ -60,8 +60,8 @@
       ],
       "workshop_zone": "pegboard",
       "workshop_position": {
-        "x": 24,
-        "y": 25
+        "x": 12,
+        "y": 42
       },
       "icon": "nipper-double",
       "popular_products": []
@@ -96,8 +96,8 @@
       ],
       "workshop_zone": "pegboard",
       "workshop_position": {
-        "x": 36,
-        "y": 25
+        "x": 38,
+        "y": 20
       },
       "icon": "knife",
       "popular_products": []
@@ -121,8 +121,8 @@
       ],
       "workshop_zone": "pegboard",
       "workshop_position": {
-        "x": 48,
-        "y": 25
+        "x": 76,
+        "y": 86
       },
       "icon": "nipper-sprue",
       "popular_products": []
@@ -151,8 +151,8 @@
       ],
       "workshop_zone": "pegboard",
       "workshop_position": {
-        "x": 60,
-        "y": 25
+        "x": 12,
+        "y": 64
       },
       "icon": "sandstick",
       "popular_products": []
@@ -187,8 +187,8 @@
       ],
       "workshop_zone": "pegboard",
       "workshop_position": {
-        "x": 72,
-        "y": 25
+        "x": 38,
+        "y": 64
       },
       "icon": "sandstick",
       "popular_products": []
@@ -213,8 +213,8 @@
       ],
       "workshop_zone": "pegboard",
       "workshop_position": {
-        "x": 84,
-        "y": 25
+        "x": 50,
+        "y": 86
       },
       "icon": "sandstick",
       "popular_products": []
@@ -241,8 +241,8 @@
       ],
       "workshop_zone": "workbench",
       "workshop_position": {
-        "x": 22,
-        "y": 35
+        "x": 38,
+        "y": 85
       },
       "icon": "file",
       "popular_products": []
@@ -265,8 +265,8 @@
       ],
       "workshop_zone": "workbench",
       "workshop_position": {
-        "x": 32,
-        "y": 35
+        "x": 62,
+        "y": 85
       },
       "icon": "polishing",
       "popular_products": []
@@ -300,8 +300,8 @@
       ],
       "workshop_zone": "workbench",
       "workshop_position": {
-        "x": 42,
-        "y": 35
+        "x": 12,
+        "y": 45
       },
       "icon": "paintbrush",
       "popular_products": []
@@ -335,7 +335,7 @@
       ],
       "workshop_zone": "cabinet-left",
       "workshop_position": {
-        "x": 8,
+        "x": 50,
         "y": 50
       },
       "icon": "palette",
@@ -365,8 +365,8 @@
       ],
       "workshop_zone": "cabinet-right",
       "workshop_position": {
-        "x": 92,
-        "y": 22
+        "x": 50,
+        "y": 50
       },
       "icon": "airbrush",
       "popular_products": []
@@ -395,8 +395,8 @@
       ],
       "workshop_zone": "cabinet-right",
       "workshop_position": {
-        "x": 92,
-        "y": 55
+        "x": 50,
+        "y": 50
       },
       "icon": "compressor",
       "popular_products": []
@@ -425,8 +425,8 @@
       ],
       "workshop_zone": "cabinet-left",
       "workshop_position": {
-        "x": 8,
-        "y": 22
+        "x": 50,
+        "y": 50
       },
       "icon": "spray-booth",
       "popular_products": []
@@ -455,8 +455,8 @@
       ],
       "workshop_zone": "cabinet-left",
       "workshop_position": {
-        "x": 8,
-        "y": 75
+        "x": 50,
+        "y": 50
       },
       "icon": "spray-can",
       "popular_products": []
@@ -484,8 +484,8 @@
       ],
       "workshop_zone": "cabinet-left",
       "workshop_position": {
-        "x": 8,
-        "y": 88
+        "x": 50,
+        "y": 50
       },
       "icon": "spray-can",
       "popular_products": []
@@ -520,8 +520,8 @@
       ],
       "workshop_zone": "pegboard",
       "workshop_position": {
-        "x": 12,
-        "y": 50
+        "x": 38,
+        "y": 42
       },
       "icon": "pen-line",
       "popular_products": []
@@ -554,8 +554,8 @@
       ],
       "workshop_zone": "pegboard",
       "workshop_position": {
-        "x": 24,
-        "y": 50
+        "x": 62,
+        "y": 42
       },
       "icon": "pen-line",
       "popular_products": []
@@ -589,8 +589,8 @@
       ],
       "workshop_zone": "pegboard",
       "workshop_position": {
-        "x": 36,
-        "y": 50
+        "x": 12,
+        "y": 20
       },
       "icon": "sticker",
       "popular_products": []
@@ -625,8 +625,8 @@
       ],
       "workshop_zone": "cabinet-left",
       "workshop_position": {
-        "x": 8,
-        "y": 35
+        "x": 50,
+        "y": 50
       },
       "icon": "spray-can",
       "popular_products": []
@@ -651,8 +651,8 @@
       ],
       "workshop_zone": "cabinet-left",
       "workshop_position": {
-        "x": 8,
-        "y": 62
+        "x": 50,
+        "y": 50
       },
       "icon": "droplet",
       "popular_products": []
@@ -686,8 +686,8 @@
       ],
       "workshop_zone": "pegboard",
       "workshop_position": {
-        "x": 48,
-        "y": 50
+        "x": 86,
+        "y": 20
       },
       "icon": "tweezers",
       "popular_products": []
@@ -714,8 +714,8 @@
       ],
       "workshop_zone": "workbench",
       "workshop_position": {
-        "x": 52,
-        "y": 35
+        "x": 50,
+        "y": 15
       },
       "icon": "clip-stick",
       "popular_products": []
@@ -741,8 +741,8 @@
       ],
       "workshop_zone": "workbench",
       "workshop_position": {
-        "x": 62,
-        "y": 35
+        "x": 88,
+        "y": 45
       },
       "icon": "palette",
       "popular_products": []
@@ -764,8 +764,8 @@
       ],
       "workshop_zone": "workbench",
       "workshop_position": {
-        "x": 50,
-        "y": 78
+        "x": 82,
+        "y": 85
       },
       "icon": "disc",
       "popular_products": []
@@ -791,8 +791,8 @@
       ],
       "workshop_zone": "pegboard",
       "workshop_position": {
-        "x": 60,
-        "y": 50
+        "x": 62,
+        "y": 64
       },
       "icon": "flask",
       "popular_products": []
@@ -825,8 +825,8 @@
       ],
       "workshop_zone": "pegboard",
       "workshop_position": {
-        "x": 72,
-        "y": 50
+        "x": 86,
+        "y": 42
       },
       "icon": "part-separator",
       "popular_products": []
@@ -858,8 +858,8 @@
       ],
       "workshop_zone": "workbench",
       "workshop_position": {
-        "x": 50,
-        "y": 95
+        "x": 20,
+        "y": 15
       },
       "icon": "square",
       "popular_products": []
@@ -881,8 +881,8 @@
       ],
       "workshop_zone": "cabinet-right",
       "workshop_position": {
-        "x": 92,
-        "y": 88
+        "x": 50,
+        "y": 50
       },
       "icon": "package",
       "popular_products": []
@@ -916,7 +916,7 @@
       "workshop_zone": "workbench",
       "workshop_position": {
         "x": 80,
-        "y": 35
+        "y": 15
       },
       "icon": "lamp",
       "popular_products": []
@@ -943,8 +943,8 @@
       ],
       "workshop_zone": "cabinet-right",
       "workshop_position": {
-        "x": 92,
-        "y": 38
+        "x": 50,
+        "y": 50
       },
       "icon": "respirator",
       "popular_products": []
@@ -968,10 +968,106 @@
       ],
       "workshop_zone": "workbench",
       "workshop_position": {
-        "x": 70,
-        "y": 35
+        "x": 18,
+        "y": 85
       },
       "icon": "wind",
+      "popular_products": []
+    },
+    {
+      "id": "panel-scriber",
+      "category": "sanding",
+      "name_zh": "刻线推刀",
+      "name_en": "Panel Scriber",
+      "what_it_is": "一种带钩刃的精密推拉式工具，能在塑料件表面刻出精细凹槽线条。和笔刀切割不同，刻线推刀是\"推刮\"出沟槽，留下整齐的 V 形或 U 形凹线。",
+      "why_you_need_it": "万代很多模型刻线偏浅或缺失，刻线推刀能让你自行加深或新增刻线，让渗线效果更立体。也是改件党的核心工具——重新规划装甲分割线。",
+      "when_to_use": "想加深默认刻线、添加新刻线增加细节、改件后重新设计装甲走线时。",
+      "vs_alternatives": "vs 笔刀——笔刀是切割，刻线推刀是推刮，刻线效果更整齐、深度可控；vs 刻线针——刻线针只能划痕，无法形成真凹槽。",
+      "urgency": "advanced",
+      "pitfalls": [
+        "推刀刃极易跑偏，必须配合刻线胶带\"沿胶带边引导\"",
+        "初学者容易用力过猛刻穿装甲——力度由刀本身重量决定，不需要按压",
+        "BMC 黑魔等品牌 0.1 / 0.15 / 0.2mm 三档常用，新手 0.15 最易上手"
+      ],
+      "recommended_for_grades": [
+        "MG",
+        "MG-VerKa",
+        "PG",
+        "PG-Unleashed",
+        "RE100"
+      ],
+      "workshop_zone": "pegboard",
+      "workshop_position": {
+        "x": 86,
+        "y": 64
+      },
+      "icon": "panel-scriber",
+      "popular_products": []
+    },
+    {
+      "id": "scribing-tape",
+      "category": "sanding",
+      "name_zh": "刻线胶带 / 引导胶带",
+      "name_en": "Scribing Guide Tape",
+      "what_it_is": "极细（0.4–1mm）的高粘性胶带，专门用作刻线推刀的\"引导轨道\"。贴在零件表面，沿胶带边缘推刀，确保刻线笔直不跑偏。",
+      "why_you_need_it": "徒手用刻线推刀几乎必跑偏。胶带本身就是\"轨道\"——你不需要稳定手腕，只要刀刃贴着胶带边缘走即可。",
+      "when_to_use": "使用刻线推刀时配套使用，几乎不单独使用。",
+      "vs_alternatives": "vs 田宫遮盖带——遮盖带太宽（6mm 起），且边缘没那么锋利。专用刻线胶带边缘更利、宽度更细。",
+      "urgency": "advanced",
+      "pitfalls": [
+        "常用宽度 0.4 / 0.7 / 1mm，配套刻线推刀不同力度",
+        "日本 HIQ Parts、田宫\"刻线导引胶带\"是常见品牌",
+        "贴的时候避免气泡，否则刻线会随气泡偏移"
+      ],
+      "recommended_for_grades": [
+        "MG",
+        "MG-VerKa",
+        "PG",
+        "PG-Unleashed",
+        "RE100"
+      ],
+      "workshop_zone": "pegboard",
+      "workshop_position": {
+        "x": 24,
+        "y": 86
+      },
+      "icon": "sticker",
+      "popular_products": []
+    },
+    {
+      "id": "tool-organizer",
+      "category": "workspace",
+      "name_zh": "工具收纳盒",
+      "name_en": "Tool Organizer",
+      "what_it_is": "专门收纳模型工具的多格盒子或工具架，区别于零件分装盒——这个是装钳子、笔刀、镊子等\"工具\"本体。",
+      "why_you_need_it": "工具乱堆桌面会被刻线推刀刺到、笔刀划到。专用收纳盒让每件工具有\"家\"，桌面干净也找件快。",
+      "when_to_use": "工具数量超过 10 件时强烈建议——前期可省略，但收藏满满一墙工具后必备。",
+      "vs_alternatives": "vs 零件分装盒——分装盒装小零件（板件剪下来后分类），收纳盒装工具本体。两者都需要。",
+      "urgency": "advanced",
+      "pitfalls": [
+        "推荐分隔深浅不同的多格盒——长笔刀和短镊子需要的格子尺寸不同",
+        "部分工具（如刻线推刀刃片）需要专用刀架，普通收纳盒装不下",
+        "推荐品牌：田宫工具收纳箱、国产 RAY 模师傅木质工具架"
+      ],
+      "recommended_for_grades": [
+        "HG",
+        "RG",
+        "MG",
+        "MG-VerKa",
+        "PG",
+        "PG-Unleashed",
+        "EG",
+        "SD",
+        "SDCS",
+        "RE100",
+        "FM"
+      ],
+      "workshop_zone": "cabinet-right",
+      "workshop_position": {
+        "x": 50,
+        "y": 50
+      },
+      "icon": "package",
       "popular_products": []
     }
   ]

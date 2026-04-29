@@ -255,3 +255,19 @@ export function RespiratorIcon({
     </svg>
   )
 }
+
+// 刻线推刀：扁平笔身 + 右端钩状刃
+export function PanelScriberIcon({
+  size = 24,
+  className,
+  strokeWidth,
+}: ToolSvgProps) {
+  return (
+    <svg {...baseProps(size, className, strokeWidth)}>
+      <rect x="3" y="10" width="14" height="4" rx="0.5" />
+      <line x1="6" y1="10" x2="6" y2="14" strokeWidth={0.6} />
+      <path d="M17 11 L20 12 L20 13 L17 13" />
+      <path d="M20 12 L22 14 L21 16 L19 14.5" />
+    </svg>
+  )
+}

@@ -23,6 +23,7 @@ import {
   NipperDoubleIcon,
   NipperSingleIcon,
   NipperSprueIcon,
+  PanelScriberIcon,
   PartSeparatorIcon,
   PolishingIcon,
   RespiratorIcon,
@@ -53,6 +54,7 @@ const ICON_MAP: Record<string, IconComponent> = {
   tweezers: TweezersIcon,
   'clip-stick': ClipStickIcon,
   'part-separator': PartSeparatorIcon,
+  'panel-scriber': PanelScriberIcon,
   respirator: RespiratorIcon,
   // lucide aliases (lowercase in our schema → PascalCase component)
   paintbrush: Paintbrush,

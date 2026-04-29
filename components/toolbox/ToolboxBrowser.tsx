@@ -3,6 +3,7 @@
 import { useMemo } from 'react'
 import { parseAsArrayOf, parseAsString, useQueryStates } from 'nuqs'
 import { BlueprintFrame } from '@/components/atoms'
+import { CATEGORY_VISUALS } from '@/lib/constants/tool-categories'
 import { useHydrated, useUserStore } from '@/lib/store/user-state'
 import type {
   SubcategoryCategory,
@@ -19,15 +20,6 @@ const CATEGORY_ORDER: SubcategoryCategory[] = [
   'assist',
   'workspace',
 ]
-
-const CATEGORY_LABEL: Record<SubcategoryCategory, string> = {
-  cutting: 'CUTTING // 剪 / 切割',
-  sanding: 'SANDING // 打磨',
-  painting: 'PAINTING // 涂装',
-  finishing: 'FINISHING // 修饰',
-  assist: 'ASSIST // 辅助',
-  workspace: 'WORKSPACE // 工作环境',
-}
 
 const URGENCY_OPTIONS: Array<{ value: Urgency; label: string }> = [
   { value: 'essential', label: '必备' },
@@ -128,13 +120,12 @@ export function ToolboxBrowser({
         </FilterRail>
         <FilterRail label="按 大类">
           {CATEGORY_ORDER.map((c) => (
-            <Chip
+            <CategoryChip
               key={c}
+              category={c}
               active={filters.category.includes(c)}
               onClick={() => toggleCategory(c)}
-            >
-              {CATEGORY_LABEL[c].split(' // ')[0]}
-            </Chip>
+            />
           ))}
         </FilterRail>
       </div>
@@ -150,24 +141,30 @@ export function ToolboxBrowser({
           {CATEGORY_ORDER.map((cat) => {
             const items = grouped.get(cat) ?? []
             if (items.length === 0) return null
+            const visual = CATEGORY_VISUALS[cat]
             return (
               <section key={cat}>
-                <header className="mb-4 flex items-center gap-3">
-                  <h2 className="font-mono text-sm uppercase tracking-widest text-[var(--color-text-secondary)]">
-                    ━━ {CATEGORY_LABEL[cat]}
+                <header className="mb-5 flex items-baseline gap-3">
+                  <h2
+                    className="font-display text-3xl tracking-wider"
+                    style={{ color: visual.color }}
+                  >
+                    {visual.label_en}
                   </h2>
+                  <span className="font-sans text-base text-[var(--color-text-secondary)]">
+                    {visual.label_zh}
+                  </span>
                   <div
                     className="h-px flex-1"
                     style={{
-                      background:
-                        'color-mix(in srgb, var(--color-text-muted) 25%, transparent)',
+                      background: `color-mix(in srgb, ${visual.color} 25%, transparent)`,
                     }}
                   />
-                  <span className="font-mono text-xs tabular-nums text-[var(--color-text-muted)]">
+                  <span className="font-mono text-sm tabular-nums text-[var(--color-text-muted)]">
                     {items.length}
                   </span>
                 </header>
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7">
                   {items.map((sc) => (
                     <SubcategoryCard
                       key={sc.id}
@@ -229,6 +226,37 @@ function Chip({
       }}
     >
       {children}
+    </button>
+  )
+}
+
+function CategoryChip({
+  category,
+  active,
+  onClick,
+}: {
+  category: SubcategoryCategory
+  active: boolean
+  onClick: () => void
+}) {
+  const visual = CATEGORY_VISUALS[category]
+  return (
+    <button
+      type="button"
+      aria-pressed={active}
+      onClick={onClick}
+      className="border px-2 py-1 font-mono text-xs uppercase tracking-wider transition-colors"
+      style={{
+        borderColor: active
+          ? visual.color
+          : `color-mix(in srgb, ${visual.color} 30%, transparent)`,
+        backgroundColor: active ? visual.color : 'transparent',
+        color: active
+          ? 'var(--color-bg-deep)'
+          : `color-mix(in srgb, ${visual.color} 70%, var(--color-text-secondary))`,
+      }}
+    >
+      {visual.label_en}
     </button>
   )
 }

@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { getAllKits, getFeaturedKits } from '@/lib/data'
 import { HangarBrowser } from '@/components/hangar/HangarBrowser'
 
@@ -11,5 +12,19 @@ export default async function HangarPage() {
     getAllKits(),
     getFeaturedKits(),
   ])
-  return <HangarBrowser allKits={kits} featuredItems={featured} />
+  return (
+    <Suspense fallback={<HangarLoading />}>
+      <HangarBrowser allKits={kits} featuredItems={featured} />
+    </Suspense>
+  )
+}
+
+function HangarLoading() {
+  return (
+    <div className="container mx-auto px-6 py-10">
+      <p className="font-mono text-sm uppercase tracking-widest text-[var(--color-text-muted)]">
+        {'// LOADING HANGAR...'}
+      </p>
+    </div>
+  )
 }

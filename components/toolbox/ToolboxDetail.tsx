@@ -40,8 +40,8 @@ export function ToolboxDetail({
       </Link>
 
       <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-2">
-        {/* Left: icon + meta (sticky on desktop) */}
-        <div className="lg:sticky lg:top-24 lg:self-start">
+        {/* Left: icon + ownership toggle + meta (sticky on desktop) */}
+        <div className="space-y-4 lg:sticky lg:top-24 lg:self-start">
           <BlueprintFrame variant={lit ? 'magenta' : 'default'} className="p-8">
             <div className="flex flex-col items-center gap-6">
               <div
@@ -81,6 +81,12 @@ export function ToolboxDetail({
               </div>
             </div>
           </BlueprintFrame>
+
+          {/* Ownership toggle — primary action, directly under icon card */}
+          <OwnershipToggle
+            owned={lit}
+            onToggle={() => setToolOwned(subcategory.id, !owned)}
+          />
         </div>
 
         {/* Right: knowledge graph */}
@@ -128,35 +134,6 @@ export function ToolboxDetail({
             </BlueprintFrame>
           )}
 
-          <BlueprintFrame variant="magenta" className="p-6">
-            <h3 className="mb-3 font-mono text-sm uppercase tracking-widest text-[var(--color-text-secondary)]">
-              ── 我已拥有 ──
-            </h3>
-            <button
-              type="button"
-              role="switch"
-              aria-checked={lit}
-              onClick={() => setToolOwned(subcategory.id, !owned)}
-              className="border px-4 py-2 font-mono text-sm uppercase tracking-widest transition-colors"
-              style={{
-                borderColor: lit
-                  ? 'var(--color-uc-green)'
-                  : 'color-mix(in srgb, var(--color-text-muted) 30%, transparent)',
-                color: lit
-                  ? 'var(--color-uc-green)'
-                  : 'var(--color-text-secondary)',
-                backgroundColor: lit
-                  ? 'color-mix(in srgb, var(--color-uc-green) 12%, transparent)'
-                  : 'transparent',
-              }}
-            >
-              {lit ? '✓ 已拥有这类工具' : '◇ 标记为已拥有'}
-            </button>
-            <p className="mt-3 font-mono text-[10px] uppercase tracking-widest text-[var(--color-text-muted)]">
-              {'// 标记后会在 CODEX 工坊点亮该工具'}
-            </p>
-          </BlueprintFrame>
-
           <BlueprintFrame className="p-6">
             <h3 className="mb-3 font-mono text-sm uppercase tracking-widest text-[var(--color-text-secondary)]">
               ── 推荐型号 ──
@@ -186,6 +163,77 @@ function Section({
       <p className="text-sm leading-relaxed text-[var(--color-text-primary)]">
         {children}
       </p>
+    </BlueprintFrame>
+  )
+}
+
+function OwnershipToggle({
+  owned,
+  onToggle,
+}: {
+  owned: boolean
+  onToggle: () => void
+}) {
+  return (
+    <BlueprintFrame variant={owned ? 'magenta' : 'default'} className="p-0">
+      <button
+        type="button"
+        role="switch"
+        aria-checked={owned}
+        onClick={onToggle}
+        className="group flex w-full items-center justify-between gap-4 px-5 py-4 transition-colors hover:bg-[color-mix(in_srgb,var(--color-accent-cyan)_8%,transparent)]"
+      >
+        <span className="flex items-center gap-3">
+          {/* Checkbox indicator */}
+          <span
+            aria-hidden
+            className="flex h-6 w-6 flex-none items-center justify-center border transition-colors"
+            style={{
+              backgroundColor: owned
+                ? 'var(--color-accent-magenta)'
+                : 'transparent',
+              borderColor: owned
+                ? 'var(--color-accent-magenta)'
+                : 'color-mix(in srgb, var(--color-text-muted) 40%, transparent)',
+            }}
+          >
+            {owned && (
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                stroke="white"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M2 7 L6 11 L12 3" />
+              </svg>
+            )}
+          </span>
+          <span
+            className="font-mono text-sm uppercase tracking-wider"
+            style={{
+              color: owned
+                ? 'var(--color-text-primary)'
+                : 'var(--color-text-secondary)',
+            }}
+          >
+            {owned ? '已拥有此类工具' : '标记为已拥有'}
+          </span>
+        </span>
+        <span
+          className="font-mono text-xs uppercase tracking-widest"
+          style={{
+            color: owned
+              ? 'var(--color-accent-magenta)'
+              : 'var(--color-text-muted)',
+          }}
+        >
+          {owned ? '◆ OWNED' : 'CLICK TO TOGGLE'}
+        </span>
+      </button>
     </BlueprintFrame>
   )
 }

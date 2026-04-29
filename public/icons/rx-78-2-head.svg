@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- V antennas (twin-blade, opening upward) -->
+  <line x1="38" y1="28" x2="28" y2="4" />
+  <line x1="35" y1="28" x2="32" y2="4" />
+  <line x1="62" y1="28" x2="72" y2="4" />
+  <line x1="65" y1="28" x2="68" y2="4" />
+
+  <!-- Forehead crest / antenna mount -->
+  <rect x="44" y="22" width="12" height="8" />
+  <line x1="50" y1="22" x2="50" y2="30" stroke-width="1" />
+
+  <!-- Head outline (with cheek-vent protrusions) -->
+  <path d="M 30 30 L 70 30 L 78 42 L 78 60 L 84 60 L 84 78 L 78 78 L 70 92 L 30 92 L 22 78 L 16 78 L 16 60 L 22 60 L 22 42 Z" />
+
+  <!-- Visor band (eyes, solid) -->
+  <rect x="24" y="50" width="52" height="8" fill="currentColor" stroke="none" />
+
+  <!-- Visor inner highlight -->
+  <line x1="48" y1="54" x2="52" y2="54" stroke="var(--color-bg-paper, #0F1A2E)" stroke-width="1" />
+
+  <!-- Cheek vent grilles (left) -->
+  <line x1="18" y1="64" x2="18" y2="74" />
+  <line x1="20" y1="64" x2="20" y2="74" />
+
+  <!-- Cheek vent grilles (right) -->
+  <line x1="80" y1="64" x2="80" y2="74" />
+  <line x1="82" y1="64" x2="82" y2="74" />
+
+  <!-- Mouth slits (lower face) -->
+  <line x1="40" y1="78" x2="60" y2="78" />
+  <line x1="40" y1="82" x2="60" y2="82" />
+
+  <!-- Chin V-notch -->
+  <path d="M 42 88 L 50 92 L 58 88" />
+</svg>
