@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono, VT323 } from 'next/font/google'
+import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import { TopNav } from '@/components/layout/TopNav'
 import { Footer } from '@/components/layout/Footer'
+import { getAllKits } from '@/lib/data'
 import './globals.css'
 
 const geistSans = Geist({
@@ -25,11 +27,12 @@ export const metadata: Metadata = {
   description: '高达模型拼装入门导航 / Gunpla Beginner Codex',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const kits = await getAllKits()
   return (
     <html lang="zh-CN">
       <body
@@ -48,9 +51,11 @@ export default function RootLayout({
           } as React.CSSProperties
         }
       >
-        <TopNav />
-        <main className="min-h-[calc(100dvh-7rem)]">{children}</main>
-        <Footer />
+        <NuqsAdapter>
+          <TopNav kitTotal={kits.length} />
+          <main className="min-h-[calc(100dvh-7rem)]">{children}</main>
+          <Footer />
+        </NuqsAdapter>
       </body>
     </html>
   )

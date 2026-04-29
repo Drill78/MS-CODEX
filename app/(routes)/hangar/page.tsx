@@ -1,8 +1,12 @@
-export default function HangarPage() {
-  return (
-    <div className="container mx-auto px-6 py-12">
-      <h1 className="font-mono text-3xl tracking-wider">HANGAR</h1>
-      <p className="text-[--color-text-secondary] mt-4">{'// 待实现'}</p>
-    </div>
-  )
+import { getAllKits } from '@/lib/data'
+import { HangarBrowser } from '@/components/hangar/HangarBrowser'
+
+export const metadata = {
+  title: 'HANGAR | MS-CODEX',
+  description: '全机体档案库 — 1148 套 Gunpla 资料 + 多维筛选',
+}
+
+export default async function HangarPage() {
+  const kits = await getAllKits()
+  return <HangarBrowser kits={kits} />
 }

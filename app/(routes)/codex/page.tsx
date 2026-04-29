@@ -1,8 +1,12 @@
-export default function CodexPage() {
-  return (
-    <div className="container mx-auto px-6 py-12">
-      <h1 className="font-mono text-3xl tracking-wider">CODEX</h1>
-      <p className="text-[--color-text-secondary] mt-4">{'// 待实现'}</p>
-    </div>
-  )
+import { getAllKits } from '@/lib/data'
+import { CodexView } from '@/components/codex/CodexView'
+
+export const metadata = {
+  title: 'CODEX | MS-CODEX',
+  description: '我的工具墙 + 机库档案',
+}
+
+export default async function CodexPage() {
+  const kits = await getAllKits()
+  return <CodexView allKits={kits} />
 }

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import type { Kit } from '@/lib/types/kit'
 import type { KitStatus } from '@/lib/types/user-state'
@@ -55,11 +56,19 @@ export function KitCard({ kit, status = 'untracked', className, onClick }: KitCa
     >
       <BlueprintFrame>
         {kit.box_art_url && (
-          <div
-            aria-hidden
-            className="absolute inset-0 bg-cover bg-center opacity-10"
-            style={{ backgroundImage: `url(${kit.box_art_url})` }}
-          />
+          <div aria-hidden className="absolute inset-0 opacity-15">
+            <Image
+              src={kit.box_art_url}
+              alt=""
+              fill
+              sizes="(min-width: 1280px) 20vw, (min-width: 1024px) 33vw, 50vw"
+              className="object-cover"
+              {...(kit.box_art_lqip
+                ? { placeholder: 'blur' as const, blurDataURL: kit.box_art_lqip }
+                : {})}
+              unoptimized
+            />
+          </div>
         )}
         <div
           aria-hidden

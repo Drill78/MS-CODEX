@@ -2,17 +2,29 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useHydrated, useUserStore } from '@/lib/store/user-state'
 
-const NAV_LINKS = [
+type NavLink = {
+  href: string
+  label: string
+  badge?: 'kit-total' | 'my-count'
+}
+
+const NAV_LINKS: NavLink[] = [
   { href: '/toolbox', label: 'TOOLBOX' },
-  { href: '/hangar', label: 'HANGAR' },
-  { href: '/codex', label: 'CODEX' },
+  { href: '/hangar', label: 'HANGAR', badge: 'kit-total' },
+  { href: '/codex', label: 'CODEX', badge: 'my-count' },
   { href: '/loadouts', label: 'LOADOUTS' },
   { href: '/about', label: 'ABOUT' },
-] as const
+]
 
-export function TopNav() {
+export function TopNav({ kitTotal }: { kitTotal?: number }) {
   const pathname = usePathname()
+  const hydrated = useHydrated()
+  const userKits = useUserStore((s) => s.kits)
+  const myCount = hydrated
+    ? Object.values(userKits).filter((v) => v.status !== 'wishlist').length
+    : 0
 
   return (
     <header
@@ -40,11 +52,20 @@ export function TopNav() {
           {NAV_LINKS.map((link) => {
             const isActive =
               pathname === link.href || pathname.startsWith(`${link.href}/`)
+            const badgeValue =
+              link.badge === 'kit-total'
+                ? kitTotal
+                : link.badge === 'my-count'
+                  ? hydrated
+                    ? myCount
+                    : null
+                  : null
+
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className="relative transition-colors hover:[--hover-on:1]"
+                className="relative inline-flex items-baseline gap-1.5 transition-colors hover:[--hover-on:1]"
                 style={{
                   color: isActive
                     ? 'var(--color-accent-magenta)'
@@ -52,17 +73,17 @@ export function TopNav() {
                 }}
               >
                 <span className="navlink-label">{link.label}</span>
+                {badgeValue != null && (
+                  <span
+                    className="font-mono text-[10px] tabular-nums"
+                    style={{ color: 'var(--color-text-muted)' }}
+                  >
+                    {link.badge === 'my-count' ? `我:${badgeValue}` : badgeValue}
+                  </span>
+                )}
               </Link>
             )
           })}
-          {/* TODO: remove before launch — temporary atomic-component gallery */}
-          <Link
-            href="/components-preview"
-            className="relative transition-colors"
-            style={{ color: 'var(--color-accent-magenta)' }}
-          >
-            <span className="navlink-label">PREVIEW</span>
-          </Link>
         </nav>
 
         {/* TODO: 实现导出/导入功能 */}
