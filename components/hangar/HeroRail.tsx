@@ -53,7 +53,7 @@ export function HeroRail({
             {`// featured picks · ${resolved.length}`}
           </p>
         </div>
-        <div className="flex shrink-0 gap-2">
+        <div className="hidden shrink-0 gap-2 sm:flex">
           <button
             type="button"
             onClick={() => scrollBy(-SCROLL_STEP)}

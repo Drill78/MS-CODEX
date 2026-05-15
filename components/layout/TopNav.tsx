@@ -2,7 +2,9 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useState } from 'react'
 import { useHydrated, useUserStore } from '@/lib/store/user-state'
+import { SettingsPanel } from './SettingsPanel'
 
 type NavLink = {
   href: string
@@ -35,6 +37,7 @@ export function TopNav({
   const ownedTools = hydrated
     ? Object.values(userTools).filter((v) => v.owned).length
     : 0
+  const [settingsOpen, setSettingsOpen] = useState(false)
 
   return (
     <header
@@ -44,21 +47,21 @@ export function TopNav({
         borderColor: 'var(--color-grid-line)',
       }}
     >
-      <div className="container mx-auto flex h-16 items-center justify-between px-6">
+      <div className="container mx-auto flex h-16 items-center justify-between gap-2 px-3 sm:gap-4 sm:px-6">
         <Link
           href="/"
-          className="font-mono text-lg font-semibold tracking-widest"
+          className="shrink-0 font-mono text-sm font-semibold tracking-widest sm:text-lg"
           style={{ color: 'var(--color-text-primary)' }}
         >
           <span
-            className="border px-2 py-1"
+            className="border px-1.5 py-1 sm:px-2"
             style={{ borderColor: 'var(--color-text-secondary)' }}
           >
             MS-CODEX
           </span>
         </Link>
 
-        <nav className="flex items-center gap-6 font-mono text-sm tracking-wider">
+        <nav className="flex min-w-0 items-center gap-2 overflow-x-auto font-mono text-xs tracking-wider sm:gap-6 sm:text-sm">
           {NAV_LINKS.map((link) => {
             const isActive =
               pathname === link.href || pathname.startsWith(`${link.href}/`)
@@ -79,7 +82,7 @@ export function TopNav({
               <Link
                 key={link.href}
                 href={link.href}
-                className="relative inline-flex items-baseline gap-1.5 transition-colors hover:[--hover-on:1]"
+                className="relative inline-flex shrink-0 items-baseline gap-1.5 transition-colors hover:[--hover-on:1]"
                 style={{
                   color: isActive
                     ? 'var(--color-accent-magenta)'
@@ -89,7 +92,7 @@ export function TopNav({
                 <span className="navlink-label">{link.label}</span>
                 {badgeValue != null && (
                   <span
-                    className="font-mono text-[10px] tabular-nums"
+                    className="hidden font-mono text-[10px] tabular-nums sm:inline"
                     style={{ color: 'var(--color-text-muted)' }}
                   >
                     {link.badge === 'my-count'
@@ -104,17 +107,22 @@ export function TopNav({
           })}
         </nav>
 
-        {/* TODO: 实现导出/导入功能 */}
         <button
           type="button"
-          aria-label="导出/导入"
-          title="导出/导入（待实现）"
-          className="font-mono text-lg"
+          aria-label="设置 / 导入导出"
+          title="设置 / 导入导出"
+          onClick={() => setSettingsOpen(true)}
+          className="shrink-0 font-mono text-lg transition-colors hover:text-[var(--color-accent-cyan)]"
           style={{ color: 'var(--color-text-secondary)' }}
         >
           ⚙
         </button>
       </div>
+
+      <SettingsPanel
+        open={settingsOpen}
+        onClose={() => setSettingsOpen(false)}
+      />
 
       <style>{`
         .navlink-label::after {

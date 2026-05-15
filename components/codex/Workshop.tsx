@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { useMemo } from 'react'
 import { cn } from '@/lib/utils'
 import { BlueprintFrame } from '@/components/atoms'
@@ -10,6 +9,23 @@ import { useHydrated, useUserStore } from '@/lib/store/user-state'
 import type { ToolSubcategory } from '@/lib/types/tool-subcategory'
 
 export function Workshop({
+  subcategories,
+}: {
+  subcategories: ToolSubcategory[]
+}) {
+  return (
+    <>
+      <div className="hidden lg:block">
+        <WorkshopDesktop subcategories={subcategories} />
+      </div>
+      <div className="lg:hidden">
+        <WorkshopMobile subcategories={subcategories} />
+      </div>
+    </>
+  )
+}
+
+function WorkshopDesktop({
   subcategories,
 }: {
   subcategories: ToolSubcategory[]
@@ -37,10 +53,6 @@ export function Workshop({
 
   return (
     <section className="mx-auto w-full max-w-[1920px]">
-      <p className="mb-3 font-mono text-xs uppercase tracking-widest text-[var(--color-text-muted)] lg:hidden">
-        {'// 工坊视图建议在桌面端浏览（≥1024px）'}
-      </p>
-
       <BlueprintFrame
         variant="default"
         className="relative w-full overflow-hidden"
@@ -113,6 +125,119 @@ export function Workshop({
   )
 }
 
+function WorkshopMobile({
+  subcategories,
+}: {
+  subcategories: ToolSubcategory[]
+}) {
+  const hydrated = useHydrated()
+  const userTools = useUserStore((s) => s.tools)
+
+  const { owned, unowned, ownedCount } = useMemo(() => {
+    const ownedList: ToolSubcategory[] = []
+    const unownedList: ToolSubcategory[] = []
+    for (const sc of subcategories) {
+      const isOwned = hydrated && Boolean(userTools[sc.id]?.owned)
+      if (isOwned) ownedList.push(sc)
+      else unownedList.push(sc)
+    }
+    return {
+      owned: ownedList,
+      unowned: unownedList,
+      ownedCount: ownedList.length,
+    }
+  }, [subcategories, userTools, hydrated])
+
+  return (
+    <section className="mx-auto w-full max-w-2xl">
+      <BlueprintFrame variant="default" className="mb-4 p-4">
+        <p className="font-mono text-[10px] uppercase tracking-widest text-[var(--color-text-muted)]">
+          {'// WORKSHOP 工坊视图建议在桌面端浏览（≥1024px）'}
+        </p>
+        <p className="mt-1 text-sm text-[var(--color-text-secondary)]">
+          这里展示精简的工具列表。点亮{' '}
+          <span className="font-mono tabular-nums text-[var(--color-accent-magenta)]">
+            {hydrated ? ownedCount : 0}
+          </span>
+          <span className="font-mono text-[var(--color-text-muted)]">
+            {' / '}
+            {subcategories.length}
+          </span>
+        </p>
+      </BlueprintFrame>
+
+      <section className="mb-6">
+        <header className="mb-3 flex items-baseline justify-between">
+          <h3 className="font-display text-2xl tracking-wider">已拥有</h3>
+          <span className="font-mono tabular-nums text-[var(--color-accent-magenta)]">
+            {hydrated ? owned.length : 0}
+          </span>
+        </header>
+        {owned.length === 0 ? (
+          <p className="font-mono text-xs text-[var(--color-text-muted)]">
+            {'// 还没有标注任何工具，去 TOOLBOX 看看吧'}
+          </p>
+        ) : (
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+            {owned.map((t) => (
+              <MobileToolTile key={t.id} tool={t} lit />
+            ))}
+          </div>
+        )}
+      </section>
+
+      <section>
+        <details>
+          <summary className="cursor-pointer list-none font-display text-2xl tracking-wider text-[var(--color-text-secondary)]">
+            未拥有{' '}
+            <span className="font-mono text-base tabular-nums text-[var(--color-text-muted)]">
+              ({unowned.length})
+            </span>
+          </summary>
+          <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
+            {unowned.map((t) => (
+              <MobileToolTile key={t.id} tool={t} lit={false} />
+            ))}
+          </div>
+        </details>
+      </section>
+    </section>
+  )
+}
+
+function MobileToolTile({
+  tool,
+  lit,
+}: {
+  tool: ToolSubcategory
+  lit: boolean
+}) {
+  return (
+    <Link
+      href={`/toolbox/${tool.id}`}
+      title={tool.name_zh}
+      className={cn(
+        'flex flex-col items-center gap-1 border p-3 transition-colors',
+        lit
+          ? 'border-[var(--color-accent-magenta)]/50 bg-[color-mix(in_oklch,var(--color-accent-magenta)_4%,transparent)]'
+          : 'border-[var(--color-text-muted)]/30',
+      )}
+    >
+      <ToolIcon id={tool.icon} lit={lit} size={48} />
+      <span
+        className={cn(
+          'max-w-full truncate text-center font-mono text-xs',
+          lit
+            ? 'text-[var(--color-text-primary)]'
+            : 'text-[var(--color-text-muted)]',
+        )}
+      >
+        {tool.name_zh}
+      </span>
+    </Link>
+  )
+}
+
 function ZoneLabel({ children }: { children: React.ReactNode }) {
   return (
     <div className="absolute left-2 top-2 z-10">
@@ -168,24 +293,6 @@ function WorkbenchZone({ tools }: { tools: ToolSubcategory[] }) {
           opacity: 0.25,
         }}
       />
-
-      {/* Gundam silhouette anchor — upper half, leaving lower workbench for tools */}
-      <div aria-hidden className="pointer-events-none absolute inset-0">
-        <Image
-          src="/icons/rx-78-2-head.svg"
-          alt="RX-78-2"
-          width={120}
-          height={144}
-          className="absolute h-[55%] w-auto opacity-30"
-          style={{
-            left: '50%',
-            top: '38%',
-            transform: 'translate(-50%, -50%)',
-            color: 'var(--color-accent-cyan)',
-            filter: 'brightness(1.5)',
-          }}
-        />
-      </div>
 
       <div className="absolute inset-0">
         {tools.map((tool) => (
