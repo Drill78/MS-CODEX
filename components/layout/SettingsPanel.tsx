@@ -95,16 +95,19 @@ export function SettingsPanel({
   }
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-start justify-end backdrop-blur-sm"
-      style={{
-        background: 'color-mix(in srgb, var(--color-bg-deep) 70%, transparent)',
-      }}
-      onClick={onClose}
-      role="presentation"
-    >
+    <>
+      <div
+        className="fixed inset-0 z-40 backdrop-blur-sm"
+        style={{
+          background:
+            'color-mix(in srgb, var(--color-bg-deep) 70%, transparent)',
+        }}
+        onClick={onClose}
+        role="presentation"
+        aria-hidden="true"
+      />
       <aside
-        className="h-full w-full max-w-md overflow-y-auto border-l"
+        className="fixed bottom-0 right-0 top-0 z-50 w-full overflow-y-auto border-l shadow-2xl sm:w-[90vw] sm:max-w-md"
         style={{
           background: 'var(--color-bg-paper)',
           borderColor:
@@ -261,6 +264,6 @@ export function SettingsPanel({
           </div>
         </div>
       </aside>
-    </div>
+    </>
   )
 }

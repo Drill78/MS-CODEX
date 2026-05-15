@@ -120,8 +120,8 @@ function FeaturedKitCard({
   return (
     <Link
       href={`/hangar/${kit.id}`}
-      className="block flex-shrink-0 transition-transform hover:-translate-y-0.5"
-      style={{ width: 240, scrollSnapAlign: 'start' }}
+      className="block w-[160px] shrink-0 transition-transform hover:-translate-y-0.5 sm:w-[200px] lg:w-[240px]"
+      style={{ scrollSnapAlign: 'start' }}
     >
       <BlueprintFrame className="h-full">
         <div className="flex h-full flex-col">
@@ -131,7 +131,7 @@ function FeaturedKitCard({
                 src={kit.box_art_url}
                 alt={`${kit.name_zh} box art`}
                 fill
-                sizes="240px"
+                sizes="(max-width: 640px) 160px, (max-width: 1024px) 200px, 240px"
                 className="object-cover"
                 {...(kit.box_art_lqip
                   ? {
@@ -148,25 +148,25 @@ function FeaturedKitCard({
             )}
           </div>
 
-          <div className="flex flex-1 flex-col gap-1 p-3">
+          <div className="flex min-w-0 flex-1 flex-col gap-1 p-3">
             <div className="flex items-center gap-2">
               <GradeBadge grade={kit.grade} size="sm" />
             </div>
             {kit.ms_code && (
               <div
-                className="truncate font-display text-3xl leading-none tracking-wider"
+                className="line-clamp-1 break-all font-display text-2xl leading-none tracking-wider sm:text-3xl"
                 style={{ color: 'var(--color-accent-magenta)' }}
               >
                 {kit.ms_code}
               </div>
             )}
-            <div className="truncate text-base text-[var(--color-text-primary)]">
+            <div className="line-clamp-1 text-sm text-[var(--color-text-primary)] sm:text-base">
               {kit.name_zh}
             </div>
 
             <div className="mt-auto pt-2">
               <span
-                className="inline-block border px-2.5 py-1 font-mono text-sm uppercase tracking-wider"
+                className="inline-block border px-2 py-1 font-mono text-xs uppercase tracking-wider sm:px-2.5 sm:text-sm"
                 style={{ color, borderColor: color }}
               >
                 ▸ {reason}
